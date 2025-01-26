@@ -3034,6 +3034,7 @@
 #include "code\modules\antagonists\highlander\highlander.dm"
 #include "code\modules\antagonists\hypnotized\hypnotized.dm"
 #include "code\modules\antagonists\magic_servant\servant.dm"
+#include "code\modules\antagonists\malf_ai\infected_ipc.dm"
 #include "code\modules\antagonists\malf_ai\malf_ai.dm"
 #include "code\modules\antagonists\malf_ai\malf_ai_module_picker.dm"
 #include "code\modules\antagonists\malf_ai\malf_ai_modules.dm"
