@@ -97,7 +97,7 @@
 		else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
 			. += "<span class='warning'><B>[t_His] eyes are bloodshot!</B></span>"
 		else if(HAS_TRAIT(src, TRAIT_CORRUPTED_MONITOR))
-			. += "<span class='warning'><B>[t_His] monitor is weirdly corrupted!</B></span>"
+			. += span_boldwarning("[t_His] monitor is weirdly corrupted!")
 
 	//ears
 	if(ears && !(obscured & ITEM_SLOT_EARS) && !(ears.item_flags & EXAMINE_SKIP))

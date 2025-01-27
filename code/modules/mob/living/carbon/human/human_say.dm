@@ -66,8 +66,6 @@
 
 	if(!istype(dongle))
 		return FALSE
-	if(!dongle == null)
-		return FALSE
 	return dongle.translate_binary
 
 /mob/living/carbon/human/radio(message, list/message_mods = list(), list/spans, language) //Poly has a copy of this, lazy bastard

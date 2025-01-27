@@ -322,7 +322,7 @@
 
 	. += "Connected IPCs: [length(connected_ipcs)]"
 	for(var/ipc in connected_ipcs)
-		var/mob/living/carbon/human/species/ipc/connected_ipc = ipc
+		var/mob/living/carbon/human/connected_ipc = ipc
 		var/robot_status = "Nominal"
 		if(connected_ipc.stat != CONSCIOUS || !connected_ipc.client)
 			robot_status = "OFFLINE"
