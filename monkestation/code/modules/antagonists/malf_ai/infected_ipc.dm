@@ -22,12 +22,14 @@
 	internal_radio.radio.translate_binary = TRUE
 	internal_radio.radio.recalculateChannels()
 	internal_camera = new /obj/machinery/camera(owner.current)
+	ADD_TRAIT(owner.current, TRAIT_CORRUPTED_MONITOR) //a way to identify infected ipcs
 
 /datum/antagonist/infected_ipc/on_removal()
 	//remove cameras, radio and disconnects them from master AI
 	QDEL_NULL(internal_radio)
 	QDEL_NULL(internal_camera)
 	master_ai.connected_ipcs -= owner.current
+	REMOVE_TRAIT(owner.current, TRAIT_CORRUPTED_MONITOR)
 	return ..()
 
 /datum/antagonist/infected_ipc/proc/set_master(datum/mind/master)
