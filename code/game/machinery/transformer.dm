@@ -9,9 +9,9 @@
 	plane = ABOVE_GAME_PLANE
 	density = FALSE
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 5
-	/// Whether this machine transforms dead mobs into cyborgs
+	/// Whether this machine transforms dead mobs into cyborgs/ipcs
 	var/transform_dead = FALSE
-	/// Whether this machine transforms standing mobs into cyborgs
+	/// Whether this machine transforms standing mobs into cyborgs/ipcs
 	var/transform_standing = FALSE
 	/// How long we have to wait between processing mobs
 	var/cooldown_duration = 60 SECONDS
@@ -21,6 +21,8 @@
 	var/cooldown_timer
 	/// The created cyborg's cell chage
 	var/robot_cell_charge = 5000
+	///Whether this machine transforms mobs to ipcs, else transforms them to cyborgs
+	var/is_ipc_mode = FALSE
 	/// The visual countdown effect
 	var/obj/effect/countdown/transformer/countdown
 	/// Who the master AI is that created this factory
@@ -42,6 +44,12 @@
 /obj/machinery/transformer/Destroy()
 	QDEL_NULL(countdown)
 	. = ..()
+
+/obj/machinery/transformer/attack_ai(mob/user)
+	. = ..()
+	is_ipc_mode = !is_ipc_mode
+	var/settings_message = is_ipc_mode ? "IPC's" : "Cyborgs"
+	to_chat(user, span_notice("Factory is now producing: [settings_message]"))
 
 /obj/machinery/transformer/update_icon_state()
 	if(machine_stat & (BROKEN|NOPOWER) || cooldown == 1)
@@ -100,17 +108,24 @@
 	sleep(0.5 SECONDS)
 
 	use_power(active_power_usage) // Use a lot of power.
-	var/mob/living/silicon/robot/new_borg = victim.Robotize()
-	new_borg.cell = new /obj/item/stock_parts/cell/upgraded/plus(new_borg, robot_cell_charge)
 
-	// So he can't jump out the gate right away.
-	new_borg.SetLockdown()
-	if(master_ai && new_borg.connected_ai != master_ai)
-		new_borg.set_connected_ai(master_ai)
-		new_borg.lawsync()
-		new_borg.lawupdate = TRUE
-		log_silicon("[key_name(new_borg)] resynced to [key_name(master_ai)]")
-	addtimer(CALLBACK(src, PROC_REF(unlock_new_robot), new_borg), 5 SECONDS)
+	if(!is_ipc_mode)
+		var/mob/living/silicon/robot/new_borg = victim.Robotize()
+		new_borg.cell = new /obj/item/stock_parts/cell/upgraded/plus(new_borg, robot_cell_charge)
+
+		// So he can't jump out the gate right away.
+		new_borg.SetLockdown()
+		if(master_ai && new_borg.connected_ai != master_ai)
+			new_borg.set_connected_ai(master_ai)
+			new_borg.lawsync()
+			new_borg.lawupdate = TRUE
+			log_silicon("[key_name(new_borg)] resynced to [key_name(master_ai)]")
+		addtimer(CALLBACK(src, PROC_REF(unlock_new_robot), new_borg), 5 SECONDS)
+	else
+		victim.set_species(/datum/species/ipc)
+		var/datum/antagonist/infected_ipc/bad_ipc = victim?.mind?.add_antag_datum(/datum/antagonist/infected_ipc)
+		bad_ipc.set_master(master_ai.mind)
+		victim.heal_damage_type(max(0, 80 - victim.getBruteLoss()), BRUTE)
 
 /obj/machinery/transformer/proc/unlock_new_robot(mob/living/silicon/robot/new_borg)
 	playsound(src.loc, 'sound/machines/ping.ogg', 50, FALSE)
