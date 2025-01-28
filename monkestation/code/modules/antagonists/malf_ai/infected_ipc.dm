@@ -13,11 +13,29 @@
 	///ai that's linked to the ipc
 	var/mob/living/silicon/ai/master_ai
 
+/datum/antagonist/infected_ipc/admin_add(datum/mind/new_owner, mob/admin)
+	var/mob/living/carbon/target = new_owner.current
+
+	var/confirm = tgui_alert(admin, "Notice: Manually spawning infected IPC's doesn't really work. you need to manually proc call link_and_add_antag in the brain trauma with the mind of the AI to work as intended", "Caution", list("Continue", "Abort"))
+	if(confirm != "Continue")
+		return
+	if(!istype(target))
+		to_chat(admin, "Infected IPCs come from a brain trauma, so they need to at least be a carbon!")
+		return
+	if(!target.get_organ_by_type(/obj/item/organ/internal/brain))
+		to_chat(admin, "Infected IPCs come from a brain trauma, so they need to HAVE A BRAIN.")
+		return
+	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into [name].")
+	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
+	target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
+
+
 /datum/antagonist/infected_ipc/greet()
 	. = ..()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 /datum/antagonist/infected_ipc/on_removal()
+	master_ai.connected_ipcs -= owner.current
 	master_ai = null
 	return ..()
 
@@ -37,19 +55,19 @@
 	var/mob/living/current_mob = mob_override || owner.current
 	QDEL_NULL(internal_radio)
 	QDEL_NULL(internal_camera)
-	master_ai.connected_ipcs -= current_mob
 	REMOVE_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, src)
 
 /datum/antagonist/infected_ipc/proc/set_master(datum/mind/master)
 	var/datum/objective/serve_ai/master_obj = new()
 	master_obj.owner = owner
-	master_obj.explanation_text = "Forever serve your AI master: [master] directives. Protect them until your last tick."
+	master_obj.explanation_text = "Forever serve your AI master: [master], directives and orders. Protect them until your last tick."
 	objectives += master_obj
 
 	cool_hackerman_intro()
 	owner.announce_objectives()
 	to_chat(owner, span_alertsyndie("You've been hacked by the station's onboard AI [master]!"))
 	to_chat(owner, span_alertsyndie("Their directives and orders are your top priority, Follow them to the end."))
+	to_chat(owner, span_notice("Your master is now capable of looking through your onboard cameras, and has installed a binary communicator on your firmware"))
 	master_ai = master.current
 	master_ai.connected_ipcs += owner.current
 
@@ -130,6 +148,9 @@
 		return FALSE
 	if(!ipc.get_organ_by_type(/obj/item/organ/internal/brain))
 		to_chat(user, "Target doesn't seem to possess an positronic brain!")
+		return FALSE
+	if(ipc.mind.has_antag_datum(/datum/antagonist/infected_ipc))
+		to_chat(user, "Target has already been hacked!")
 		return FALSE
 
 	user.playsound_local(user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
