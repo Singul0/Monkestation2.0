@@ -23,20 +23,22 @@
 
 /datum/antagonist/infected_ipc/apply_innate_effects(mob/living/mob_override)
 	. = ..()
+	var/mob/living/current_mob = mob_override || owner.current
 	//adds radio and camera for comms with ai
 	internal_radio = new /obj/item/implant/radio/infected_ipc()
-	internal_radio.implant(owner.current, null, TRUE)
-	internal_camera = new /obj/machinery/camera(owner.current)
+	internal_radio.implant(current_mob, null, TRUE)
+	internal_camera = new /obj/machinery/camera(current_mob)
 	internal_camera.name = owner.name
-	ADD_TRAIT(owner.current, TRAIT_CORRUPTED_MONITOR, src) //a way to identify infected ipcs
+	ADD_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, src) //a way to identify infected ipcs
 
 /datum/antagonist/infected_ipc/remove_innate_effects(mob/living/mob_override)
 	. = ..()
 	//remove cameras, radio and disconnects them from master AI
+	var/mob/living/current_mob = mob_override || owner.current
 	QDEL_NULL(internal_radio)
 	QDEL_NULL(internal_camera)
-	master_ai.connected_ipcs -= owner.current
-	REMOVE_TRAIT(owner.current, TRAIT_CORRUPTED_MONITOR, src)
+	master_ai.connected_ipcs -= current_mob
+	REMOVE_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, src)
 
 /datum/antagonist/infected_ipc/proc/set_master(datum/mind/master)
 	var/datum/objective/serve_ai/master_obj = new()
@@ -126,6 +128,9 @@
 		return FALSE
 	if(!("Malf AI" in ipc?.client?.prefs?.be_special) || !("Malf AI (Midround)" in ipc.client?.prefs?.be_special))
 		to_chat(user, span_warning("Target seems unwilling to be hacked, find another target."))
+		return FALSE
+	if(!ipc.get_organ_by_type(/obj/item/organ/internal/brain))
+		to_chat(user, "Target doesn't seem to possess an positronic brain!")
 		return FALSE
 
 	user.playsound_local(user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
