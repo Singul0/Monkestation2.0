@@ -30,6 +30,7 @@
 	target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
 
 /datum/antagonist/infected_ipc/on_removal()
+	//disconnects them from master AI
 	master_ai.connected_ipcs -= owner.current
 	master_ai = null
 	return ..()
@@ -46,13 +47,14 @@
 
 /datum/antagonist/infected_ipc/remove_innate_effects(mob/living/mob_override)
 	. = ..()
-	//remove cameras, radio and disconnects them from master AI
+	//remove cameras and radio
 	var/mob/living/current_mob = mob_override || owner.current
 	QDEL_NULL(internal_radio)
 	QDEL_NULL(internal_camera)
 	REMOVE_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, src)
 
 /datum/antagonist/infected_ipc/proc/set_master(datum/mind/master)
+	//the proc that links the AI and gives objectives. also some fluff hack that isn't in greet() since it has to be in otder to make sense.
 	var/datum/objective/serve_ai/master_obj = new()
 	master_obj.owner = owner
 	master_obj.explanation_text = "Forever serve your AI master: [master], directives and orders. Protect them until your last tick."
@@ -124,7 +126,8 @@
 //AI MODULE
 /datum/ai_module/utility/place_cyborg_transformer
 	name = "Positronic Chassis Hacking"
-	description = "Instill a directive upon a single IPC to follow your whims and protect you, Requires target to be incapacitated to use. \
+	description = "Instill a directive upon a single IPC to follow your whims and protect you, \
+	Requires target to be incapacitated and non-mindshielded to use. \
 	IPC May exhibit abnormal conditions that might be detected."
 	cost = 1 // CHANGE THIS LATER
 	power_type = /datum/action/innate/ai/ranged/override_directive
@@ -133,7 +136,7 @@
 
 /datum/action/innate/ai/ranged/override_directive
 	name = "Subvert Positronic Chassis"
-	desc = "Subverts an IPC directives to make them your pawn. IPC must be inoperational for virus payload to deliver."
+	desc = "Subverts an IPC directives to make them your pawn. IPC must be inoperational and not mindshielded for virus payload to deliver."
 	button_icon_state = "directives_override"
 	uses = 99999 // CHANGE THIS LATER
 	ranged_mousepointer = 'icons/effects/mouse_pointers/override_machine_target.dmi'
@@ -152,6 +155,9 @@
 		to_chat(user, span_warning("You can only hack IPC's!"))
 		return FALSE
 	var/mob/living/carbon/human/ipc = clicked_on
+	if(HAS_TRAIT(ipc, TRAIT_MINDSHIELD))
+		to_chat(user, span_warning("Target has propietary firewall defenses to to their mindshield!"))
+		return FALSE
 	if(!ipc.incapacitated())
 		to_chat(user, span_warning("Target must be vulnerable by being incapacitated."))
 		return FALSE
