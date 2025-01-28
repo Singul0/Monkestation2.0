@@ -124,12 +124,12 @@
 	owner.mind.remove_antag_datum(/datum/antagonist/infected_ipc)
 
 //AI MODULE
-/datum/ai_module/utility/place_cyborg_transformer
+/datum/ai_module/utility/override_directive
 	name = "Positronic Chassis Hacking"
 	description = "Instill a directive upon a single IPC to follow your whims and protect you, \
 	Requires target to be incapacitated and non-mindshielded to use. \
 	IPC May exhibit abnormal conditions that might be detected."
-	cost = 1 // CHANGE THIS LATER
+	cost = 70
 	power_type = /datum/action/innate/ai/ranged/override_directive
 	unlock_text = span_notice("You finish up the SQL injection payload to use on a vulnerability in IPC's")
 	unlock_sound = 'sound/machines/ping.ogg'
@@ -138,7 +138,7 @@
 	name = "Subvert Positronic Chassis"
 	desc = "Subverts an IPC directives to make them your pawn. IPC must be inoperational and not mindshielded for virus payload to deliver."
 	button_icon_state = "directives_override"
-	uses = 99999 // CHANGE THIS LATER
+	uses = 1
 	ranged_mousepointer = 'icons/effects/mouse_pointers/override_machine_target.dmi'
 	enable_text = span_notice("You prepare to inject virus payload into an unsanitized input point of an IPC.")
 	disable_text = span_notice("You hold off on injecting the virus payload.")
@@ -156,7 +156,7 @@
 		return FALSE
 	var/mob/living/carbon/human/ipc = clicked_on
 	if(HAS_TRAIT(ipc, TRAIT_MINDSHIELD))
-		to_chat(user, span_warning("Target has propietary firewall defenses to to their mindshield!"))
+		to_chat(user, span_warning("Target has propietary firewall defenses from their mindshield!"))
 		return FALSE
 	if(!ipc.incapacitated())
 		to_chat(user, span_warning("Target must be vulnerable by being incapacitated."))

@@ -2,7 +2,8 @@
 	name = "\improper Automatic Robotic Factory 5000"
 	desc = "A large metallic machine with an entrance and an exit. A sign on \
 		the side reads, 'human go in, robot come out'. The human must be \
-		lying down and alive. Has a cooldown between each use."
+		lying down and alive. Has a cooldown between each use. Can alternate \
+		between making cyborgs and IPCs"
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "separator-AO1"
 	layer = ABOVE_ALL_MOB_LAYER // Overhead
@@ -40,6 +41,7 @@
 	. = ..()
 	if(cooldown && (issilicon(user) || isobserver(user)))
 		. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
+	. += span_notice("It is currently set to producing: [is_ipc_mode ? "IPC's" : "Cyborgs"]")
 
 /obj/machinery/transformer/Destroy()
 	QDEL_NULL(countdown)
