@@ -119,7 +119,7 @@
 /datum/action/innate/ai/ranged/override_directive
 	name = "Subvert Positronic Chassis"
 	desc = "Subverts an IPC directives to make them your pawn. IPC must be inoperational for virus payload to deliver."
-	button_icon_state = "override_machine"
+	button_icon_state = "directives_override"
 	uses = 99999 // CHANGE THIS LATER
 	ranged_mousepointer = 'icons/effects/mouse_pointers/override_machine_target.dmi'
 	enable_text = span_notice("You prepare to inject virus payload into an unsanitized input point of an IPC.")
