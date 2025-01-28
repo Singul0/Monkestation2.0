@@ -69,6 +69,24 @@
 	radio.translate_binary = TRUE
 
 //TRAUMA
+/datum/brain_trauma/special/infected_ipc
+	name = "Malicious Programming"
+	desc = "Patient's firmware integrity check is failing, malicious code present. Patient's allegiance may be compromised."
+	scan_desc = "malicious programming"
+	can_gain = TRUE
+	random_gain = FALSE
+	resilience = TRAUMA_RESILIENCE_LOBOTOMY
+	var/datum/mind/master_ai
+	var/datum/antagonist/infected_ipc/antagonist
+
+/datum/brain_trauma/special/infected_ipc/proc/link_and_add_antag(datum/mind/ai_to_be_linked)
+	antagonist = owner.mind.add_antag_datum(/datum/antagonist/infected_ipc)
+	master_ai = ai_to_be_linked
+	antagonist.set_master(ai_to_be_linked)
+
+/datum/brain_trauma/special/infected_ipc/on_lose()
+	..()
+	owner.mind.remove_antag_datum(/datum/antagonist/infected_ipc)
 
 //AI MODULE
 /datum/ai_module/utility/place_cyborg_transformer
@@ -116,7 +134,7 @@
 		desc = "[initial(desc)] It has [uses] use\s remaining."
 		build_all_button_icons()
 
-	var/datum/antagonist/infected_ipc/hacked_ipc = ipc.mind?.add_antag_datum(/datum/antagonist/infected_ipc)
-	hacked_ipc.set_master(user.mind)
+	var/datum/brain_trauma/special/infected_ipc/hacked_ipc = ipc.gain_trauma(/datum/brain_trauma/special/infected_ipc)
+	hacked_ipc.link_and_add_antag(user.mind)
 	unset_ranged_ability(user, span_danger("Sending virus payload..."))
 	return TRUE
