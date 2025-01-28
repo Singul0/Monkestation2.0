@@ -50,7 +50,6 @@
 	owner.announce_objectives()
 	to_chat(owner, span_alertsyndie("You've been hacked by the station's onboard AI [master]!"))
 	to_chat(owner, span_alertsyndie("Their directives and orders are your top priority, Follow them to the end."))
-	to_chat(owner, span_syndradio(""))
 	master_ai = master.current
 	master_ai.connected_ipcs += owner.current
 

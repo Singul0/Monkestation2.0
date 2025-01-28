@@ -320,7 +320,8 @@
 		. += "[connected_robot.name] | S.Integrity: [connected_robot.health]% | Cell: [connected_robot.cell ? "[connected_robot.cell.charge]/[connected_robot.cell.maxcharge]" : "Empty"] | \
 		Model: [connected_robot.designation] | Loc: [get_area_name(connected_robot, TRUE)] | Status: [robot_status]"
 
-	. += "Connected IPCs: [length(connected_ipcs)]"
+	if(connected_ipcs.len)
+		. += "Connected IPCs: [length(connected_ipcs)]"
 	for(var/ipc in connected_ipcs)
 		var/mob/living/carbon/human/connected_ipc = ipc
 		var/robot_status = "Nominal"
