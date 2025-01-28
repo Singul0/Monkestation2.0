@@ -81,10 +81,11 @@
 		. += "[t_He] [t_is] wearing [shoes.get_examine_string(user)] on [t_his] feet."
 
 	//mask
-	if(wear_mask && !(obscured & ITEM_SLOT_MASK)  && !(wear_mask.item_flags & EXAMINE_SKIP))
+	if(!(obscured & ITEM_SLOT_MASK))
 		if(wear_mask && !(wear_mask.item_flags & EXAMINE_SKIP))
 			. += "[t_He] [t_has] [wear_mask.get_examine_string(user)] on [t_his] face."
-
+		if(HAS_TRAIT(src, TRAIT_CORRUPTED_MONITOR))
+			. += span_boldwarning("[t_His] monitor is weirdly corrupted!")
 	if(wear_neck && !(obscured & ITEM_SLOT_NECK)  && !(wear_neck.item_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_is] wearing [wear_neck.get_examine_string(user)] around [t_his] neck."
 
@@ -96,8 +97,6 @@
 			. += "<span class='warning'><B>[t_His] eyes are glowing with an unnatural red aura!</B></span>"
 		else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
 			. += "<span class='warning'><B>[t_His] eyes are bloodshot!</B></span>"
-		else if(HAS_TRAIT(src, TRAIT_CORRUPTED_MONITOR))
-			. += span_boldwarning("[t_His] monitor is weirdly corrupted!")
 
 	//ears
 	if(ears && !(obscured & ITEM_SLOT_EARS) && !(ears.item_flags & EXAMINE_SKIP))

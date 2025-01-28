@@ -13,33 +13,37 @@
 	///ai that's linked to the ipc
 	var/mob/living/silicon/ai/master_ai
 
-/datum/antagonist/infected_ipc/on_gain()
+/datum/antagonist/infected_ipc/greet()
 	. = ..()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+
+/datum/antagonist/infected_ipc/on_removal()
+	master_ai = null
+	return ..()
+
+/datum/antagonist/infected_ipc/apply_innate_effects(mob/living/mob_override)
+	. = ..()
 	//adds radio and camera for comms with ai
 	internal_radio = new /obj/item/implant/radio/infected_ipc()
 	internal_radio.implant(owner.current, null, TRUE)
-	internal_radio.radio.translate_binary = TRUE
-	internal_radio.radio.recalculateChannels()
 	internal_camera = new /obj/machinery/camera(owner.current)
 	internal_camera.name = owner.name
 	ADD_TRAIT(owner.current, TRAIT_CORRUPTED_MONITOR, src) //a way to identify infected ipcs
 
-/datum/antagonist/infected_ipc/on_removal()
+/datum/antagonist/infected_ipc/remove_innate_effects(mob/living/mob_override)
+	. = ..()
 	//remove cameras, radio and disconnects them from master AI
 	QDEL_NULL(internal_radio)
 	QDEL_NULL(internal_camera)
 	master_ai.connected_ipcs -= owner.current
 	REMOVE_TRAIT(owner.current, TRAIT_CORRUPTED_MONITOR, src)
-	return ..()
 
 /datum/antagonist/infected_ipc/proc/set_master(datum/mind/master)
-	var/datum/objective/master_obj = new()
+	var/datum/objective/serve_ai/master_obj = new()
 	master_obj.owner = owner
 	master_obj.explanation_text = "Forever serve your AI master: [master] directives. Protect them until your last tick."
-	master_obj.completed = TRUE
-
 	objectives += master_obj
+
 	cool_hackerman_intro()
 	owner.announce_objectives()
 	to_chat(owner, span_alertsyndie("You've been hacked by the station's onboard AI [master]!"))
@@ -51,7 +55,11 @@
 /datum/antagonist/infected_ipc/proc/cool_hackerman_intro()
 	return FALSE // REFER TO DOOMSDAY HACKING SCENE, SHIT IS COOL. I WANT TO REPLICATE THAT
 
+/datum/objective/serve_ai/
+	name = "Serve Master AI"
+	completed = TRUE
 
+//RADIOS
 /obj/item/implant/radio/infected_ipc
 	radio_key = /obj/item/encryptionkey/binary
 	subspace_transmission = TRUE
@@ -59,6 +67,8 @@
 /obj/item/implant/radio/infected_ipc/Initialize(mapload)
 	. = ..()
 	radio.translate_binary = TRUE
+
+//TRAUMA
 
 //AI MODULE
 /datum/ai_module/utility/place_cyborg_transformer
@@ -90,7 +100,7 @@
 		to_chat(user, span_warning("You can only hack IPC's!"))
 		return FALSE
 	var/mob/living/carbon/human/ipc = clicked_on
-	if(!ipc.incapacitated()) //check if this proc works
+	if(!ipc.incapacitated())
 		to_chat(user, span_warning("Target must be vulnerable by being incapacitated."))
 		return FALSE
 	if(!ipc.mind)
@@ -99,9 +109,9 @@
 	if(!("Malf AI" in ipc?.client?.prefs?.be_special) || !("Malf AI (Midround)" in ipc.client?.prefs?.be_special))
 		to_chat(user, span_warning("Target seems unwilling to be hacked, find another target."))
 		return FALSE
+
 	user.playsound_local(user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1)
-
 	if(uses)
 		desc = "[initial(desc)] It has [uses] use\s remaining."
 		build_all_button_icons()
