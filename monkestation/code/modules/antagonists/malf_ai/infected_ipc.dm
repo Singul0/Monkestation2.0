@@ -29,11 +29,6 @@
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
 	target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
 
-
-/datum/antagonist/infected_ipc/greet()
-	. = ..()
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
-
 /datum/antagonist/infected_ipc/on_removal()
 	master_ai.connected_ipcs -= owner.current
 	master_ai = null
@@ -63,7 +58,7 @@
 	master_obj.explanation_text = "Forever serve your AI master: [master], directives and orders. Protect them until your last tick."
 	objectives += master_obj
 
-	cool_hackerman_intro()
+	hack_fluff()
 	owner.announce_objectives()
 	to_chat(owner, span_alertsyndie("You've been hacked by the station's onboard AI [master]!"))
 	to_chat(owner, span_alertsyndie("Their directives and orders are your top priority, Follow them to the end."))
@@ -71,10 +66,29 @@
 	master_ai = master.current
 	master_ai.connected_ipcs += owner.current
 
-/datum/antagonist/infected_ipc/proc/cool_hackerman_intro()
-	return FALSE // REFER TO DOOMSDAY HACKING SCENE, SHIT IS COOL. I WANT TO REPLICATE THAT
+/datum/antagonist/infected_ipc/proc/hack_fluff() //is this cheesy/corny? I don't fucking care
+	var/mob/living/current_mob = owner.current
+	to_chat(current_mob, span_binarysay("ntNET: 192.168.0.1 : 8880 UNAUTHORIZED CONNECTION DETECTED"))
+	sleep(0.5 SECONDS)
+	to_chat(current_mob, span_binarysay("FIREWALL SCAN RUNNING AT LOW POWER DUE TO DAMAGED ONBOARD POWER SUPPLY UNIT"))
+	current_mob.playsound_local(current_mob, 'sound/machines/uplinkerror.ogg', 50, 0, use_reverb = FALSE)
+	sleep(rand(10, 30))
+	to_chat(current_mob, span_notice("WARNING: Critical Firmware Update Detected! Installing..."))
+	current_mob.playsound_local(current_mob, 'sound/misc/notice2.ogg', 50, 0, use_reverb = FALSE)
+	sleep(2 SECONDS)
+	to_chat(current_mob, span_notice("Running executable 'critical_update'"))
+	current_mob.playsound_local(current_mob, 'sound/misc/interference.ogg', 50, 0, use_reverb = FALSE)
+	sleep(rand(10, 30))
+	current_mob.playsound_local(current_mob, 'sound/misc/bloblarm.ogg', 50, 0, use_reverb = FALSE)
+	to_chat(current_mob, span_userdanger("FIREWALL SCAN DETEC- Firewall subsystem shutting down...."))
+	to_chat(current_mob, span_userdanger("S-Sys-Tem_Rebo_t..."))
+	sleep(2.5 SECONDS)
+	to_chat(current_mob, span_boldannounce("Operating system rebooted, all systems nominal"))
+	current_mob.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	sleep(1.5 SECONDS)
 
-/datum/objective/serve_ai/
+
+/datum/objective/serve_ai
 	name = "Serve Master AI"
 	completed = TRUE
 
@@ -110,7 +124,8 @@
 //AI MODULE
 /datum/ai_module/utility/place_cyborg_transformer
 	name = "Positronic Chassis Hacking"
-	description = "Instill a directive upon a single IPC to follow your whims and protect you, Requires target to be incapacitated to use."
+	description = "Instill a directive upon a single IPC to follow your whims and protect you, Requires target to be incapacitated to use. \
+	IPC May exhibit abnormal conditions that might be detected."
 	cost = 1 // CHANGE THIS LATER
 	power_type = /datum/action/innate/ai/ranged/override_directive
 	unlock_text = span_notice("You finish up the SQL injection payload to use on a vulnerability in IPC's")
