@@ -5,7 +5,7 @@
 	job_rank = ROLE_MALF
 	antag_hud_name = "traitor"
 	suicide_cry = "FOR MY MASTER!!"
-	antag_moodlet = /datum/mood_event/focused //probably should add a custom mood_event TODO
+	antag_moodlet = /datum/mood_event/infected_ipc
 	///radio binary for IPC
 	var/obj/item/implant/radio/infected_ipc/internal_radio
 	/// The camera for ai
@@ -102,6 +102,12 @@
 /obj/item/implant/radio/infected_ipc/Initialize(mapload)
 	. = ..()
 	radio.translate_binary = TRUE
+
+//MOOD
+/datum/mood_event/infected_ipc
+	description = "SSmood_system.setmood(100);"
+	mood_change = 100
+	hidden = TRUE
 
 //TRAUMA
 /datum/brain_trauma/special/infected_ipc
