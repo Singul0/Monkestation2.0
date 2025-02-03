@@ -33,7 +33,7 @@
 	var/list/network = list("ss13")
 	var/obj/machinery/camera/current
 	var/list/connected_robots = list()
-	var/list/connected_ipcs = list () //from infected IPCs
+	var/list/connected_ipcs = list () // monkestation edit PR #5133 from infected IPCs
 	var/aiRestorePowerRoutine = POWER_RESTORATION_OFF
 	var/requires_power = POWER_REQ_ALL
 	var/can_be_carded = TRUE
@@ -320,6 +320,7 @@
 		. += "[connected_robot.name] | S.Integrity: [connected_robot.health]% | Cell: [connected_robot.cell ? "[connected_robot.cell.charge]/[connected_robot.cell.maxcharge]" : "Empty"] | \
 		Model: [connected_robot.designation] | Loc: [get_area_name(connected_robot, TRUE)] | Status: [robot_status]"
 
+	// monkestation edit start PR #5133
 	if(connected_ipcs.len)
 		. += "Connected IPCs: [length(connected_ipcs)]"
 	for(var/ipc in connected_ipcs)
@@ -329,6 +330,7 @@
 			robot_status = "OFFLINE"
 		//Name. Area, and Status! Everything an AI wants to know about its TV-heads!
 		. += "[connected_ipc.name] | S.Integrity: [connected_ipc.health]% | Loc: [get_area_name(connected_ipc, TRUE)] | Status: [robot_status]"
+	// monkestation edit end PR #5133
 
 	. += "AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]" //Count of total AI shells
 

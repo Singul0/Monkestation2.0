@@ -3,7 +3,7 @@
 	desc = "A large metallic machine with an entrance and an exit. A sign on \
 		the side reads, 'human go in, robot come out'. The human must be \
 		lying down and alive. Has a cooldown between each use. Can alternate \
-		between making cyborgs and IPCs"
+		between making cyborgs and IPCs" // monkestation edit PR #5133
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "separator-AO1"
 	layer = ABOVE_ALL_MOB_LAYER // Overhead
@@ -23,7 +23,7 @@
 	/// The created cyborg's cell chage
 	var/robot_cell_charge = 5000
 	///Whether this machine transforms mobs to ipcs, else transforms them to cyborgs
-	var/is_ipc_mode = FALSE
+	var/is_ipc_mode = FALSE // monkestation edit PR #5133
 	/// The visual countdown effect
 	var/obj/effect/countdown/transformer/countdown
 	/// Who the master AI is that created this factory
@@ -41,17 +41,19 @@
 	. = ..()
 	if(cooldown && (issilicon(user) || isobserver(user)))
 		. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
-	. += span_notice("It is currently set to producing: [is_ipc_mode ? "IPC's" : "Cyborgs"]")
+	. += span_notice("It is currently set to producing: [is_ipc_mode ? "IPC's" : "Cyborgs"]") // monkestation edit PR #5133
 
 /obj/machinery/transformer/Destroy()
 	QDEL_NULL(countdown)
 	. = ..()
 
+// monkestation edit start PR #5133
 /obj/machinery/transformer/attack_ai(mob/user)
 	. = ..()
 	is_ipc_mode = !is_ipc_mode
 	var/settings_message = is_ipc_mode ? "IPC's" : "Cyborgs"
 	to_chat(user, span_notice("Factory is now producing: [settings_message]"))
+// monkestation edit end PR #5133
 
 /obj/machinery/transformer/update_icon_state()
 	if(machine_stat & (BROKEN|NOPOWER) || cooldown == 1)
@@ -111,6 +113,7 @@
 
 	use_power(active_power_usage) // Use a lot of power.
 
+	// monkestation edit start PR #5133
 	if(!is_ipc_mode)
 		var/mob/living/silicon/robot/new_borg = victim.Robotize()
 		new_borg.cell = new /obj/item/stock_parts/cell/upgraded/plus(new_borg, robot_cell_charge)
@@ -128,6 +131,7 @@
 		var/datum/antagonist/infected_ipc/bad_ipc = victim?.mind?.add_antag_datum(/datum/antagonist/infected_ipc)
 		bad_ipc.set_master(master_ai.mind)
 		victim.heal_damage_type(max(0, 80 - victim.getBruteLoss()), BRUTE)
+	// monkestation edit end PR #5133
 
 /obj/machinery/transformer/proc/unlock_new_robot(mob/living/silicon/robot/new_borg)
 	playsound(src.loc, 'sound/machines/ping.ogg', 50, FALSE)

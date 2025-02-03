@@ -56,6 +56,7 @@
 	return special_voice
 
 /mob/living/carbon/human/binarycheck()
+	// monkestation edit start PR #5133
 	if(stat >= SOFT_CRIT)
 		return FALSE
 	var/obj/item/radio/dongle = ears
@@ -67,6 +68,7 @@
 	if(!istype(dongle))
 		return FALSE
 	return dongle.translate_binary
+	// monkestation edit end PR #5133
 
 /mob/living/carbon/human/radio(message, list/message_mods = list(), list/spans, language) //Poly has a copy of this, lazy bastard
 	. = ..()
