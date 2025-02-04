@@ -128,6 +128,8 @@
 /datum/brain_trauma/special/infected_ipc/on_lose()
 	..()
 	owner.mind.remove_antag_datum(/datum/antagonist/infected_ipc)
+	master_ai = null
+	antagonist = null
 
 //AI MODULE
 /datum/ai_module/utility/override_directive
