@@ -31,7 +31,7 @@
 
 /datum/antagonist/infected_ipc/on_removal()
 	//disconnects them from master AI
-	master_ai.connected_ipcs -= owner.current
+	master_ai?.connected_ipcs -= owner.current
 	master_ai = null
 	return ..()
 
@@ -43,7 +43,7 @@
 	internal_radio.implant(current_mob, null, TRUE)
 	internal_camera = new /obj/machinery/camera(current_mob)
 	internal_camera.name = owner.name
-	ADD_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, src) //a way to identify infected ipcs
+	ADD_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, type) //a way to identify infected ipcs
 
 /datum/antagonist/infected_ipc/remove_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -51,7 +51,7 @@
 	var/mob/living/current_mob = mob_override || owner.current
 	QDEL_NULL(internal_radio)
 	QDEL_NULL(internal_camera)
-	REMOVE_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, src)
+	REMOVE_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, type)
 
 /datum/antagonist/infected_ipc/proc/set_master(datum/mind/master)
 	//the proc that links the AI and gives objectives. also some fluff hack that isn't in greet() since it has to be in otder to make sense.
@@ -161,7 +161,7 @@
 		to_chat(user, span_warning("You can only hack IPC's!"))
 		return FALSE
 	var/mob/living/carbon/human/ipc = clicked_on
-	if(HAS_TRAIT(ipc, TRAIT_MINDSHIELD))
+	if(HAS_TRAIT(ipc, TRAIT_MINDSHIELD) || HAS_MIND_TRAIT(ipc, TRAIT_UNCONVERTABLE))
 		to_chat(user, span_warning("Target has propietary firewall defenses from their mindshield!"))
 		return FALSE
 	if(!ipc.incapacitated())

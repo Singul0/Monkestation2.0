@@ -321,10 +321,10 @@
 		Model: [connected_robot.designation] | Loc: [get_area_name(connected_robot, TRUE)] | Status: [robot_status]"
 
 	// monkestation edit start PR #5133
-	if(connected_ipcs.len)
-		. += "Connected IPCs: [length(connected_ipcs)]"
-	for(var/ipc in connected_ipcs)
-		var/mob/living/carbon/human/connected_ipc = ipc
+	var/connected_ipc_amt = length(connected_ipcs)
+	if(connected_ipc_amt)
+		. += "Connected IPCs: [connected_ipc_amt]"
+	for(var/mob/living/carbon/human/connected_ipc as anything in connected_ipcs)
 		var/robot_status = "Nominal"
 		if(connected_ipc.stat != CONSCIOUS || !connected_ipc.client)
 			robot_status = "OFFLINE"
