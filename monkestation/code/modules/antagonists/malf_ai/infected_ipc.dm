@@ -27,7 +27,8 @@
 		return
 	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into [name].")
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
-	target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
+	var/datum/brain_trauma/special/infected_ipc/trauma = target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
+	admin?.client.callproc_datum(trauma)
 
 /datum/antagonist/infected_ipc/on_removal()
 	//disconnects them from master AI
@@ -71,24 +72,16 @@
 /datum/antagonist/infected_ipc/proc/hack_fluff() //is this cheesy/corny? I don't fucking care
 	var/mob/living/current_mob = owner.current
 	to_chat(current_mob, span_binarysay("ntNET: 192.168.0.1 : 8880 UNAUTHORIZED CONNECTION DETECTED"))
-	sleep(0.5 SECONDS)
-	to_chat(current_mob, span_binarysay("FIREWALL SCAN RUNNING AT LOW POWER DUE TO DAMAGED ONBOARD POWER SUPPLY UNIT"))
-	current_mob.playsound_local(current_mob, 'sound/machines/uplinkerror.ogg', 50, 0, use_reverb = FALSE)
-	sleep(rand(10, 30))
-	to_chat(current_mob, span_notice("WARNING: Critical Firmware Update Detected! Installing..."))
-	current_mob.playsound_local(current_mob, 'sound/misc/notice2.ogg', 50, 0, use_reverb = FALSE)
-	sleep(2 SECONDS)
-	to_chat(current_mob, span_notice("Running executable 'critical_update'"))
-	current_mob.playsound_local(current_mob, 'sound/misc/interference.ogg', 50, 0, use_reverb = FALSE)
-	sleep(rand(10, 30))
-	current_mob.playsound_local(current_mob, 'sound/misc/bloblarm.ogg', 50, 0, use_reverb = FALSE)
-	to_chat(current_mob, span_userdanger("FIREWALL SCAN DETEC- Firewall subsystem shutting down...."))
-	to_chat(current_mob, span_userdanger("S-Sys-Tem_Rebo_t..."))
-	sleep(2.5 SECONDS)
-	to_chat(current_mob, span_boldannounce("Operating system rebooted, all systems nominal"))
-	current_mob.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
-	sleep(1.5 SECONDS)
-
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob, span_binarysay("FIREWALL SCAN RUNNING AT LOW POWER DUE TO DAMAGED ONBOARD POWER SUPPLY UNIT")), 1 SECONDS)
+	addtimer(CALLBACK(current_mob, TYPE_PROC_REF(/mob/living, playsound_local), current_mob, 'sound/machines/uplinkerror.ogg', 50, 0), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob, span_notice("WARNING: Critical Firmware Update Detected! Installing...")), 2.5 SECONDS)
+	addtimer(CALLBACK(current_mob, TYPE_PROC_REF(/mob/living, playsound_local), current_mob, 'sound/misc/notice2.ogg', 50, 0), 2.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob, span_notice("Running executable 'critical_update'")), 4 SECONDS)
+	addtimer(CALLBACK(current_mob, TYPE_PROC_REF(/mob/living, playsound_local), current_mob, 'sound/misc/interference.ogg', 50, 0), 4 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob, span_notice("FIREWALL SCAN DETEC- Firewall subsystem shutting down.... \n S-Sys-Tem_Rebo_t...")), 6 SECONDS)
+	addtimer(CALLBACK(current_mob, TYPE_PROC_REF(/mob/living, playsound_local), current_mob, 'sound/misc/bloblarm.ogg', 50, 0), 6 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob, span_boldannounce("Operating system rebooted, all systems nominal")), 8 SECONDS)
+	addtimer(CALLBACK(current_mob, TYPE_PROC_REF(/mob/living, playsound_local), current_mob, 'sound/ambience/antag/malf.ogg', 50, ), 8 SECONDS)
 
 /datum/objective/serve_ai
 	name = "Serve Master AI"
