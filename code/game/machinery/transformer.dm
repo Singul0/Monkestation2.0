@@ -114,7 +114,13 @@
 	use_power(active_power_usage) // Use a lot of power.
 
 	// monkestation edit start PR #5133
-	if(!is_ipc_mode)
+	if(is_ipc_mode)
+		victim.set_species(/datum/species/ipc)
+		if(master_ai && !target.get_organ_by_type(/obj/item/organ/internal/brain))
+			var/datum/brain_trauma/special/infected_ipc/trauma = target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
+			trauma.link_and_add_antag(master_ai?.mind)
+		victim.heal_damage_type(max(0, 80 - victim.getBruteLoss()), BRUTE)
+	else
 		var/mob/living/silicon/robot/new_borg = victim.Robotize()
 		new_borg.cell = new /obj/item/stock_parts/cell/upgraded/plus(new_borg, robot_cell_charge)
 
@@ -126,11 +132,6 @@
 			new_borg.lawupdate = TRUE
 			log_silicon("[key_name(new_borg)] resynced to [key_name(master_ai)]")
 		addtimer(CALLBACK(src, PROC_REF(unlock_new_robot), new_borg), 5 SECONDS)
-	else
-		victim.set_species(/datum/species/ipc)
-		var/datum/antagonist/infected_ipc/bad_ipc = victim?.mind?.add_antag_datum(/datum/antagonist/infected_ipc)
-		bad_ipc.set_master(master_ai.mind)
-		victim.heal_damage_type(max(0, 80 - victim.getBruteLoss()), BRUTE)
 	// monkestation edit end PR #5133
 
 /obj/machinery/transformer/proc/unlock_new_robot(mob/living/silicon/robot/new_borg)
