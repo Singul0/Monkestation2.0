@@ -116,8 +116,8 @@
 	// monkestation edit start PR #5133
 	if(is_ipc_mode)
 		victim.set_species(/datum/species/ipc)
-		if(master_ai && !target.get_organ_by_type(/obj/item/organ/internal/brain))
-			var/datum/brain_trauma/special/infected_ipc/trauma = target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
+		if(master_ai && !victim.get_organ_by_type(/obj/item/organ/internal/brain))
+			var/datum/brain_trauma/special/infected_ipc/trauma = victim.gain_trauma(/datum/brain_trauma/special/infected_ipc)
 			trauma.link_and_add_antag(master_ai?.mind)
 		victim.heal_damage_type(max(0, 80 - victim.getBruteLoss()), BRUTE)
 	else
