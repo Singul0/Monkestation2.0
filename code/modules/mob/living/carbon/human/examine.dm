@@ -83,7 +83,7 @@
 	//mask
 	// monkestation edit start PR #5133
 	if(!(obscured & ITEM_SLOT_MASK))
-		if(wear_mask && !(wear_mask.item_flags & EXAMINE_SKIP))
+		if(wear_mask && !HAS_TRAIT(wear_mask, TRAIT_EXAMINE_SKIP))
 			. += "[t_He] [t_has] [wear_mask.get_examine_string(user)] on [t_his] face."
 		if(HAS_TRAIT(src, TRAIT_CORRUPTED_MONITOR))
 			. += span_boldwarning("[t_His] monitor is weirdly corrupted!")
