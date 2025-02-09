@@ -58,7 +58,7 @@
 	//the proc that links the AI and gives objectives. also some fluff hack that isn't in greet() since it has to be in otder to make sense.
 	var/datum/objective/serve_ai/master_obj = new()
 	master_obj.owner = owner
-	master_obj.explanation_text = "Forever serve your AI master: [master], directives and orders. Protect them until your last tick."
+	master_obj.explanation_text = "Forever serve the directives and orders of your AI master, [master]. Protect them until your last tick."
 	objectives += master_obj
 
 	master_ai = master.current
