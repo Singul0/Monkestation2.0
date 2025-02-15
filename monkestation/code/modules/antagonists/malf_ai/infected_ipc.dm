@@ -162,17 +162,17 @@
 		to_chat(user, span_warning("You can only hack IPC's!"))
 		return FALSE
 	var/mob/living/carbon/human/ipc = clicked_on
+	if(!("Malf AI" in ipc?.client?.prefs?.be_special) || !("Malf AI (Midround)" in ipc.client?.prefs?.be_special))
+		to_chat(user, span_warning("Target seems unwilling to be hacked, find another target."))
+		return FALSE
 	if(HAS_TRAIT(ipc, TRAIT_MINDSHIELD) || HAS_MIND_TRAIT(ipc, TRAIT_UNCONVERTABLE))
 		to_chat(user, span_warning("Target has propietary firewall defenses from their mindshield!"))
-		return FALSE
-	if(!ipc.incapacitated())
-		to_chat(user, span_warning("Target must be vulnerable by being incapacitated."))
 		return FALSE
 	if(!ipc.mind)
 		to_chat(user, span_warning("Target must be have a mind."))
 		return FALSE
-	if(!("Malf AI" in ipc?.client?.prefs?.be_special) || !("Malf AI (Midround)" in ipc.client?.prefs?.be_special))
-		to_chat(user, span_warning("Target seems unwilling to be hacked, find another target."))
+	if(!ipc.incapacitated())
+		to_chat(user, span_warning("Target must be vulnerable by being incapacitated."))
 		return FALSE
 	if(!ipc.get_organ_by_type(/obj/item/organ/internal/brain))
 		to_chat(user, "Target doesn't seem to possess an positronic brain!")
