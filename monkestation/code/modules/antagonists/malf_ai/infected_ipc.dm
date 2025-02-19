@@ -44,6 +44,7 @@
 	internal_radio.implant(current_mob, null, TRUE)
 	internal_camera = new /obj/machinery/camera(current_mob)
 	internal_camera.name = owner.name
+	internal_camera.c_tag = owner.name
 	ADD_TRAIT(current_mob, TRAIT_CORRUPTED_MONITOR, type) //a way to identify infected ipcs
 
 /datum/antagonist/infected_ipc/remove_innate_effects(mob/living/mob_override)
