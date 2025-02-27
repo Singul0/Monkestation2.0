@@ -30,7 +30,7 @@
 		return
 	if(!is_species(target, /datum/species/ipc))
 		var/do_robotize = tgui_alert(admin, "Target is not currently an IPC, turn them into one? This is not mandatory.", "Caution", list("Yes", "No"))
-		if(do_robotize)
+		if(do_robotize == "Yes")
 			var/mob/living/carbon/human/new_ipc = target
 			new_ipc.set_species(/datum/species/ipc)
 
