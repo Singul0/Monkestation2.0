@@ -40,7 +40,7 @@
 /obj/machinery/transformer/examine(mob/user)
 	. = ..()
 	// monkestation edit start PR #5133
-	. += span_notice("It is currently set to producing: [is_ipc_mode ? "IPC's" : "Cyborgs"]") 
+	. += span_notice("It is currently set to producing: [is_ipc_mode ? "IPC's" : "Cyborgs"]")
 	if(issilicon(user) || isobserver(user))
 		if(cooldown)
 			. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
@@ -120,9 +120,9 @@
 	// monkestation edit start PR #5133
 	if(is_ipc_mode)
 		victim.set_species(/datum/species/ipc)
-		if(master_ai && victim.get_organ_by_type(/obj/item/organ/internal/brain))
+		if(master_ai && victim.get_organ_by_type(/obj/item/organ/internal/brain) && !victim?.mind.has_antag_datum(/datum/antagonist/infected_ipc))
 			var/datum/brain_trauma/special/infected_ipc/trauma = victim.gain_trauma(/datum/brain_trauma/special/infected_ipc)
-			trauma.link_and_add_antag(master_ai?.mind)
+			trauma.link_and_add_antag(master_ai.mind)
 		victim.heal_damage_type(max(0, 80 - victim.getBruteLoss()), BRUTE)
 	else
 		var/mob/living/silicon/robot/new_borg = victim.Robotize()
