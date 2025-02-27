@@ -15,20 +15,30 @@
 
 /datum/antagonist/infected_ipc/admin_add(datum/mind/new_owner, mob/admin)
 	var/mob/living/carbon/target = new_owner.current
-
-	var/confirm = tgui_alert(admin, "Notice: Manually spawning infected IPC's doesn't really work. you need to manually proc call link_and_add_antag on the brain trauma with the mind of the AI to work as intended", "Caution", list("Continue", "Abort"))
-	if(confirm != "Continue")
-		return
+	var/mob/living/silicon/ai/owner_ai
 	if(!istype(target))
 		to_chat(admin, "Infected IPCs come from a brain trauma, so they need to at least be a carbon!")
 		return
 	if(!target.get_organ_by_type(/obj/item/organ/internal/brain))
 		to_chat(admin, "Infected IPCs come from a brain trauma, so they need to HAVE A BRAIN.")
 		return
+	var/chosen = tgui_input_list(admin, "Pick AI for the IPC to be bound to:", "Pick AI", GLOB.ai_list)
+	if(istype(chosen, /mob/living/silicon/ai))
+		owner_ai = chosen
+	if(!owner_ai)
+		to_chat(admin, "Invalid AI selected!")
+		return
+	if(!is_species(target, /datum/species/ipc))
+		var/do_robotize = tgui_alert(admin, "Target is not currently an IPC, turn them into one? This is not mandatory.", "Caution", list("Yes", "No"))
+		if(do_robotize)
+			var/mob/living/carbon/human/new_ipc = target
+			new_ipc.set_species(/datum/species/ipc)
+
 	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into [name].")
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
 	var/datum/brain_trauma/special/infected_ipc/trauma = target.gain_trauma(/datum/brain_trauma/special/infected_ipc)
-	admin?.client.callproc_datum(trauma)
+	trauma.link_and_add_antag(owner_ai?.mind)
+
 
 /datum/antagonist/infected_ipc/on_removal()
 	//disconnects them from master AI
