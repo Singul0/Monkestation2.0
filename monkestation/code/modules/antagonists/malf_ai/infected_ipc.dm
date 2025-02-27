@@ -16,7 +16,7 @@
 /datum/antagonist/infected_ipc/admin_add(datum/mind/new_owner, mob/admin)
 	var/mob/living/carbon/target = new_owner.current
 
-	var/confirm = tgui_alert(admin, "Notice: Manually spawning infected IPC's doesn't really work. you need to manually proc call link_and_add_antag in the brain trauma with the mind of the AI to work as intended", "Caution", list("Continue", "Abort"))
+	var/confirm = tgui_alert(admin, "Notice: Manually spawning infected IPC's doesn't really work. you need to manually proc call link_and_add_antag on the brain trauma with the mind of the AI to work as intended", "Caution", list("Continue", "Abort"))
 	if(confirm != "Continue")
 		return
 	if(!istype(target))
@@ -127,9 +127,9 @@
 
 /datum/brain_trauma/special/infected_ipc/on_lose()
 	..()
-	owner.mind.remove_antag_datum(/datum/antagonist/infected_ipc)
-	master_ai = null
 	antagonist = null
+	master_ai = null
+	owner.mind.remove_antag_datum(/datum/antagonist/infected_ipc)
 
 //AI MODULE
 /datum/ai_module/utility/override_directive
@@ -163,23 +163,23 @@
 		to_chat(user, span_warning("You can only hack IPC's!"))
 		return FALSE
 	var/mob/living/carbon/human/ipc = clicked_on
-	if(!("Malf AI" in ipc?.client?.prefs?.be_special) || !("Malf AI (Midround)" in ipc.client?.prefs?.be_special))
+	if(ipc.client?.prefs && (!(ROLE_MALF in ipc.client.prefs.be_special) || !(ROLE_MALF_MIDROUND in ipc.client.prefs.be_special)))
 		to_chat(user, span_warning("Target seems unwilling to be hacked, find another target."))
-		return FALSE
-	if(HAS_TRAIT(ipc, TRAIT_MINDSHIELD) || HAS_MIND_TRAIT(ipc, TRAIT_UNCONVERTABLE))
-		to_chat(user, span_warning("Target has propietary firewall defenses from their mindshield!"))
 		return FALSE
 	if(!ipc.mind)
 		to_chat(user, span_warning("Target must be have a mind."))
+		return FALSE
+	if(ipc.mind.has_antag_datum(/datum/antagonist/infected_ipc))
+		to_chat(user, "Target has already been hacked!")
+		return FALSE
+	if(HAS_TRAIT(ipc, TRAIT_MINDSHIELD) || HAS_MIND_TRAIT(ipc, TRAIT_UNCONVERTABLE))
+		to_chat(user, span_warning("Target has propietary firewall defenses from their mindshield!"))
 		return FALSE
 	if(!ipc.incapacitated())
 		to_chat(user, span_warning("Target must be vulnerable by being incapacitated."))
 		return FALSE
 	if(!ipc.get_organ_by_type(/obj/item/organ/internal/brain))
 		to_chat(user, "Target doesn't seem to possess an positronic brain!")
-		return FALSE
-	if(ipc.mind.has_antag_datum(/datum/antagonist/infected_ipc))
-		to_chat(user, "Target has already been hacked!")
 		return FALSE
 
 	user.playsound_local(user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)

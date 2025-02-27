@@ -39,16 +39,20 @@
 
 /obj/machinery/transformer/examine(mob/user)
 	. = ..()
-	if(cooldown && (issilicon(user) || isobserver(user)))
-		. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
-	. += span_notice("It is currently set to producing: [is_ipc_mode ? "IPC's" : "Cyborgs"]") // monkestation edit PR #5133
+	// monkestation edit start PR #5133
+	. += span_notice("It is currently set to producing: [is_ipc_mode ? "IPC's" : "Cyborgs"]") 
+	if(issilicon(user) || isobserver(user))
+		if(cooldown)
+			. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
+		. += span_notice("Right-click to change its production mode.")
+	// monkestation edit end PR #5133
 
 /obj/machinery/transformer/Destroy()
 	QDEL_NULL(countdown)
 	. = ..()
 
 // monkestation edit start PR #5133
-/obj/machinery/transformer/attack_ai(mob/user)
+/obj/machinery/transformer/attack_ai_secondary(mob/user, list/modifiers)
 	. = ..()
 	is_ipc_mode = !is_ipc_mode
 	var/settings_message = is_ipc_mode ? "IPC's" : "Cyborgs"
