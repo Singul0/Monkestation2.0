@@ -160,7 +160,7 @@
 		unset_ranged_ability(user)
 		return FALSE
 	if(!isipc(clicked_on))
-		to_chat(user, span_warning("You can only hack IPC's!"))
+		to_chat(user, span_warning("You can only hack IPCs!"))
 		return FALSE
 	var/mob/living/carbon/human/ipc = clicked_on
 	if(ipc.client?.prefs && (!(ROLE_MALF in ipc.client.prefs.be_special) || !(ROLE_MALF_MIDROUND in ipc.client.prefs.be_special)))
