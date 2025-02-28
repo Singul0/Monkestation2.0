@@ -100,6 +100,7 @@
 	for(var/datum/stock_part/micro_laser/laser in component_parts)
 		max_fire_delay -= 2 SECONDS * laser.tier
 		min_fire_delay -= 0.4 SECONDS * laser.tier
+		fire_shoot_delay -= 2 SECONDS * laser.tier
 		var/parts_tier = laser.tier
 		if(obj_flags & EMAGGED)
 			parts_tier += 1
