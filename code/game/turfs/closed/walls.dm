@@ -132,8 +132,6 @@
 
 /turf/closed/wall/examine(mob/user)
 	. += ..()
-	. += deconstruction_hints(user)
-
 	//monkestation edit start
 	var/healthpercent = round((current_integrity/wall_integrity) * 100, 1)
 	switch(healthpercent)
@@ -144,6 +142,7 @@
 		if(0 to 25)
 			. += span_warning("It's falling apart!")
 	//monkestation edit end
+	. += deconstruction_hints(user)
 
 /turf/closed/wall/proc/deconstruction_hints(mob/user)
 	return span_notice("The outer plating is <b>welded</b> firmly in place.")

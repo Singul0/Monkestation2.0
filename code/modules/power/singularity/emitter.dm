@@ -241,6 +241,9 @@
 	if(istype(projectile, /obj/projectile/beam/emitter/hitscan)) //TODO: LESS SNOWFLAKE CHECK
 		projectile.wall_mod = wall_dem_mod
 		projectile.can_hit_walls = is_proj_hit_walls
+		if(obj_flags & EMAGGED)
+			take_damage((round(max_integrity/100 * 5)))
+			visible_message(span_warning("The [src] visibly buckles under overloaded pressure!"))
 
 	//monkestation edit end
 	if(prob(35))
@@ -396,7 +399,7 @@
 		return FALSE
 	locked = FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "id lock shorted out")
+	balloon_alert(user, "id lock shorted out and lasers overloaded") //monkestation edit
 	RefreshParts() //monkestation edit
 	return TRUE
 
