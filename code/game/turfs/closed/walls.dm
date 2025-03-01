@@ -302,10 +302,16 @@
 
 		to_chat(user, span_notice("You begin fixing dents on the wall..."))
 		if(W.use_tool(src, user, 0, volume=100))
-			if(iswallturf(src) && LAZYLEN(dent_decals))
-				to_chat(user, span_notice("You fix some dents on the wall."))
-				cut_overlay(dent_decals)
-				dent_decals.Cut()
+			//monkestation edit start
+			if(iswallturf(src))
+				if(LAZYLEN(dent_decals))
+					to_chat(user, span_notice("You fix some dents on the wall."))
+					cut_overlay(dent_decals)
+					dent_decals.Cut()
+				if(max_integrity > current_integrity)
+					to_chat(user, span_notice("You fix some damage on the wall."))
+					current_integrity += clamp(round(max_integrity/100 * 20), 0, max_integrity)
+			//monkestation edit end
 			return TRUE
 
 	return FALSE
