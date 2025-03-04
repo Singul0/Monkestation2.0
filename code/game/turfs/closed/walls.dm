@@ -37,8 +37,7 @@
 
 	//monkestation edit start
 	//How much integrity the wall has, Currently only emitter shots is able to damage walls.
-	/// The damage taken by the wall is multiplied by this number, lower better.
-	/// Wall integrity
+	/// Wall integrity (how much health it has at initialization)
 	var/wall_integrity = 900
 	/// Current integrity
 	var/current_integrity
@@ -293,24 +292,26 @@
 	return ..()
 
 /turf/closed/wall/proc/try_clean(obj/item/W, mob/living/user, turf/T)
-	if(((user.istate & ISTATE_HARM)) || !LAZYLEN(dent_decals))
+	if(((user.istate & ISTATE_HARM)))//monkestation edit
 		return FALSE
 
 	if(W.tool_behaviour == TOOL_WELDER)
 		if(!W.tool_start_check(user, amount=0))
 			return FALSE
 
-		to_chat(user, span_notice("You begin fixing dents on the wall..."))
 		if(W.use_tool(src, user, 0, volume=100))
 			//monkestation edit start
 			if(iswallturf(src))
+				var/did_something = FALSE
 				if(LAZYLEN(dent_decals))
-					to_chat(user, span_notice("You fix some dents on the wall."))
 					cut_overlay(dent_decals)
 					dent_decals.Cut()
-				if(max_integrity > current_integrity)
-					to_chat(user, span_notice("You fix some damage on the wall."))
+					did_something = TRUE
+				if(wall_integrity > current_integrity)
 					current_integrity += clamp(round(max_integrity/100 * 20), 0, max_integrity)
+					did_something = TRUE
+				if(did_something)
+					to_chat(user, span_notice("You fix some dents on the wall."))
 			//monkestation edit end
 			return TRUE
 
