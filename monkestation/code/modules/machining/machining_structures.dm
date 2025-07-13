@@ -40,7 +40,7 @@
 
 /obj/machinery/lathe/proc/build_crafting_data(datum/machining_recipes/recipe)
 	var/list/data = list()
-	var/list/atoms = GLOB.machining_recipes
+	var/list/atoms = GLOB.machining_recipes_atoms
 
 	data["ref"] = "[REF(recipe)]"
 	var/atom/atom = recipe.result
