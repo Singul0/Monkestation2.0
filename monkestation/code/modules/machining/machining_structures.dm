@@ -28,7 +28,7 @@
 	data["recipes"] = list()
 	data["categories"] = list()
 
-	for(var/datum/machining_recipes/recipe as anything in GLOB.machining_recipes)
+	for(var/datum/machining_recipe/recipe as anything in GLOB.machining_recipes)
 		if(machinery_type != recipe.machinery_type)
 			continue
 
@@ -38,7 +38,7 @@
 		data["recipes"] += list(build_crafting_data(recipe))
 	return data
 
-/obj/machinery/lathe/proc/build_crafting_data(datum/machining_recipes/recipe)
+/obj/machinery/lathe/proc/build_crafting_data(datum/machining_recipe/recipe)
 	var/list/data = list()
 	var/list/atoms = GLOB.machining_recipes_atoms
 
