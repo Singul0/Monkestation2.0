@@ -62,9 +62,16 @@ const MainRecipeScreen = (props, context) => {
     return <Section>No recipes available. yell at coders</Section>;
   }
 
+  // Filter recipes by category (tab)
+  const filteredRecipes = recipes.filter((recipe) => recipe.category === tab);
+
+  if (!filteredRecipes.length) {
+    return <Section>No recipes in this category.</Section>;
+  }
+
   return (
     <>
-      {recipes.map((recipe, index) => (
+      {filteredRecipes.map((recipe, index) => (
         <Section key={index} title={recipe.name}>
           <Stack>
             <Stack.Item>
