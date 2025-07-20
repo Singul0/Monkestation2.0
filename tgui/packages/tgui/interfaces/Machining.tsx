@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Tabs, Divider } from '../components';
+import { Section, Stack, Tabs, Divider, Box, Button } from '../components';
 import { Window } from '../layouts';
 
 const TAB_LIST = [
@@ -17,9 +17,9 @@ export const Machining = (props, context) => {
 
   return (
     <Window resizable>
-      <Window.Content scrollable>
+      <Window.Content>
         <Stack fill>
-          <Stack.Item>
+          <Stack.Item width={'200px'}>
             <Section fill>
               <Tabs vertical>
                 {TAB_LIST.map((tab) => (
@@ -34,8 +34,19 @@ export const Machining = (props, context) => {
               </Tabs>
             </Section>
           </Stack.Item>
-          <Stack.Item grow>
-            <MainRecipeScreen tab={activeTab} />
+          <Stack.Item grow my={'16px'}>
+            {/* Only MainRecipeScreen is scrollable */}
+            <Box
+              scrollable
+              fill
+              height={'100%'}
+              pr={1}
+              pt={1}
+              mr={-1}
+              style={{ 'overflow-y': 'auto' }}
+            >
+              <MainRecipeScreen tab={activeTab} />
+            </Box>
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -46,7 +57,7 @@ export const Machining = (props, context) => {
 const MainRecipeScreen = (props, context) => {
   const { data } = useBackend(context);
   const { tab } = props;
-  const { recipes, atom_data } = data;
+  const { recipes, atom_data, busy } = data;
 
   if (!recipes || !recipes.length) {
     return <Section>No recipes available. yell at coders</Section>;
@@ -56,9 +67,34 @@ const MainRecipeScreen = (props, context) => {
     <>
       {recipes.map((recipe, index) => (
         <Section key={index} title={recipe.name}>
-          {recipe.desc}
+          <Stack>
+            <Stack.Item>
+              <Box
+                width={'32px'}
+                height={'32px'}
+                style={{
+                  transform: 'scale(2)',
+                }}
+                m={'16px'}
+                className={`machining32x32 a${recipe.result}`}
+              />
+            </Stack.Item>
+            <Stack.Item ml={'16px'} grow>
+              {recipe.desc}
+            </Stack.Item>
+            <Button
+              my={0.3}
+              lineHeight={2.5}
+              align="center"
+              content="Make"
+              disabled={busy}
+              color="green"
+              icon={busy ? 'circle-notch' : 'hammer'}
+              iconSpin={busy ? 1 : 0}
+              onClick={() => {}}
+            />
+          </Stack>
           <Dividers title={'Materials'} />
-          {/* Display each material's name vertically */}
           <Stack vertical>
             {recipe.reqs &&
               Object.keys(recipe.reqs).map((atom_id) => {
@@ -66,10 +102,25 @@ const MainRecipeScreen = (props, context) => {
                 const atomInfo = atom_data?.[atomIndex];
                 return (
                   <Stack.Item key={atom_id}>
-                    {atomInfo?.name || `Material ${atom_id}`}
-                    {recipe.reqs[atom_id] > 1
-                      ? ` x${recipe.reqs[atom_id]}`
-                      : ''}
+                    <Stack>
+                      <Stack.Item>
+                        <Box
+                          width={'32px'}
+                          height={'32px'}
+                          className={`machining32x32 a${atom_id}`}
+                          mr={1}
+                        />
+                      </Stack.Item>
+                      <Stack.Item grow>
+                        {atomInfo?.name
+                          .split(' ')
+                          .map((word) => word[0].toUpperCase() + word.slice(1))
+                          .join(' ')}
+                        {recipe.reqs[atom_id] > 1
+                          ? ` x${recipe.reqs[atom_id]}`
+                          : ''}
+                      </Stack.Item>
+                    </Stack>
                   </Stack.Item>
                 );
               })}

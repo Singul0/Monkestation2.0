@@ -51,15 +51,14 @@
 	///how much item to pop out
 	var/result_amount = 1
 
-///Representative icons for the contents of each crafting recipe
-/datum/asset/spritesheet/crafting/machining
-	name = "machining"
-
-/datum/asset/spritesheet/crafting/create_spritesheets()
-	var/id = 1
-	for(var/atom in GLOB.machining_recipes_atoms)
-		add_atom_icon(atom, id++)
-	add_tool_icons()
+/datum/machining_recipe/New()
+	if(!result)
+		return
+	var/atom/atom_result = result
+	if(!name && result)
+		name = initial(atom_result.name)
+	if(!desc && result)
+		desc = initial(atom_result.desc)
 
 
 /// Additional UI data to be passed to the crafting UI for this recipe
@@ -80,6 +79,62 @@
 	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
 	reqs = list(
-		/obj/item/paper=1
+		/obj/item/paper = 1
 	)
 	result = /obj/item/pen
+
+/datum/machining_recipe/debug3
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad
+
+/datum/machining_recipe/debug4
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad
+
+	/datum/machining_recipe/debug5
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad
+
+	/datum/machining_recipe/debug6
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad
+
+/datum/machining_recipe/debug7
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad
+
+/datum/machining_recipe/debug8
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad
+
+/datum/machining_recipe/debug9
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad
+
+/datum/machining_recipe/debug10
+	reqs = list(
+		/obj/item/paper = 1,
+		/obj/item/storage/briefcase = 1
+	)
+	result = /obj/item/storage/briefcase/launchpad

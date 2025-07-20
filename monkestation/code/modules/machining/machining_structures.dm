@@ -7,6 +7,7 @@
 	layer = BELOW_OBJ_LAYER
 	var/machinery_type = MACHINING_LATHE
 	var/debugv
+	var/busy = FALSE
 
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
@@ -28,6 +29,7 @@
 	data["recipes"] = list()
 	data["categories"] = list()
 
+	// Recipes
 	for(var/datum/machining_recipe/recipe as anything in GLOB.machining_recipes)
 		if(machinery_type != recipe.machinery_type)
 			continue
@@ -36,6 +38,13 @@
 			data["categories"] |= recipe.category
 
 		data["recipes"] += list(build_crafting_data(recipe))
+
+	// Atoms in said Recipes
+	for(var/atom/atom as anything in GLOB.machining_recipes_atoms)
+		data["atom_data"] += list(list(
+			"name" = initial(atom.name),
+		))
+
 	return data
 
 /obj/machinery/lathe/proc/build_crafting_data(datum/machining_recipe/recipe)
