@@ -1,5 +1,5 @@
-import { useBackend, useLocalState } from '../backend';
-import { LabeledList, Section, Stack, Tabs, NoticeBox } from '../components';
+import { useLocalState } from '../backend';
+import { Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const TAB_LIST = [
@@ -35,20 +35,7 @@ export const Machining = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item grow>
-            {activeTab === 'cargo' && (
-              <Section title="Cargo">Here you can order supply crates.</Section>
-            )}
-            {activeTab === 'health' && <HealthStatus user="Jerry" />}
-            {activeTab === 'settings' && (
-              <Section title="Settings">
-                <NoticeBox info>Settings screen goes here.</NoticeBox>
-              </Section>
-            )}
-            {activeTab === 'dummy' && (
-              <Section title="Dummy">
-                <NoticeBox info>Dummy Interface</NoticeBox>
-              </Section>
-            )}
+            <MainRecipeScreen tab={activeTab} />
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -56,16 +43,30 @@ export const Machining = (props, context) => {
   );
 };
 
-const HealthStatus = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { user } = props;
-  const { health, color } = data;
-  return (
-    <Section title={'Health status of: ' + user}>
-      <LabeledList>
-        <LabeledList.Item label="Health">{health}</LabeledList.Item>
-        <LabeledList.Item label="Color">{color}</LabeledList.Item>
-      </LabeledList>
-    </Section>
-  );
+const MainRecipeScreen = ({ tab }) => {
+  // You can customize content based on tab argument
+  let title = '';
+  let description = '';
+  switch (tab) {
+    case 'cargo':
+      title = 'Cargo';
+      description = 'Here you can order supply crates.';
+      break;
+    case 'health':
+      title = 'Health';
+      description = 'Health status and diagnostics.';
+      break;
+    case 'settings':
+      title = 'Settings';
+      description = 'Settings screen goes here.';
+      break;
+    case 'dummy':
+      title = 'Dummy';
+      description = 'Dummy Interface';
+      break;
+    default:
+      title = 'Unknown';
+      description = 'No content available.';
+  }
+  return <Section title={title}>{description}</Section>;
 };
