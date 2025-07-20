@@ -46,7 +46,7 @@ export const Machining = (props, context) => {
 const MainRecipeScreen = (props, context) => {
   const { data } = useBackend(context);
   const { tab } = props;
-  const { recipes } = data;
+  const { recipes, atom_data } = data;
 
   if (!recipes || !recipes.length) {
     return <Section>No recipes available. yell at coders</Section>;
@@ -58,14 +58,22 @@ const MainRecipeScreen = (props, context) => {
         <Section key={index} title={recipe.name}>
           {recipe.desc}
           <Dividers title={'Materials'} />
-          {/* Display the required materials for the recipe*/}
-          {Object.keys(recipes.reqs).map((atom_id) => (
-            <AtomContent
-              key={atom_id}
-              atom_id={atom_id}
-              amount={recipes.reqs[atom_id]}
-            />
-          ))}
+          {/* Display each material's name vertically */}
+          <Stack vertical>
+            {recipe.reqs &&
+              Object.keys(recipe.reqs).map((atom_id) => {
+                const atomIndex = Number(atom_id) - 1;
+                const atomInfo = atom_data?.[atomIndex];
+                return (
+                  <Stack.Item key={atom_id}>
+                    {atomInfo?.name || `Material ${atom_id}`}
+                    {recipe.reqs[atom_id] > 1
+                      ? ` x${recipe.reqs[atom_id]}`
+                      : ''}
+                  </Stack.Item>
+                );
+              })}
+          </Stack>
         </Section>
       ))}
     </>
@@ -83,30 +91,5 @@ const Dividers = ({ title }) => {
         <Divider />
       </Stack.Item>
     </Stack>
-  ) as any;
-};
-
-const AtomContent = ({ atom_id, amount }) => {
-  const { data } = useBackend();
-  const name = data.atom_data[atom_id - 1]?.name;
-  const is_reagent = data.atom_data[atom_id - 1]?.is_reagent;
-  const mode = data.mode;
-  return (
-    <Box my={1}>
-      <Box
-        verticalAlign="middle"
-        inline
-        my={-1}
-        mr={0.5}
-        className={classes([
-          mode ? 'cooking32x32' : 'crafting32x32',
-          'a' + atom_id,
-        ])}
-      />
-      <Box inline verticalAlign="middle">
-        {name}
-        {is_reagent ? `\xa0${amount}u` : amount > 1 && `\xa0${amount}x`}
-      </Box>
-    </Box>
   ) as any;
 };
