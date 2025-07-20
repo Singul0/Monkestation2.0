@@ -60,5 +60,6 @@
 	"Lua.diagnostics.enable": false,
 	"git.branchProtection": [
 		"master"
-	]
+	],
+	"FSharp.suggestGitignore": false
 }

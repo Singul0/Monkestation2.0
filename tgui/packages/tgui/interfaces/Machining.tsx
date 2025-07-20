@@ -1,5 +1,5 @@
-import { useLocalState } from '../backend';
-import { Section, Stack, Tabs } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Section, Stack, Tabs, Divider } from '../components';
 import { Window } from '../layouts';
 
 const TAB_LIST = [
@@ -43,30 +43,70 @@ export const Machining = (props, context) => {
   );
 };
 
-const MainRecipeScreen = ({ tab }) => {
-  // You can customize content based on tab argument
-  let title = '';
-  let description = '';
-  switch (tab) {
-    case 'cargo':
-      title = 'Cargo';
-      description = 'Here you can order supply crates.';
-      break;
-    case 'health':
-      title = 'Health';
-      description = 'Health status and diagnostics.';
-      break;
-    case 'settings':
-      title = 'Settings';
-      description = 'Settings screen goes here.';
-      break;
-    case 'dummy':
-      title = 'Dummy';
-      description = 'Dummy Interface';
-      break;
-    default:
-      title = 'Unknown';
-      description = 'No content available.';
+const MainRecipeScreen = (props, context) => {
+  const { data } = useBackend(context);
+  const { tab } = props;
+  const { recipes } = data;
+
+  if (!recipes || !recipes.length) {
+    return <Section>No recipes available. yell at coders</Section>;
   }
-  return <Section title={title}>{description}</Section>;
+
+  return (
+    <>
+      {recipes.map((recipe, index) => (
+        <Section key={index} title={recipe.name}>
+          {recipe.desc}
+          <Dividers title={'Materials'} />
+          {/* Display the required materials for the recipe*/}
+          {Object.keys(recipes.reqs).map((atom_id) => (
+            <AtomContent
+              key={atom_id}
+              atom_id={atom_id}
+              amount={recipes.reqs[atom_id]}
+            />
+          ))}
+        </Section>
+      ))}
+    </>
+  );
+};
+
+const Dividers = ({ title }) => {
+  return (
+    <Stack my={1}>
+      <Stack.Item grow>
+        <Divider />
+      </Stack.Item>
+      <Stack.Item color={'gray'}>{title}</Stack.Item>
+      <Stack.Item grow>
+        <Divider />
+      </Stack.Item>
+    </Stack>
+  ) as any;
+};
+
+const AtomContent = ({ atom_id, amount }) => {
+  const { data } = useBackend();
+  const name = data.atom_data[atom_id - 1]?.name;
+  const is_reagent = data.atom_data[atom_id - 1]?.is_reagent;
+  const mode = data.mode;
+  return (
+    <Box my={1}>
+      <Box
+        verticalAlign="middle"
+        inline
+        my={-1}
+        mr={0.5}
+        className={classes([
+          mode ? 'cooking32x32' : 'crafting32x32',
+          'a' + atom_id,
+        ])}
+      />
+      <Box inline verticalAlign="middle">
+        {name}
+        {is_reagent ? `\xa0${amount}u` : amount > 1 && `\xa0${amount}x`}
+      </Box>
+    </Box>
+  ) as any;
 };
