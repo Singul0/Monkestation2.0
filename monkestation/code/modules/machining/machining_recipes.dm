@@ -68,6 +68,7 @@
 /datum/machining_recipe/debug
 	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
+	category = TAB_GENERAL_PARTS
 	reqs = list(
 		/obj/item/storage/toolbox = 1,
 		/obj/item/pen = 5,
@@ -78,6 +79,7 @@
 /datum/machining_recipe/debug2
 	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
+	category = TAB_TYPE_PARTS
 	reqs = list(
 		/obj/item/paper = 1
 	)
@@ -88,6 +90,7 @@
 		/obj/item/paper = 1,
 		/obj/item/storage/briefcase = 1
 	)
+	category = TAB_SPECIFIC_PARTS
 	result = /obj/item/storage/briefcase/launchpad
 
 /datum/machining_recipe/debug4
@@ -97,14 +100,15 @@
 	)
 	result = /obj/item/storage/briefcase/launchpad
 
-	/datum/machining_recipe/debug5
+/datum/machining_recipe/debug5
+	category = TAB_ASSEMBLY_PARTS
 	reqs = list(
 		/obj/item/paper = 1,
 		/obj/item/storage/briefcase = 1
 	)
 	result = /obj/item/storage/briefcase/launchpad
 
-	/datum/machining_recipe/debug6
+/datum/machining_recipe/debug6
 	reqs = list(
 		/obj/item/paper = 1,
 		/obj/item/storage/briefcase = 1

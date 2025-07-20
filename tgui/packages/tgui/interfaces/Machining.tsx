@@ -3,10 +3,10 @@ import { Section, Stack, Tabs, Divider, Box, Button } from '../components';
 import { Window } from '../layouts';
 
 const TAB_LIST = [
-  { key: 'cargo', label: 'Cargo' },
-  { key: 'health', label: 'Health' },
-  { key: 'settings', label: 'Settings' },
-  { key: 'dummy', label: 'Dummy' },
+  { key: 'generalparts', label: 'General Parts' },
+  { key: 'typeparts', label: 'Type Parts' },
+  { key: 'specificparts', label: 'Specific Parts' },
+  { key: 'assembly', label: 'Assembly' },
 ];
 
 export const Machining = (props, context) => {
@@ -58,7 +58,6 @@ const MainRecipeScreen = (props, context) => {
   const { data } = useBackend(context);
   const { tab } = props;
   const { recipes, atom_data, busy } = data;
-
   if (!recipes || !recipes.length) {
     return <Section>No recipes available. yell at coders</Section>;
   }
