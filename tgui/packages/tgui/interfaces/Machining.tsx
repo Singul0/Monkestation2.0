@@ -55,7 +55,7 @@ export const Machining = (props, context) => {
 };
 
 const MainRecipeScreen = (props, context) => {
-  const { data } = useBackend(context);
+  const { act, data } = useBackend(context);
   const { tab } = props;
   const { recipes, atom_data, busy } = data;
   if (!recipes || !recipes.length) {
@@ -97,7 +97,11 @@ const MainRecipeScreen = (props, context) => {
               color="green"
               icon={busy ? 'circle-notch' : 'hammer'}
               iconSpin={busy ? 1 : 0}
-              onClick={() => {}}
+              onClick={() =>
+                act('make', {
+                  recipe: recipe.ref,
+                })
+              }
             />
           </Stack>
           <Dividers title={'Materials'} />

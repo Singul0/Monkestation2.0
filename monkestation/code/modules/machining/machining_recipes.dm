@@ -45,9 +45,11 @@
 	/// Type paths of items needed but not consumed. Lazy list.
 	var/list/tool_paths
 	///where it shows up in the crafting UI
-	var/category
+	var/category = TAB_GENERAL_PARTS
 	///What machining machine it belongs to
 	var/machinery_type = MACHINING_LATHE
+	///how much time it takes to craft
+	var/crafting_time = 5 SECONDS
 	///how much item to pop out
 	var/result_amount = 1
 

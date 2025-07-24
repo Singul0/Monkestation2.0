@@ -1,13 +1,18 @@
 /obj/machinery/lathe
 	name = "industrial lathe"
-	desc = "an industrial lathe, a machinery that is rendered semi-obselete with the advent of autolathes. It is however still common to be seen across the spinward sector"
+	desc = "an industrial lathe, a machinery that is rendered semi-obselete with the advent of autolathes. It is however still common to be seen across the spinward sector for small-scale prototyping."
 	icon_state = "autolathe"
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/industrial_lathe
 	layer = BELOW_OBJ_LAYER
 	var/machinery_type = MACHINING_LATHE
-	var/debugv
+
+	///is the lathe currently busy crafting something?
 	var/busy = FALSE
+	///materials needed to craft the item
+	var/list/req_materials = null
+	///materials inputted to craft the item
+	var/list/materials = null
 
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
@@ -97,15 +102,24 @@
 	return data
 
 /obj/machinery/lathe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-  if(..())
-    return
-  switch(action)
-    if("Machining")
-      var/newvar = params["debugv"]
-      // A demo of proper input sanitation.
-      debugv = clamp(newvar, 0, 100)
-      . = TRUE
-  update_icon() // Not applicable to all objects.
+	if(..())
+		return
+	switch(action)
+		if("make")
+			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
+			var/datum/machining_recipe/to_make = params["recipe"] //THIS DOESNT WORK
+			if(!to_make)
+				return
+			if(!to_make.machinery_type == machinery_type)
+				return
+			if(busy)
+				to_chat(usr, span_warning("[src] workspace is preoccupied with another recipe!"))
+				return
+
+			busy = TRUE
+			req_materials = to_make.reqs
+
+	update_icon() // Not applicable to all objects.
 
 /obj/item/circuitboard/machine/industrial_lathe
 	name = "Manual lathe"
