@@ -1,6 +1,6 @@
 /obj/machinery/lathe
 	name = "industrial lathe"
-	desc = "an industrial lathe, a machinery that is rendered semi-obselete with the advent of autolathes. It is however still common to be seen across the spinward sector for small-scale prototyping."
+	desc = "an industrial lathe, a machinery that is rendered semi-obselete with the advent of autolathes. It is however still commonly seen across the spinward sector for small-scale prototyping use."
 	icon_state = "autolathe"
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/industrial_lathe
@@ -86,11 +86,8 @@
 			data["name"] = "[data["name"]] [recipe.result_amount]x"
 		data["desc"] = recipe.desc || initial(atom.desc)
 
-	// Machinery
-	if(recipe.machinery_type)
-		data["machinery_type"] = list()
-		for(var/req_atom in recipe.machinery_type)
-			data["machinery_type"] += atoms.Find(req_atom)
+	// Machinery Type
+	data["machinery_type"] = recipe.machinery_type
 
 	// Ingredients / Materials
 	if(recipe.reqs.len)
@@ -107,7 +104,7 @@
 	switch(action)
 		if("make")
 			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
-			var/datum/machining_recipe/to_make = params["recipe"] //THIS DOESNT WORK
+			var/datum/machining_recipe/to_make = locate(params["recipe"]) in (GLOB.machining_recipes)
 			if(!to_make)
 				return
 			if(!to_make.machinery_type == machinery_type)
