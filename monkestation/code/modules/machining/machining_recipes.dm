@@ -6,7 +6,6 @@
 
 /proc/init_machining_recipes_atoms()
 	. = list()
-	//TURN THIS INTO HOW THE FUNCTION RETURNS
 	for(var/datum/machining_recipe/recipe as anything in GLOB.machining_recipes)
 		// Result
 		. |= recipe.result
@@ -52,6 +51,8 @@
 	var/crafting_time = 5 SECONDS
 	///how much item to pop out
 	var/result_amount = 1
+	///determines if the recipe requires specific levels of parts. (ie specifically a femto menipulator vs generic manipulator)
+	var/specific_parts = FALSE
 
 /datum/machining_recipe/New()
 	if(!result)
