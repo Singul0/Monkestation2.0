@@ -115,7 +115,6 @@ export const Machining = (props, context) => {
   );
 };
 
-// Update MainRecipeScreen to filter by searchText
 const MainRecipeScreen = (props, context) => {
   const { act, data } = useBackend(context);
   const { tab, searchText } = props;
