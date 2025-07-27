@@ -8,6 +8,7 @@ import {
   Button,
   Dimmer,
   Icon,
+  Input,
 } from '../components';
 import { Window } from '../layouts';
 
@@ -23,15 +24,26 @@ export const Machining = (props, context) => {
     'machiningTab',
     TAB_LIST[0].key,
   );
+  const [searchText, setSearchText] = useLocalState('machiningSearch', '');
 
   const { act, data } = useBackend(context);
-  const { busy, craftable } = data;
+  const { busy, craftable, recipes } = data;
 
   return (
     <Window resizable width={900} height={700}>
       <Window.Content>
         <Stack fill>
           <Stack.Item width={'200px'}>
+            <Input
+              autoFocus
+              placeholder={'Search in ' + recipes.length + ' designs...'}
+              value={searchText}
+              onInput={(e, value) => {
+                setSearchText(value);
+              }}
+              mb={2}
+              fluid
+            />
             <Section fill>
               <Tabs vertical>
                 {TAB_LIST.map((tab) => (
@@ -47,7 +59,6 @@ export const Machining = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item grow my={'16px'}>
-            {/* Only MainRecipeScreen is scrollable */}
             <Box
               scrollable
               fill
@@ -57,63 +68,72 @@ export const Machining = (props, context) => {
               mr={-1}
               style={{ 'overflow-y': 'auto' }}
             >
-              <MainRecipeScreen tab={activeTab} />
+              <MainRecipeScreen tab={activeTab} searchText={searchText} />
             </Box>
-            {busy && (
-              <Dimmer
-                style={{
-                  'font-size': '2em',
-                  'text-align': 'center',
-                }}
-              >
-                <Icon
-                  name={craftable ? 'check' : 'hourglass'}
-                  spin={craftable ? false : true}
-                />
-                {craftable
-                  ? ' Ready to produce!'
-                  : ' Awaiting materials for recipe...'}
-                <Stack justify="center" align="center" my={2}>
-                  <Button
-                    my={0.3}
-                    lineHeight={2.5}
-                    align="center"
-                    content="Produce"
-                    disabled={!craftable}
-                    color="green"
-                    icon="circle-notch"
-                    iconSpin={craftable ? 1 : 0}
-                    onClick={() => act('produce')}
-                  />
-                  <Button
-                    my={0.3}
-                    lineHeight={2.5}
-                    align="center"
-                    content="Abort"
-                    color="red"
-                    icon="wrench"
-                    onClick={() => act('abort')}
-                  />
-                </Stack>
-              </Dimmer>
-            )}
           </Stack.Item>
         </Stack>
       </Window.Content>
+      {busy ? (
+        <Dimmer
+          style={{
+            'font-size': '2em',
+            'text-align': 'center',
+          }}
+        >
+          <Icon
+            name={craftable ? 'check' : 'hourglass'}
+            spin={craftable ? false : true}
+          />
+          {craftable
+            ? ' Ready to produce!'
+            : ' Awaiting materials for recipe...'}
+          <Stack justify="center" align="center" my={2}>
+            <Button
+              my={0.3}
+              lineHeight={2.5}
+              align="center"
+              content="Produce"
+              disabled={!craftable}
+              color="green"
+              icon="circle-notch"
+              iconSpin={craftable ? 1 : 0}
+              onClick={() => act('produce')}
+            />
+            <Button
+              my={0.3}
+              lineHeight={2.5}
+              align="center"
+              content="Abort"
+              color="red"
+              icon="wrench"
+              onClick={() => act('abort')}
+            />
+          </Stack>
+        </Dimmer>
+      ) : null}
     </Window>
   );
 };
 
+// Update MainRecipeScreen to filter by searchText
 const MainRecipeScreen = (props, context) => {
   const { act, data } = useBackend(context);
-  const { tab } = props;
+  const { tab, searchText } = props;
   const { recipes, atom_data, busy } = data;
   if (!recipes || !recipes.length) {
     return <Section>No recipes available. yell at coders</Section>;
   }
 
-  // Filter recipes by category (tab)
-  const filteredRecipes = recipes.filter((recipe) => recipe.category === tab);
+  // Filter recipes by category (tab) / searchbar
+  let filteredRecipes;
+
+  if (searchText) {
+    filteredRecipes = recipes.filter((recipe) =>
+      recipe.name.toLowerCase().includes(searchText.toLowerCase()),
+    );
+  } else {
+    filteredRecipes = recipes.filter((recipe) => recipe.category === tab);
+  }
 
   if (!filteredRecipes.length) {
     return <Section>No recipes in this category.</Section>;
