@@ -11,6 +11,8 @@
 	var/datum/machining_recipe/to_make
 	///is the lathe currently busy crafting something?
 	var/busy = FALSE
+	///is recipe craftable? (ie. does it have all the required materials?)
+	var/craftable = FALSE
 	///path of materials needed to craft the item (and it's quantity)
 	var/list/req_materials = null
 	//names of the component
@@ -25,7 +27,7 @@
 	. = ..()
 
 	if(to_make)
-		. += span_notice("The lathe is currently set to produce [to_make.name]")
+		. += span_notice("The lathe is currently set to produce a [to_make.name]")
 
 		var/list/nice_list = list()
 		for(var/materials in req_materials)
@@ -134,6 +136,14 @@
 
 		to_chat(user, span_notice("You add [part_name] to [src]."))
 		req_materials[stock_part_base]--
+		var/is_not_enough = FALSE
+		for(var/req in req_materials)
+			if(req_materials[req] > 0)
+				is_not_enough = TRUE
+		if(!is_not_enough)
+			craftable = TRUE
+			to_chat(user, span_notice("You have added all the required materials to [src]."))
+
 		return TRUE
 	to_chat(user, span_warning("You cannot add that to the machine!"))
 	return FALSE
@@ -154,6 +164,8 @@
 
 	data["recipes"] = list()
 	data["categories"] = list()
+	data["busy"] = busy
+	data["craftable"] = craftable
 
 	// Recipes
 	for(var/datum/machining_recipe/recipe as anything in GLOB.machining_recipes)
@@ -225,7 +237,9 @@
 	switch(action)
 		if("make")
 			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
-			to_make = locate(params["recipe"]) in (GLOB.machining_recipes)
+			var/datum/machining_recipe/recipe_path = (locate(params["recipe"]) in (GLOB.machining_recipes))
+			to_make = new recipe_path.type
+
 			if(!to_make)
 				return
 			if(!to_make.machinery_type == machinery_type)
@@ -238,7 +252,34 @@
 			req_materials = to_make.reqs
 			update_namelist(to_make)
 
-	update_icon() // Not applicable to all objects.
+		if("produce")
+			for(var/amount in 1 to to_make.result_amount)
+				new to_make.result(src.loc)
+			to_chat(usr, span_notice("You produce [to_make.name] on [src]."))
+			reset_machine()
+			for(var/obj/item in materials)
+				materials -= item
+				qdel(item)
+
+		if("abort")
+			reset_machine()
+			for(var/obj/item in materials)
+				item.forceMove(src.loc)
+				materials -= item
+
+
+	update_icon() // Not applicable to all objects. TODO: revise this(?)
+
+/*
+* Resets the lathe to a clean state
+*/
+/obj/machinery/lathe/proc/reset_machine()
+	busy = FALSE
+	qdel(to_make)
+	to_make = null
+	req_materials = null
+	req_materials_name = null
+	craftable = FALSE
 
 /obj/item/circuitboard/machine/industrial_lathe
 	name = "Manual lathe"

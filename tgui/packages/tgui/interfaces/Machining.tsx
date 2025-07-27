@@ -1,5 +1,14 @@
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Tabs, Divider, Box, Button } from '../components';
+import {
+  Section,
+  Stack,
+  Tabs,
+  Divider,
+  Box,
+  Button,
+  Dimmer,
+  Icon,
+} from '../components';
 import { Window } from '../layouts';
 
 const TAB_LIST = [
@@ -15,8 +24,11 @@ export const Machining = (props, context) => {
     TAB_LIST[0].key,
   );
 
+  const { act, data } = useBackend(context);
+  const { busy, craftable } = data;
+
   return (
-    <Window resizable>
+    <Window resizable width={900} height={700}>
       <Window.Content>
         <Stack fill>
           <Stack.Item width={'200px'}>
@@ -47,6 +59,44 @@ export const Machining = (props, context) => {
             >
               <MainRecipeScreen tab={activeTab} />
             </Box>
+            {busy && (
+              <Dimmer
+                style={{
+                  'font-size': '2em',
+                  'text-align': 'center',
+                }}
+              >
+                <Icon
+                  name={craftable ? 'check' : 'hourglass'}
+                  spin={craftable ? false : true}
+                />
+                {craftable
+                  ? ' Ready to produce!'
+                  : ' Awaiting materials for recipe...'}
+                <Stack justify="center" align="center" my={2}>
+                  <Button
+                    my={0.3}
+                    lineHeight={2.5}
+                    align="center"
+                    content="Produce"
+                    disabled={!craftable}
+                    color="green"
+                    icon="circle-notch"
+                    iconSpin={craftable ? 1 : 0}
+                    onClick={() => act('produce')}
+                  />
+                  <Button
+                    my={0.3}
+                    lineHeight={2.5}
+                    align="center"
+                    content="Abort"
+                    color="red"
+                    icon="wrench"
+                    onClick={() => act('abort')}
+                  />
+                </Stack>
+              </Dimmer>
+            )}
           </Stack.Item>
         </Stack>
       </Window.Content>
