@@ -27,7 +27,7 @@ export const Machining = (props, context) => {
   const [searchText, setSearchText] = useLocalState('machiningSearch', '');
 
   const { act, data } = useBackend(context);
-  const { busy, craftable, recipes } = data;
+  const { busy, craftable, recipes, auto_dispense, auto_build } = data;
 
   return (
     <Window resizable width={900} height={700}>
@@ -56,6 +56,21 @@ export const Machining = (props, context) => {
                   </Tabs.Tab>
                 ))}
               </Tabs>
+              <Box>
+                <Dividers title={'Upgrades'} />
+                <Button.Checkbox
+                  fluid
+                  content="Auto Dispense (T3)"
+                  checked={auto_dispense}
+                  onClick={() => act('toggle_dispense')}
+                />
+                <Button.Checkbox
+                  fluid
+                  content="Auto Build (T4)"
+                  checked={auto_build}
+                  onClick={() => act('toggle_build')}
+                />
+              </Box>
             </Section>
           </Stack.Item>
           <Stack.Item grow my={'16px'}>

@@ -22,6 +22,15 @@
 	///materials inputted to craft the item
 	var/list/materials = list()
 
+	//Automation
+	///Should the lathe automatically dispense the crafted item?
+	var/auto_dispense = FALSE
+	///Should the lathe automatically build the item?
+	var/auto_build = FALSE
+	/// what tier are the parts
+	var/manipulator_tier = 1
+	var/speed_mod = 1
+
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
 
@@ -42,70 +51,6 @@
 			nice_list += list("[req_materials[materials]] [req_materials_name[materials]]\s")
 		. += span_info(span_notice("It requires [english_list(nice_list, "no more components")]."))
 
-/**
- * Collates the displayed names of the machine's needed materials
- *	This is done to extract the names off the path list.
- * Arguments:
- * * specific_parts - If true, the stock parts in the recipe should not use base name, but a specific tier
- */
-/obj/machinery/lathe/proc/update_namelist(specific_parts)
-	if(!req_materials)
-		return
-
-	req_materials_name = list()
-	for(var/material_path in req_materials)
-		if(!ispath(material_path))
-			continue
-
-		if(ispath(material_path, /obj/item/stack))
-			var/obj/item/stack/stack_path = material_path
-			if(initial(stack_path.singular_name))
-				req_materials_name[material_path] = initial(stack_path.singular_name)
-			else
-				req_materials_name[material_path] = initial(stack_path.name)
-		else if(ispath(material_path, /datum/stock_part))
-			var/datum/stock_part/stock_part = material_path
-			var/obj/item/physical_object_type = initial(stock_part.physical_object_type)
-
-			req_materials_name[material_path] = initial(physical_object_type.name)
-		else if(ispath(material_path, /obj/item/stock_parts))
-			var/obj/item/stock_parts/stock_part = material_path
-
-			if(!specific_parts && initial(stock_part.base_name))
-				req_materials_name[material_path] = initial(stock_part.base_name)
-			else
-				req_materials_name[material_path] = initial(stock_part.name)
-		else if(ispath(material_path, /obj/item))
-			var/obj/item/part = material_path
-
-			req_materials_name[material_path] = initial(part.name)
-		else
-			stack_trace("Invalid component part [material_path] in [type], couldn't get its name")
-			req_materials_name[material_path] = "[material_path] (this is a bug)"
-
-/obj/machinery/lathe/attackby(obj/item/interacted_item, mob/user, params)
-	. = ..()
-	for(var/stock_part_base in req_materials)
-		if (req_materials[stock_part_base] == 0)
-			continue
-
-		var/stock_part_path
-
-		if (ispath(stock_part_base, /obj/item))
-			stock_part_path = stock_part_base
-		else if (ispath(stock_part_base, /datum/stock_part))
-			var/datum/stock_part/stock_part_datum_type = stock_part_base
-			stock_part_path = initial(stock_part_datum_type.physical_object_type)
-		else
-			stack_trace("Bad stock part in req_materials: [stock_part_base]")
-			continue
-
-		if (!istype(interacted_item, stock_part_path))
-			continue
-
-		if(isstack(interacted_item))
-			var/obj/item/stack/stack_mat = interacted_item
-			var/used_amt = min(round(stack_mat.get_amount()), req_materials[stock_part_path])
 			if(used_amt && stack_mat.use(used_amt))
 				req_materials[stock_part_path] -= used_amt
 				to_chat(user, span_notice("You add [interacted_item] to [src]."))
@@ -117,9 +62,6 @@
 		var/part_name = "[interacted_item]"
 
 		if(ispath(stock_part_base, /datum/stock_part))
-			// We can't just reuse stock_part_path here or its singleton,
-			// or else putting in a tier 2 part will deconstruct to a tier 1 part.
-			var/stock_part_datum = GLOB.stock_part_datums_per_object[interacted_item.type]
 			if (isnull(stock_part_datum))
 				stack_trace("[interacted_item.type] does not have an associated stock part datum!")
 				continue
@@ -130,26 +72,6 @@
 			// This technically means we lose unique qualities of the stock part, but
 			// it's worth it for how dramatically this simplifies the code.
 			// The only place I can see it affecting anything is like...RPG qualities. :P
-			qdel(interacted_item)
-		else if(user.transferItemToLoc(interacted_item, src))
-			materials += interacted_item
-		else
-			break
-
-		to_chat(user, span_notice("You add [part_name] to [src]."))
-		req_materials[stock_part_base]--
-		var/is_not_enough = FALSE
-		for(var/req in req_materials)
-			if(req_materials[req] > 0)
-				is_not_enough = TRUE
-		if(!is_not_enough)
-			craftable = TRUE
-			to_chat(user, span_notice("You have added all the required materials to [src]."))
-
-		return TRUE
-	to_chat(user, span_warning("You cannot add that to the machine!"))
-	return FALSE
-
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui)
   ui = SStgui.try_update_ui(user, src, ui)
   if(!ui)
@@ -168,6 +90,8 @@
 	data["categories"] = list()
 	data["busy"] = busy
 	data["craftable"] = craftable
+	data["auto_dispense"] = auto_dispense
+	data["auto_build"] = auto_build
 
 	// Recipes
 	for(var/datum/machining_recipe/recipe as anything in GLOB.machining_recipes)
@@ -240,7 +164,7 @@
 		if("make")
 			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
 			var/datum/machining_recipe/recipe_path = (locate(params["recipe"]) in (GLOB.machining_recipes))
-			to_make = new recipe_path.type
+			load_recipe(new recipe_path.type)
 
 			if(!to_make)
 				return
@@ -250,22 +174,8 @@
 				to_chat(usr, span_warning("[src] workspace is preoccupied with another recipe!"))
 				return
 
-			busy = TRUE
-			req_materials = to_make.reqs
-			update_namelist(to_make)
-
 		if("produce")
-			to_chat(usr, span_notice("You start following the design document on [src]..."))
-			if(!do_after(usr, to_make.crafting_time, src))
-				to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
-				return
-			for(var/amount in 1 to to_make.result_amount)
-				new to_make.result(src.loc)
-			to_chat(usr, span_notice("You produce [to_make.name] on [src]."))
-			reset_machine()
-			for(var/obj/item in materials)
-				materials -= item
-				qdel(item)
+			produce_recipe()
 
 		if("abort")
 			reset_machine()
@@ -273,8 +183,169 @@
 				item.forceMove(src.loc)
 				materials -= item
 
+		if("toggle_dispense")
+			if(manipulator_tier <= 3)
+				to_chat(usr, span_warning("You need at least a tier 3 manipulator to toggle auto dispense!"))
+				return
+			auto_dispense = !auto_dispense
+			to_chat(usr, span_notice("Auto dispense is now [auto_dispense ? "enabled" : "disabled"]."))
+
+		if("toggle_build")
+			if(manipulator_tier <= 4)
+				to_chat(usr, span_warning("You need at least a tier 4 manipulator to toggle auto dispense!"))
+				return
+			auto_build = !auto_build
+			to_chat(usr, span_notice("Auto build is now [auto_build ? "enabled" : "disabled"]."))
 
 	update_icon() // Not applicable to all objects. TODO: revise this(?)
+
+/obj/machinery/lathe/RefreshParts()
+	. = ..()
+	var/speed = 1
+	var/list/speed_mod_table = list(1, 0.95, 0.90, 0.85)
+	for(var/datum/stock_part/micro_laser/laser in component_parts)
+		speed *= speed_mod_table[clamp(laser.tier, 1, 4)]
+	speed_mod = speed
+	for(var/datum/stock_part/manipulator/manip in component_parts)
+		manipulator_tier = manip.tier
+
+/**
+ * Collates the displayed names of the machine's needed materials
+ *	This is done to extract the names off the path list.
+ * Arguments:
+ * * specific_parts - If true, the stock parts in the recipe should not use base name, but a specific tier
+ */
+/obj/machinery/lathe/proc/update_namelist(specific_parts)
+	if(!req_materials)
+		return
+
+	req_materials_name = list()
+	for(var/material_path in req_materials)
+		if(!ispath(material_path))
+			continue
+
+		if(ispath(material_path, /obj/item/stack))
+			var/obj/item/stack/stack_path = material_path
+			if(initial(stack_path.singular_name))
+				req_materials_name[material_path] = initial(stack_path.singular_name)
+			else
+				req_materials_name[material_path] = initial(stack_path.name)
+		else if(ispath(material_path, /datum/stock_part))
+			var/datum/stock_part/stock_part = material_path
+			var/obj/item/physical_object_type = initial(stock_part.physical_object_type)
+
+			req_materials_name[material_path] = initial(physical_object_type.name)
+		else if(ispath(material_path, /obj/item/stock_parts))
+			var/obj/item/stock_parts/stock_part = material_path
+
+			if(!specific_parts && initial(stock_part.base_name))
+				req_materials_name[material_path] = initial(stock_part.base_name)
+			else
+				req_materials_name[material_path] = initial(stock_part.name)
+		else if(ispath(material_path, /obj/item))
+			var/obj/item/part = material_path
+
+			req_materials_name[material_path] = initial(part.name)
+		else
+			stack_trace("Invalid component part [material_path] in [type], couldn't get its name")
+			req_materials_name[material_path] = "[material_path] (this is a bug)"
+
+/obj/machinery/lathe/proc/load_recipe(datum/machining_recipe/recipe)
+	to_make = recipe
+	busy = TRUE
+	req_materials = to_make.reqs
+	update_namelist(to_make)
+
+/obj/machinery/lathe/proc/produce_recipe(datum/machining_recipe/recipe)
+	to_chat(usr, span_notice("You start following the design document on [src]..."))
+	if(!do_after(usr, to_make.crafting_time * speed_mod, src))
+		to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
+		return
+	if(!to_make)
+		return //no abusing abort button while in do_after
+
+	for(var/amount in 1 to to_make.result_amount)
+		new to_make.result(src.loc)
+	to_chat(usr, span_notice("You produce [to_make.name] on [src]."))
+
+	var/to_make_path
+	if(auto_build)
+		to_make_path = to_make.type
+	reset_machine()
+	for(var/obj/item in materials)
+		materials -= item
+		qdel(item)
+
+	if(to_make_path)
+		load_recipe(new to_make_path)
+
+/obj/machinery/lathe/attackby(obj/item/interacted_item, mob/user, params)
+	. = ..()
+	for(var/stock_part_base in req_materials)
+		if (req_materials[stock_part_base] == 0)
+			continue
+
+		var/stock_part_path
+
+		if (ispath(stock_part_base, /obj/item))
+			stock_part_path = stock_part_base
+		else if (ispath(stock_part_base, /datum/stock_part))
+			var/datum/stock_part/stock_part_datum_type = stock_part_base
+			stock_part_path = initial(stock_part_datum_type.physical_object_type)
+		else
+			stack_trace("Bad stock part in req_materials: [stock_part_base]")
+			continue
+
+		if (!istype(interacted_item, stock_part_path))
+			continue
+
+		if(isstack(interacted_item))
+			var/obj/item/stack/stack_mat = interacted_item
+			var/used_amt = min(round(stack_mat.get_amount()), req_materials[stock_part_path])
+			if(used_amt && stack_mat.use(used_amt))
+				req_materials[stock_part_path] -= used_amt
+				to_chat(user, span_notice("You add [interacted_item] to [src]."))
+			return
+
+		// We might end up qdel'ing the part if it's a stock part datum.
+		// In practice, this doesn't have side effects to the name,
+		// but academically we should not be using an object after it's deleted.
+		var/part_name = "[interacted_item]"
+
+		if(ispath(stock_part_base, /datum/stock_part))
+			// We can't just reuse stock_part_path here or its singleton,
+			// or else putting in a tier 2 part will deconstruct to a tier 1 part.
+			var/stock_part_datum = GLOB.stock_part_datums_per_object[interacted_item.type]
+			if (isnull(stock_part_datum))
+				stack_trace("[interacted_item.type] does not have an associated stock part datum!")
+				continue
+
+			materials += stock_part_datum
+
+			// We regenerate the stock parts on deconstruct.
+			// This technically means we lose unique qualities of the stock part, but
+			// it's worth it for how dramatically this simplifies the code.
+			// The only place I can see it affecting anything is like...RPG qualities. :P
+			qdel(interacted_item)
+		else if(user.transferItemToLoc(interacted_item, src))
+			materials += interacted_item
+		else
+			break
+
+		to_chat(user, span_notice("You add [part_name] to [src]."))
+		req_materials[stock_part_base]--
+		var/is_not_enough = FALSE
+		for(var/req in req_materials)
+			if(req_materials[req] > 0)
+				is_not_enough = TRUE
+		if(!is_not_enough)
+			craftable = TRUE
+			to_chat(user, span_notice("You have added all the required materials to [src]."))
+			if(auto_dispense)
+				produce_recipe()
+		return TRUE
+	to_chat(user, span_warning("You cannot add that to the machine!"))
+	return FALSE
 
 /*
 * Resets the lathe to a clean state
@@ -292,6 +363,8 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/lathe
 	req_components = list(
-		/datum/stock_part/matter_bin = 3,
+		/datum/stock_part/micro_laser = 2,
 		/datum/stock_part/manipulator = 1,
-		/obj/item/stack/sheet/glass = 1)
+		/obj/item/stack/sheet/glass = 5,
+		/obj/item/stack/cable_coil = 15,
+		)
