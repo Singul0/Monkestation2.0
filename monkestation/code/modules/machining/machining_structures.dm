@@ -255,6 +255,10 @@
 			update_namelist(to_make)
 
 		if("produce")
+			to_chat(usr, span_notice("You start following the design document on [src]..."))
+			if(!do_after(usr, to_make.crafting_time, src))
+				to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
+				return
 			for(var/amount in 1 to to_make.result_amount)
 				new to_make.result(src.loc)
 			to_chat(usr, span_notice("You produce [to_make.name] on [src]."))
