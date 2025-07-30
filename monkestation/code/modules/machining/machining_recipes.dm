@@ -35,20 +35,14 @@
 	var/desc
 	///type paths of items consumed associated with how many are needed
 	var/list/reqs = list()
-	///type paths of items explicitly not allowed as an ingredient
-	var/list/blacklist = list()
 	///type path of item resulting from this craft
 	var/result
-	/// String defines of items needed but not consumed. Lazy list.
-	var/list/tool_behaviors
-	/// Type paths of items needed but not consumed. Lazy list.
-	var/list/tool_paths
 	///where it shows up in the crafting UI
 	var/category = TAB_GENERAL_PARTS
 	///What machining machine it belongs to
 	var/machinery_type = MACHINING_LATHE
 	///how much time it takes to craft
-	var/crafting_time = 5 SECONDS
+	var/crafting_time = MACHINING_DELAY_NORMAL
 	///how much item to pop out
 	var/result_amount = 1
 	///determines if the recipe requires specific levels of parts. (ie specifically a femto menipulator vs generic manipulator)
@@ -68,7 +62,7 @@
 /datum/machining_recipe/proc/crafting_ui_data()
 	return list()
 
-/datum/machining_recipe/debug
+/datum/machining_recipe/debug_test
 	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
 	category = TAB_GENERAL_PARTS
@@ -79,7 +73,7 @@
 	)
 	result = /obj/item/debug/omnitool
 
-/datum/machining_recipe/debug2
+/datum/machining_recipe/debug_example
 	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
 	category = TAB_TYPE_PARTS
@@ -88,60 +82,3 @@
 	)
 	result = /obj/item/pen
 
-/datum/machining_recipe/debug3
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	category = TAB_SPECIFIC_PARTS
-	result = /obj/item/storage/briefcase/launchpad
-
-/datum/machining_recipe/debug4
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	result = /obj/item/storage/briefcase/launchpad
-
-/datum/machining_recipe/debug5
-	category = TAB_ASSEMBLY_PARTS
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	result = /obj/item/storage/briefcase/launchpad
-
-/datum/machining_recipe/debug6
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	result = /obj/item/storage/briefcase/launchpad
-
-/datum/machining_recipe/debug7
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	result = /obj/item/storage/briefcase/launchpad
-
-/datum/machining_recipe/debug8
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	result = /obj/item/storage/briefcase/launchpad
-
-/datum/machining_recipe/debug9
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	result = /obj/item/storage/briefcase/launchpad
-
-/datum/machining_recipe/debug10
-	reqs = list(
-		/obj/item/paper = 1,
-		/obj/item/storage/briefcase = 1
-	)
-	result = /obj/item/storage/briefcase/launchpad

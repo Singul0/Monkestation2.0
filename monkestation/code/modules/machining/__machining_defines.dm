@@ -1,5 +1,16 @@
 
 #define MACHINING_LATHE "lathe"
+#define MACHINING_WORKSTATION "workstation"
+#define MACHINING_FURNACE "furnace"
+#define MACHINING_TABLESAW "tablesaw"
+#define MACHINING_DROPHAMMER "drophammer"
+#define MACHINING_TAILOR "tailor"
+#define MACHINING_DRILLPRESS "drillpress"
+
+#define MACHINING_DELAY_FAST 2.5 SECONDS
+#define MACHINING_DELAY_NORMAL 5 SECONDS
+#define MACHINING_DELAY_SLOW 10 SECONDS
+
 #define TAB_GENERAL_PARTS "generalparts"
 #define TAB_TYPE_PARTS "typeparts"
 #define TAB_SPECIFIC_PARTS "specificparts"
