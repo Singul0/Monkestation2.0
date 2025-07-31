@@ -12,9 +12,6 @@
 		// Ingredients
 		for(var/atom/req_atom as anything in recipe.reqs)
 			. |= req_atom
-		// Tools
-		for(var/atom/req_atom as anything in recipe.tool_paths)
-			. |= req_atom
 
 ///Representative icons for the contents of each crafting recipe
 /datum/asset/spritesheet/crafting/machining

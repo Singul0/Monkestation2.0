@@ -51,27 +51,6 @@
 			nice_list += list("[req_materials[materials]] [req_materials_name[materials]]\s")
 		. += span_info(span_notice("It requires [english_list(nice_list, "no more components")]."))
 
-			if(used_amt && stack_mat.use(used_amt))
-				req_materials[stock_part_path] -= used_amt
-				to_chat(user, span_notice("You add [interacted_item] to [src]."))
-			return
-
-		// We might end up qdel'ing the part if it's a stock part datum.
-		// In practice, this doesn't have side effects to the name,
-		// but academically we should not be using an object after it's deleted.
-		var/part_name = "[interacted_item]"
-
-		if(ispath(stock_part_base, /datum/stock_part))
-			if (isnull(stock_part_datum))
-				stack_trace("[interacted_item.type] does not have an associated stock part datum!")
-				continue
-
-			materials += stock_part_datum
-
-			// We regenerate the stock parts on deconstruct.
-			// This technically means we lose unique qualities of the stock part, but
-			// it's worth it for how dramatically this simplifies the code.
-			// The only place I can see it affecting anything is like...RPG qualities. :P
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui)
   ui = SStgui.try_update_ui(user, src, ui)
   if(!ui)
@@ -346,6 +325,44 @@
 		return TRUE
 	to_chat(user, span_warning("You cannot add that to the machine!"))
 	return FALSE
+
+// Modular machining machineries, based off the lathe
+/obj/machinery/lathe/workstation
+	name = "workstation"
+	desc = "A workstation used to gather and assemble parts."
+	icon_state = "workstation"
+	machinery_type = MACHINING_WORKSTATION
+
+/obj/machinery/lathe/furnace
+	name = "furnace"
+	desc = "A furnace used to melt down metal and other materials."
+	icon_state = "furnace"
+	machinery_type = MACHINING_FURNACE
+
+/obj/machinery/lathe/tablesaw
+	name = "tablesaw"
+	desc = "A tablesaw used to cut wood and other materials."
+	icon_state = "tablesaw"
+	machinery_type = MACHINING_TABLESAW
+
+/obj/machinery/lathe/drophammer
+	name = "drophammer"
+	desc = "A drophammer used to forge metal and other materials."
+	icon_state = "drophammer"
+	machinery_type = MACHINING_DROPHAMMER
+
+/obj/machinery/lathe/tailor
+	name = "tailor"
+	desc = "A tailor used to sew and craft clothing and other fabric items."
+	icon_state = "tailorstation"
+	machinery_type = MACHINING_TAILOR
+
+/obj/machinery/lathe/drillpress
+	name = "drill press"
+	desc = "A drill press used to drill holes in metal and other materials."
+	icon_state = "drillpress"
+	machinery_type = MACHINING_DRILLPRESS
+
 
 /*
 * Resets the lathe to a clean state
