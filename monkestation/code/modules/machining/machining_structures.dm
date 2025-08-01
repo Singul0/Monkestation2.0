@@ -134,6 +134,11 @@
 			var/id = atoms.Find(req_atom)
 			data["reqs"]["[id]"] = recipe.reqs[req_atom]
 
+	// craftability
+	if(manipulator_tier >= recipe.tier_required)
+		data["craftable"] = TRUE
+	else
+		data["craftable"] = FALSE
 	return data
 
 /obj/machinery/lathe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

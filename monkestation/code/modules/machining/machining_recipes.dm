@@ -46,7 +46,8 @@
 	///determines if the recipe requires specific levels of parts. (ie specifically a femto menipulator vs generic manipulator)
 	var/specific_parts = FALSE
 	///what tier of parts required to craft this recipe
-	var/tier = 1
+	var/tier_required = 1
+
 /datum/machining_recipe/New()
 	if(!result)
 		return
@@ -80,4 +81,4 @@
 		/obj/item/paper = 1
 	)
 	result = /obj/item/pen
-
+	tier_required = 2

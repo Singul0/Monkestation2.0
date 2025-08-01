@@ -177,7 +177,7 @@ const MainRecipeScreen = (props, context) => {
               lineHeight={2.5}
               align="center"
               content="Make"
-              disabled={busy}
+              disabled={!recipe.craftable}
               color="green"
               icon={busy ? 'circle-notch' : 'hammer'}
               iconSpin={busy ? 1 : 0}
