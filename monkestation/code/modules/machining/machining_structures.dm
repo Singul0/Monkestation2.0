@@ -136,9 +136,9 @@
 
 	// craftability
 	if(manipulator_tier >= recipe.tier_required)
-		data["craftable"] = TRUE
+		data["req_required"] = TRUE
 	else
-		data["craftable"] = FALSE
+		data["req_required"] = FALSE
 	return data
 
 /obj/machinery/lathe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -146,8 +146,11 @@
 		return
 	switch(action)
 		if("make")
-			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
 			var/datum/machining_recipe/recipe_path = (locate(params["recipe"]) in (GLOB.machining_recipes))
+			if(manipulator_tier < recipe_path.tier_required)
+				to_chat(usr, span_warning("You need at least a tier [recipe_path.tier_required] manipulator to make this recipe!"))
+				return
+			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
 			load_recipe(new recipe_path.type)
 
 			if(!to_make)
@@ -289,6 +292,7 @@
 			if(used_amt && stack_mat.use(used_amt))
 				req_materials[stock_part_path] -= used_amt
 				to_chat(user, span_notice("You add [interacted_item] to [src]."))
+				check_done(user)
 			return
 
 		// We might end up qdel'ing the part if it's a stock part datum.
@@ -318,18 +322,22 @@
 
 		to_chat(user, span_notice("You add [part_name] to [src]."))
 		req_materials[stock_part_base]--
-		var/is_not_enough = FALSE
-		for(var/req in req_materials)
-			if(req_materials[req] > 0)
-				is_not_enough = TRUE
-		if(!is_not_enough)
-			craftable = TRUE
-			to_chat(user, span_notice("You have added all the required materials to [src]."))
-			if(auto_dispense)
-				produce_recipe()
+		check_done(user)
 		return TRUE
 	to_chat(user, span_warning("You cannot add that to the machine!"))
 	return FALSE
+
+//check if lathe materials requirements are met
+/obj/machinery/lathe/proc/check_done(mob/user)
+	var/is_not_enough = FALSE
+	for(var/req in req_materials)
+		if(req_materials[req] > 0)
+			is_not_enough = TRUE
+	if(!is_not_enough)
+		craftable = TRUE
+		to_chat(user, span_notice("You have added all the required materials to [src]."))
+		if(auto_dispense)
+			produce_recipe()
 
 // Modular machining machineries, based off the lathe
 /obj/machinery/lathe/workstation

@@ -63,6 +63,8 @@
 	return list()
 
 //recipes for realsies
+
+//debug
 /datum/machining_recipe/debug_test
 	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
@@ -78,7 +80,17 @@
 	desc = "You shouldn't see this"
 	category = TAB_TYPE_PARTS
 	reqs = list(
-		/obj/item/paper = 1
+		/obj/item/paper = 1,
 	)
 	result = /obj/item/pen
 	tier_required = 2
+
+/datum/machining_recipe/screwbolt
+	category = TAB_GENERAL_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_FAST
+	reqs = list(
+		/obj/item/stack/rods = 2,
+	)
+	result = /obj/item/stack/machining_intermediates/screwbolt
+	result_amount = 2

@@ -226,16 +226,10 @@
 	desc = "A solid block of hardsteel, used in various advanced construction and manufacturing processes."
 	icon_state = "sheet-hardsteel"
 
-/obj/item/stack/machining_intermediates/hardsteel
-	name = "hardsteel"
-	singular_name = "hardsteel ingot"
-	desc = "A solid block of hardsteel, used in various advanced construction and manufacturing processes."
-	icon_state = "sheet-hardsteel"
-
 /obj/item/stack/machining_intermediates/screwbolt
-	name = "sheet screwbolt"
+	name = "screwbolt"
 	singular_name = "screw bolt"
-	desc = "A sheet of screw bolts, used in various construction and manufacturing processes."
+	desc = "A menagerie of screw and bolts, used in various construction and manufacturing processes."
 	icon_state = "sheet-screwbolt"
 
 /obj/item/stack/machining_intermediates/smallwire
