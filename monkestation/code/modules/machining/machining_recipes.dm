@@ -23,6 +23,7 @@
 		add_atom_icon(atom, id++)
 	add_tool_icons()
 
+// base object for all machining recipes
 /datum/machining_recipe
 	/// in-game display 1name
 	/// Optional, if not set uses result name
@@ -44,13 +45,14 @@
 	var/result_amount = 1
 	///determines if the recipe requires specific levels of parts. (ie specifically a femto menipulator vs generic manipulator)
 	var/specific_parts = FALSE
-
+	///what tier of parts required to craft this recipe
+	var/tier = 1
 /datum/machining_recipe/New()
 	if(!result)
 		return
 	var/atom/atom_result = result
 	if(!name && result)
-		name = initial(atom_result.name)
+		name = capitalize(initial(atom_result.name))
 	if(!desc && result)
 		desc = initial(atom_result.desc)
 
@@ -59,6 +61,7 @@
 /datum/machining_recipe/proc/crafting_ui_data()
 	return list()
 
+//recipes for realsies
 /datum/machining_recipe/debug_test
 	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
@@ -71,7 +74,6 @@
 	result = /obj/item/debug/omnitool
 
 /datum/machining_recipe/debug_example
-	name = "Debug Item For Testing"
 	desc = "You shouldn't see this"
 	category = TAB_TYPE_PARTS
 	reqs = list(
