@@ -14,10 +14,10 @@
 			. |= req_atom
 
 ///Representative icons for the contents of each crafting recipe
-/datum/asset/spritesheet/crafting/machining
+/datum/asset/spritesheet_batched/crafting/machining
 	name = "machining"
 
-/datum/asset/spritesheet/crafting/machining/create_spritesheets()
+/datum/asset/spritesheet_batched/crafting/machining/create_spritesheets()
 	var/id = 1
 	for(var/atom in GLOB.machining_recipes_atoms)
 		add_atom_icon(atom, id++)
@@ -25,7 +25,7 @@
 
 // base object for all machining recipes
 /datum/machining_recipe
-	/// in-game display 1name
+	/// in-game display name
 	/// Optional, if not set uses result name
 	var/name
 	/// description displayed in game
@@ -63,28 +63,6 @@
 	return list()
 
 //recipes for realsies
-
-//debug
-/datum/machining_recipe/debug_test
-	name = "Debug Item For Testing"
-	desc = "You shouldn't see this"
-	category = TAB_GENERAL_PARTS
-	reqs = list(
-		/obj/item/storage/toolbox = 1,
-		/obj/item/pen = 5,
-		/obj/item/aicard = 2,
-	)
-	result = /obj/item/debug/omnitool
-
-/datum/machining_recipe/debug_example
-	desc = "You shouldn't see this"
-	category = TAB_TYPE_PARTS
-	reqs = list(
-		/obj/item/paper = 1,
-	)
-	result = /obj/item/pen
-	upgrade_tier_required = 2
-
 //upgrade tiers
 /datum/machining_recipe/upgrade_tier_1
 	name = "Upgrade Tier 1 parts"

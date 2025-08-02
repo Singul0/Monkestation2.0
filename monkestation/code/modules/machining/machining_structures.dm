@@ -81,7 +81,7 @@
 
 /obj/machinery/lathe/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/crafting/machining),
+		get_asset_datum(/datum/asset/spritesheet_batched/crafting/machining),
 	)
 
 /obj/machinery/lathe/ui_data(mob/user)
