@@ -441,6 +441,7 @@
 	req_materials_name = null
 	craftable = FALSE
 
+//circuits
 /obj/item/circuitboard/machine/industrial_lathe
 	name = "Manual lathe"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
@@ -469,6 +470,54 @@
 
 /obj/item/circuitboard/machine/industrial_lathe/drillpress
 	build_path = /obj/machinery/lathe/drillpress
+
+//machinery design
+/datum/design/board/industrial_lathe
+    name = "Industrial Lathe Board"
+    desc = "The circuit board for an industrial lathe."
+    id = "industrial_lathe"
+    build_path = /obj/item/circuitboard/machine/industrial_lathe
+    category = list(
+        RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+    )
+    departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/board/industrial_lathe_workstation
+    name = "Workstation Board"
+    desc = "The circuit board for a workstation."
+    id = "industrial_lathe_workstation"
+    build_path = /obj/item/circuitboard/machine/industrial_lathe/workstation
+    category = list(
+        RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+    )
+    departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/board/industrial_lathe_furnace
+    name = "Furnace Board"
+    desc = "The circuit board for a furnace."
+    id = "industrial_lathe_furnace"
+    build_path = /obj/item/circuitboard/machine/industrial_lathe/furnace
+    category = list(
+        RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+    )
+    departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/board/industrial_lathe_tablesaw
+    name = "Tablesaw Board"
+    desc = "The circuit board for a tablesaw."
+    id = "industrial_lathe_tablesaw"
+    build_path = /obj/item/circuitboard/machine/industrial_lathe/tablesaw
+    category = list(
+        RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+    )
+    departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/board/industrial_lathe_drophammer
+    name = "Drophammer Board"
+    desc = "The circuit board for a drophammer."
+    id = "industrial_lathe_drophammer"
+    build_path = /obj/item/circuitboard/machine/industrial_lathe/drophammer
+    category = list(
         RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
     )
     departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
