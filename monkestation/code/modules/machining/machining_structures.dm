@@ -34,6 +34,9 @@
 	var/speed_mod = 1
 	var/upgrade_tier = 1
 
+	///sounds for machines
+	var/operating_sound = 'sound/items/welder.ogg'
+
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
 
@@ -53,8 +56,8 @@
 
 			nice_list += list("[req_materials[materials]] [req_materials_name[materials]]\s")
 		. += span_info(span_notice("It requires [english_list(nice_list, "no more components")]."))
-	if (obj_flags & EMAGGED)
-	 	. += span_warning("The safety protocols panel shows sparks coming out of it!")
+	if(obj_flags & EMAGGED)
+		. += span_warning("The safety protocols panel shows sparks coming out of it!")
 
 /obj/machinery/lathe/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if (obj_flags & EMAGGED)
@@ -66,8 +69,9 @@
 /obj/machinery/lathe/proc/emag_death(mob/victim)
 	var/obj/item/bodypart/chopchop = victim.get_active_hand()
 	chopchop.dismember()
+	victim.take_damage(105, BRUTE)
 	playsound(src, 'sound/weapons/slice.ogg', 25, TRUE, -1)
-	to_chat(user, span_userdanger("The safety protocols fails and the [src] sucks your arm into the machine!"))
+	to_chat(victim, span_userdanger("The safety protocols fails and the [src] sucks your arm into the machine!"))
 
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui)
   ui = SStgui.try_update_ui(user, src, ui)
@@ -166,15 +170,14 @@
 		return
 	switch(action)
 		if("make")
-			if(!to_make)
+			var/datum/machining_recipe/recipe_path = (locate(params["recipe"]) in (GLOB.machining_recipes))
+			if(!recipe_path)
 				return
-			if(!to_make.machinery_type == machinery_type)
+			if(!recipe_path.machinery_type == machinery_type)
 				return
 			if(busy)
 				to_chat(usr, span_warning("[src] workspace is preoccupied with another recipe!"))
 				return
-
-			var/datum/machining_recipe/recipe_path = (locate(params["recipe"]) in (GLOB.machining_recipes))
 			if(upgrade_tier < recipe_path.upgrade_tier_required)
 				to_chat(usr, span_warning("You need at least a tier [upgrade_tier] upgrade to make this recipe!"))
 				return
@@ -303,6 +306,7 @@
 
 	if(to_make_path)
 		load_recipe(new to_make_path)
+	playsound(src, operating_sound)
 
 /obj/machinery/lathe/attackby(obj/item/interacted_item, mob/user, params)
 	. = ..()
@@ -465,3 +469,26 @@
 
 /obj/item/circuitboard/machine/industrial_lathe/drillpress
 	build_path = /obj/machinery/lathe/drillpress
+        RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+    )
+    departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/board/industrial_lathe_tailor
+    name = "Tailor Board"
+    desc = "The circuit board for a tailor."
+    id = "industrial_lathe_tailor"
+    build_path = /obj/item/circuitboard/machine/industrial_lathe/tailor
+    category = list(
+        RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+    )
+    departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/board/industrial_lathe_drillpress
+    name = "Drill Press Board"
+    desc = "The circuit board for a drill press."
+    id = "industrial_lathe_drillpress"
+    build_path = /obj/item/circuitboard/machine/industrial_lathe/drillpress
+    category = list(
+        RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+    )
+    departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
