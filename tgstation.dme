@@ -7721,6 +7721,7 @@
 #include "monkestation\code\modules\machining\machining_exports.dm"
 #include "monkestation\code\modules\machining\machining_intermediates.dm"
 #include "monkestation\code\modules\machining\machining_recipes.dm"
+#include "monkestation\code\modules\machining\machining_skill.dm"
 #include "monkestation\code\modules\machining\machining_structures.dm"
 #include "monkestation\code\modules\map_gen_expansions\_basemapping.dm"
 #include "monkestation\code\modules\map_gen_expansions\areas.dm"

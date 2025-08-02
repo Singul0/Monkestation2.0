@@ -171,14 +171,14 @@
 				materials -= item
 
 		if("toggle_dispense")
-			if(manipulator_tier <= 3)
+			if(manipulator_tier < 3)
 				to_chat(usr, span_warning("You need at least a tier 3 manipulator to toggle auto dispense!"))
 				return
 			auto_dispense = !auto_dispense
 			to_chat(usr, span_notice("Auto dispense is now [auto_dispense ? "enabled" : "disabled"]."))
 
 		if("toggle_build")
-			if(manipulator_tier <= 4)
+			if(manipulator_tier < 4)
 				to_chat(usr, span_warning("You need at least a tier 4 manipulator to toggle auto dispense!"))
 				return
 			auto_build = !auto_build
@@ -243,13 +243,26 @@
 	req_materials = to_make.reqs
 	update_namelist(to_make)
 
-/obj/machinery/lathe/proc/produce_recipe(datum/machining_recipe/recipe)
-	to_chat(usr, span_notice("You start following the design document on [src]..."))
-	if(!do_after(usr, to_make.crafting_time * speed_mod, src))
-		to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
-		return
+/obj/machinery/lathe/proc/produce_recipe(automatic = FALSE)
+	if(!automatic)
+		to_chat(usr, span_notice("You start following the design document on [src]..."))
+		if(!do_after(usr, to_make.crafting_time * speed_mod, src))
+			to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
+			return
+		if(!to_make)
+			to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
+			return //no abusing abort button while in do_after
+		var/gain_array = list(MACHINING_DELAY_VERY_FAST, MACHINING_DELAY_FAST, MACHINING_DELAY_NORMAL, MACHINING_DELAY_SLOW, MACHINING_DELAY_VERY_SLOW)
+		usr?.mind?.adjust_experience(/datum/skill/machinist, gain_array[clamp(to_make.tier_required, 1, 5)])
+		spawn_item()
+	else
+		audible_message(span_notice("You look as manipulators on [src] start working on the design document..."))
+		addtimer(CALLBACK(src, PROC_REF(spawn_item)), to_make.crafting_time * speed_mod)
+
+/obj/machinery/lathe/proc/spawn_item()
 	if(!to_make)
-		return //no abusing abort button while in do_after
+		visible_message(span_warning("[src] manipulators fizzles out!"))
+		return //no abusing by using autobuild
 
 	for(var/amount in 1 to to_make.result_amount)
 		new to_make.result(src.loc)
@@ -337,7 +350,7 @@
 		craftable = TRUE
 		to_chat(user, span_notice("You have added all the required materials to [src]."))
 		if(auto_dispense)
-			produce_recipe()
+			produce_recipe(TRUE)
 
 // Modular machining machineries, based off the lathe
 /obj/machinery/lathe/workstation

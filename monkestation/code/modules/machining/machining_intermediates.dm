@@ -144,7 +144,7 @@
 
 /obj/item/machining_intermediates/smallmotor
 	name = "small motor"
-	desc = "A small motor, used for powering various machines and devices."
+	desc = "A small motor, used for powering various machines and devices. Incompatible with standardized stock parts."
 	icon_state = "smallmotor"
 
 /obj/item/machining_intermediates/suitsensors
@@ -235,5 +235,5 @@
 /obj/item/stack/machining_intermediates/smallwire
 	name = "small wire"
 	singular_name = "small wire"
-	desc = "A small wire, used in various construction and manufacturing processes."
+	desc = "A small wire with its insulation stripped, used in various construction and manufacturing processes."
 	icon_state = "sheet-smallwire"
