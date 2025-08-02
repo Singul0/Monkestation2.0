@@ -4,6 +4,8 @@
 	icon = 'monkestation/icons/obj/machining_intermediates.dmi'
 
 /obj/item/stack/machining_intermediates
+	name = "root parent" // fuck off linters
+	singular_name = "parent"
 	desc = "you shouldn't see this, yell at the fucking coders"
 	icon = 'monkestation/icons/obj/machining_intermediates.dmi'
 	novariants = FALSE
@@ -231,21 +233,25 @@
 	singular_name = "steel ingot"
 	desc = "A solid block of steel, used in various construction and manufacturing processes."
 	icon_state = "sheet-steel"
+	merge_type = /obj/item/stack/machining_intermediates/steel
 
 /obj/item/stack/machining_intermediates/hardsteel
 	name = "hardsteel"
 	singular_name = "hardsteel ingot"
 	desc = "A solid block of hardsteel, used in various advanced construction and manufacturing processes."
 	icon_state = "sheet-hardsteel"
+	merge_type = /obj/item/stack/machining_intermediates/hardsteel
 
 /obj/item/stack/machining_intermediates/screwbolt
 	name = "screwbolt"
 	singular_name = "screw bolt"
 	desc = "A menagerie of screw and bolts, used in various construction and manufacturing processes."
 	icon_state = "sheet-screwbolt"
+	merge_type = /obj/item/stack/machining_intermediates/screwbolt
 
 /obj/item/stack/machining_intermediates/smallwire
 	name = "small wire"
 	singular_name = "small wire"
 	desc = "A small wire with its insulation stripped, used in various construction and manufacturing processes."
 	icon_state = "sheet-smallwire"
+	merge_type = /obj/item/stack/machining_intermediates/smallwire
