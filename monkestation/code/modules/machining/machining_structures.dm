@@ -7,6 +7,8 @@
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/industrial_lathe
 	layer = BELOW_OBJ_LAYER
+
+	//what type of machining machine this is
 	var/machinery_type = MACHINING_LATHE
 
 	///Recipe that the stuff is currently set to make
@@ -30,6 +32,7 @@
 	/// what tier are the parts
 	var/manipulator_tier = 1
 	var/speed_mod = 1
+	var/upgrade_tier = 1
 
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
@@ -71,6 +74,8 @@
 	data["craftable"] = craftable
 	data["auto_dispense"] = auto_dispense
 	data["auto_build"] = auto_build
+	data["user_machining_skill"] = user?.mind?.get_skill_level(/datum/skill/machinist) || 0 //default 1
+	data["upgrade_tier"] = upgrade_tier
 
 	// Recipes
 	for(var/datum/machining_recipe/recipe as anything in GLOB.machining_recipes)
@@ -135,7 +140,7 @@
 			data["reqs"]["[id]"] = recipe.reqs[req_atom]
 
 	// craftability
-	if(manipulator_tier >= recipe.tier_required)
+	if(upgrade_tier >= recipe.upgrade_tier_required)
 		data["req_required"] = TRUE
 	else
 		data["req_required"] = FALSE
@@ -146,13 +151,6 @@
 		return
 	switch(action)
 		if("make")
-			var/datum/machining_recipe/recipe_path = (locate(params["recipe"]) in (GLOB.machining_recipes))
-			if(manipulator_tier < recipe_path.tier_required)
-				to_chat(usr, span_warning("You need at least a tier [recipe_path.tier_required] manipulator to make this recipe!"))
-				return
-			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
-			load_recipe(new recipe_path.type)
-
 			if(!to_make)
 				return
 			if(!to_make.machinery_type == machinery_type)
@@ -160,6 +158,14 @@
 			if(busy)
 				to_chat(usr, span_warning("[src] workspace is preoccupied with another recipe!"))
 				return
+
+			var/datum/machining_recipe/recipe_path = (locate(params["recipe"]) in (GLOB.machining_recipes))
+			if(upgrade_tier < recipe_path.upgrade_tier_required)
+				to_chat(usr, span_warning("You need at least a tier [upgrade_tier] upgrade to make this recipe!"))
+				return
+
+			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))
+			load_recipe(new recipe_path.type)
 
 		if("produce")
 			produce_recipe()
@@ -253,7 +259,7 @@
 			to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
 			return //no abusing abort button while in do_after
 		var/gain_array = list(MACHINING_DELAY_VERY_FAST, MACHINING_DELAY_FAST, MACHINING_DELAY_NORMAL, MACHINING_DELAY_SLOW, MACHINING_DELAY_VERY_SLOW)
-		usr?.mind?.adjust_experience(/datum/skill/machinist, gain_array[clamp(to_make.tier_required, 1, 5)])
+		usr?.mind?.adjust_experience(/datum/skill/machinist, gain_array[clamp(to_make.upgrade_tier_required, 1, 5)])
 		spawn_item()
 	else
 		audible_message(span_notice("You look as manipulators on [src] start working on the design document..."))
@@ -262,7 +268,7 @@
 /obj/machinery/lathe/proc/spawn_item()
 	if(!to_make)
 		visible_message(span_warning("[src] manipulators fizzles out!"))
-		return //no abusing by using autobuild
+		return //no abusing by using auto-dispense
 
 	for(var/amount in 1 to to_make.result_amount)
 		new to_make.result(src.loc)
@@ -281,6 +287,17 @@
 
 /obj/machinery/lathe/attackby(obj/item/interacted_item, mob/user, params)
 	. = ..()
+	if(istype(interacted_item, /obj/item/machining_intermediates/upgrade))
+		var/obj/item/machining_intermediates/upgrade/upgrade_part = interacted_item
+		if(upgrade_part.upgrade_tier <= upgrade_tier)
+			to_chat(user, span_warning("You cannot add a tier [upgrade_part.upgrade_tier] upgrade to a lathe with a tier [upgrade_tier] manipulator!"))
+			return FALSE
+		upgrade_tier = upgrade_part.upgrade_tier
+		to_chat(user, span_notice("You upgraded the [src] into tier [upgrade_tier]."))
+		update_namelist()
+		qdel(upgrade_part)
+		return TRUE
+
 	for(var/stock_part_base in req_materials)
 		if (req_materials[stock_part_base] == 0)
 			continue

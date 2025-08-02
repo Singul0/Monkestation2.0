@@ -46,7 +46,7 @@
 	///determines if the recipe requires specific levels of parts. (ie specifically a femto menipulator vs generic manipulator)
 	var/specific_parts = FALSE
 	///what tier of skills required to craft this recipe
-	var/tier_required = 1
+	var/upgrade_tier_required = 1
 
 /datum/machining_recipe/New()
 	if(!result)
@@ -83,8 +83,61 @@
 		/obj/item/paper = 1,
 	)
 	result = /obj/item/pen
-	tier_required = 2
+	upgrade_tier_required = 2
 
+//upgrade tiers
+/datum/machining_recipe/upgrade_tier_1
+	name = "Upgrade Tier 1 parts"
+	desc = "Crappy rusted and warped machine parts, better then the half decayed parts NT supplied. Allows for more designs to be produced."
+	machinery_type = MACHINING_WORKSTATION
+	category = TAB_ASSEMBLY_PARTS
+	reqs = list(
+		/obj/item/stack/machining_intermediates/screwbolt = 4,
+		/obj/item/stack/sheet/iron = 10,
+	)
+	result = /obj/item/machining_intermediates/upgrade/machineparts_t1
+	upgrade_tier_required = 1
+
+/datum/machining_recipe/upgrade_tier_2
+	name = "Upgrade Tier 2 parts"
+	desc = "Dull but workable machine parts, much better then what you could make before. Allows for more designs to be produced."
+	machinery_type = MACHINING_WORKSTATION
+	category = TAB_ASSEMBLY_PARTS
+	reqs = list(
+		/obj/item/stack/machining_intermediates/screwbolt = 10,
+		/obj/item/stack/machining_intermediates/steel = 10,
+		/obj/item/machining_intermediates/moltenplastic = 4,
+	)
+	result = /obj/item/machining_intermediates/upgrade/machineparts_t2
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/upgrade_tier_3
+	name = "Upgrade Tier 3 parts"
+	desc = "Shiny and strong machine parts. Able to work with great efficency. Allows for more designs to be produced."
+	machinery_type = MACHINING_WORKSTATION
+	category = TAB_ASSEMBLY_PARTS
+	reqs = list(
+		/obj/item/stack/machining_intermediates/screwbolt = 10,
+		/obj/item/stack/machining_intermediates/hardsteel = 5,
+		/obj/item/machining_intermediates/universalcircuit = 4,
+	)
+	result = /obj/item/machining_intermediates/upgrade/machineparts_t3
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/upgrade_tier_4
+	name = "Upgrade Tier 4 parts"
+	desc = "Perfect parts, able to work flawlessly with anything its designed for, which is your machines. Allows for more designs to be produced."
+	machinery_type = MACHINING_WORKSTATION
+	category = TAB_ASSEMBLY_PARTS
+	reqs = list(
+		/obj/item/stack/machining_intermediates/screwbolt = 4,
+		/obj/item/stack/machining_intermediates/hardsteel = 5,
+		/obj/item/machining_intermediates/universalcircuit = 6,
+	)
+	result = /obj/item/machining_intermediates/upgrade/machineparts_t4
+	upgrade_tier_required = 4
+
+//assembly parts
 /datum/machining_recipe/screwbolt
 	category = TAB_GENERAL_PARTS
 	machinery_type = MACHINING_LATHE
@@ -110,7 +163,7 @@
 	machinery_type = MACHINING_WORKSTATION
 	crafting_time = MACHINING_DELAY_NORMAL
 	result = /obj/item/machining_intermediates/universalcircuit
-	tier_required = 2
+	upgrade_tier_required = 3
 	reqs = list(
 		/obj/item/machining_intermediates/moltenplastic = 1,
 		/obj/item/stack/machining_intermediates/smallwire = 5,
@@ -122,7 +175,7 @@
 	machinery_type = MACHINING_WORKSTATION
 	crafting_time = MACHINING_DELAY_NORMAL
 	result = /obj/item/machining_intermediates/smallmotor
-	tier_required = 2
+	upgrade_tier_required = 3
 	reqs = list(
 		/obj/item/stack/rods = 2,
 		/obj/item/stack/machining_intermediates/smallwire = 20,
@@ -155,7 +208,7 @@
 	machinery_type = MACHINING_FURNACE
 	crafting_time = MACHINING_DELAY_NORMAL
 	result = /obj/item/stack/machining_intermediates/steel
-	tier_required = 3
+	upgrade_tier_required = 3
 	reqs = list(
 		/obj/item/stack/sheet/iron = 2,
 	)
@@ -165,7 +218,7 @@
 	machinery_type = MACHINING_FURNACE
 	crafting_time = MACHINING_DELAY_NORMAL
 	result = /obj/item/stack/machining_intermediates/hardsteel
-	tier_required = 4
+	upgrade_tier_required = 4
 	reqs = list(
 		/obj/item/stack/sheet/iron = 2,
 		/obj/item/stack/sheet/mineral/titanium = 1,
