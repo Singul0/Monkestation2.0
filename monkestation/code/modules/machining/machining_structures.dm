@@ -53,6 +53,21 @@
 
 			nice_list += list("[req_materials[materials]] [req_materials_name[materials]]\s")
 		. += span_info(span_notice("It requires [english_list(nice_list, "no more components")]."))
+	if (obj_flags & EMAGGED)
+	 	. += span_warning("The safety protocols panel shows sparks coming out of it!")
+
+/obj/machinery/lathe/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if (obj_flags & EMAGGED)
+		return FALSE
+	balloon_alert(user, "safety protocols disabled")
+	obj_flags |= EMAGGED
+	return TRUE
+
+/obj/machinery/lathe/proc/emag_death(mob/victim)
+	var/obj/item/bodypart/chopchop = victim.get_active_hand()
+	chopchop.dismember()
+	playsound(src, 'sound/weapons/slice.ogg', 25, TRUE, -1)
+	to_chat(user, span_userdanger("The safety protocols fails and the [src] sucks your arm into the machine!"))
 
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui)
   ui = SStgui.try_update_ui(user, src, ui)
@@ -253,8 +268,12 @@
 	if(!automatic)
 		to_chat(usr, span_notice("You start following the design document on [src]..."))
 		if(!do_after(usr, to_make.crafting_time * speed_mod, src))
-			to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
-			return
+			if (obj_flags & EMAGGED)
+				emag_death(usr)
+				return
+			else
+				to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
+				return
 		if(!to_make)
 			to_chat(usr, span_warning("You fail to follow the design document on [src]!"))
 			return //no abusing abort button while in do_after
@@ -428,3 +447,21 @@
 		/obj/item/stack/sheet/glass = 5,
 		/obj/item/stack/cable_coil = 15,
 		)
+
+/obj/item/circuitboard/machine/industrial_lathe/workstation
+	build_path = /obj/machinery/lathe/workstation
+
+/obj/item/circuitboard/machine/industrial_lathe/furnace
+	build_path = /obj/machinery/lathe/furnace
+
+/obj/item/circuitboard/machine/industrial_lathe/tablesaw
+	build_path = /obj/machinery/lathe/tablesaw
+
+/obj/item/circuitboard/machine/industrial_lathe/drophammer
+	build_path = /obj/machinery/lathe/drophammer
+
+/obj/item/circuitboard/machine/industrial_lathe/tailor
+	build_path = /obj/machinery/lathe/tailor
+
+/obj/item/circuitboard/machine/industrial_lathe/drillpress
+	build_path = /obj/machinery/lathe/drillpress
