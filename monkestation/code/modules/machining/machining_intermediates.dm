@@ -9,6 +9,7 @@
 	desc = "you shouldn't see this, yell at the fucking coders"
 	icon = 'monkestation/icons/obj/machining_intermediates.dmi'
 	novariants = FALSE
+	merge_type = /obj/item/stack/machining_intermediates
 
 //basic items
 /obj/item/machining_intermediates/axehead
