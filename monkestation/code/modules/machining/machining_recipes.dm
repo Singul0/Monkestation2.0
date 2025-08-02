@@ -243,3 +243,768 @@
 	reqs = list(
 		/obj/item/grown/log = 1,
 	)
+
+//Type parts
+/datum/machining_recipe/insulation
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/insulation
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 2,
+	)
+
+/datum/machining_recipe/sewingsupplies
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/sewingsupplies
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 4,
+		/obj/item/stack/sheet/mineral/wood = 1,
+		/obj/item/stack/rods = 1,
+	)
+
+/datum/machining_recipe/softarmor
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/softarmor
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 10,
+		/obj/item/stack/sheet/leather = 4,
+		/obj/item/machining_intermediates/sewingsupplies = 1,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/hardarmor
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/hardarmor
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 4,
+		/obj/item/stack/machining_intermediates/hardsteel = 4,
+		/obj/item/machining_intermediates/sewingsupplies = 1,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/handle_wood
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_DRILLPRESS
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/handle_wood
+	reqs = list(
+		/obj/item/machining_intermediates/shapedwood = 1,
+		/obj/item/stack/rods = 1,
+	)
+
+/datum/machining_recipe/handle_polymer
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_DRILLPRESS
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/handle_polymer
+	reqs = list(
+		/obj/item/machining_intermediates/moltenplastic = 1,
+		/obj/item/stack/rods = 1,
+	)
+
+/datum/machining_recipe/stock_wood
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_DRILLPRESS
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/stock_wood
+	result_amount = 1
+	reqs = list(
+		/obj/item/machining_intermediates/shapedwood = 2,
+	)
+
+/datum/machining_recipe/stock_polymer
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_DRILLPRESS
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/stock_polymer
+	result_amount = 1
+	reqs = list(
+		/obj/item/machining_intermediates/moltenplastic = 2,
+	)
+
+/datum/machining_recipe/triggermechanism
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_WORKSTATION
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/trigger
+	reqs = list(
+		/obj/item/stack/sheet/iron = 3,
+		/obj/item/stack/machining_intermediates/screwbolt = 2,
+		/obj/item/machining_intermediates/moltenplastic = 1,
+		/obj/item/stack/machining_intermediates/smallwire = 4,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/bolt
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/firearm_bolt
+	reqs = list(
+		/obj/item/stack/machining_intermediates/hardsteel = 1,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/gunbarrel_pistol
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/gunbarrel_pistol
+	reqs = list(
+		/obj/item/stack/machining_intermediates/steel = 2,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/gunbarrel_rifle
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/gunbarrel_rifle
+	reqs = list(
+		/obj/item/stack/machining_intermediates/hardsteel = 4,
+	)
+	upgrade_tier_required = 4
+
+/datum/machining_recipe/gunbarrel_smootbore
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/gunbarrel_smootbore
+	reqs = list(
+		/obj/item/stack/machining_intermediates/steel = 4,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/bullet_small_casing
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_VERY_FAST
+	result = /obj/item/machining_intermediates/bullet_small_casing
+	reqs = list(
+		/obj/item/stack/sheet/iron = 1,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/bullet_large_casing
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_VERY_FAST
+	result = /obj/item/machining_intermediates/bullet_large_casing
+	reqs = list(
+		/obj/item/stack/sheet/iron = 2,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/bullet_small
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_VERY_FAST
+	result = /obj/item/machining_intermediates/bullet_small
+	reqs = list(
+		/obj/item/stack/sheet/iron = 1,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/bullet_large
+	category = TAB_TYPE_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_VERY_FAST
+	result = /obj/item/machining_intermediates/bullet_large
+	reqs = list(
+		/obj/item/stack/sheet/iron = 2,
+	)
+	upgrade_tier_required = 2
+
+//specific parts
+/datum/machining_recipe/suitsensors
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_WORKSTATION
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/suitsensors
+	reqs = list(
+		/obj/item/machining_intermediates/universalcircuit = 2,
+		/obj/item/stack/machining_intermediates/smallwire = 4,
+		/obj/item/stack/cable_coil = 10,
+		/obj/item/stack/sheet/cloth = 2,
+	)
+
+/datum/machining_recipe/dyes
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_FURNACE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/dye
+	reqs = list(
+		/obj/item/machining_intermediates/moltenplastic = 2,
+	)
+
+/datum/machining_recipe/shoes
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/clothing/shoes/sneakers/black
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 4,
+		/obj/item/machining_intermediates/insulation = 1,
+	)
+
+/datum/machining_recipe/jumpsuit
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/clothing/under/color/grey
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 4,
+		/obj/item/machining_intermediates/insulation = 1,
+		/obj/item/machining_intermediates/sewingsupplies = 1,
+		/obj/item/machining_intermediates/suitsensors = 1,
+	)
+
+/datum/machining_recipe/winterjacket
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/clothing/suit/hooded/wintercoat
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 8,
+		/obj/item/machining_intermediates/insulation = 4,
+		/obj/item/machining_intermediates/sewingsupplies = 2,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/hardened_exosuit_parts
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_WORKSTATION
+	crafting_time = MACHINING_DELAY_SLOW
+	result = /obj/item/machining_intermediates/hardenedexosuit_part
+	reqs = list(
+		/obj/item/stack/machining_intermediates/screwbolt = 4,
+		/obj/item/stack/machining_intermediates/steel = 10,
+		/obj/item/machining_intermediates/moltenplastic = 2,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/hardened_exosuit_plating
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_WORKSTATION
+	crafting_time = MACHINING_DELAY_SLOW
+	result = /obj/item/machining_intermediates/hardenedexosuit_plate
+	reqs = list(
+		/obj/item/stack/machining_intermediates/screwbolt = 4,
+		/obj/item/stack/machining_intermediates/hardsteel = 8,
+		/obj/item/stack/machining_intermediates/steel = 4,
+	)
+	upgrade_tier_required = 4
+
+/datum/machining_recipe/slidepistol
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/slidepistol
+	reqs = list(
+		/obj/item/stack/sheet/iron = 2,
+		/obj/item/stack/machining_intermediates/screwbolt = 1,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/firearm_hammer
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/firearm_hammer
+	reqs = list(
+		/obj/item/stack/machining_intermediates/steel = 1,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/bullet_small_ap
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_VERY_FAST
+	result = /obj/item/machining_intermediates/bullet_small_ap
+	reqs = list(
+		/obj/item/stack/machining_intermediates/hardsteel = 1,
+	)
+	upgrade_tier_required = 4
+	result_amount = 6
+
+/datum/machining_recipe/bullet_large_ap
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_VERY_FAST
+	result = /obj/item/machining_intermediates/bullet_large_ap
+	reqs = list(
+		/obj/item/stack/machining_intermediates/hardsteel = 1,
+	)
+	upgrade_tier_required = 4
+	result_amount = 12
+
+/datum/machining_recipe/lens
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_DRILLPRESS
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/lens
+	reqs = list(
+		/obj/item/stack/sheet/glass = 2,
+		/obj/item/machining_intermediates/universalcircuit = 1,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/crappyring
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_FAST
+	result = /obj/item/machining_intermediates/crappyring
+	reqs = list(
+		/obj/item/stack/sheet/mineral/silver = 3,
+		/obj/item/stack/sheet/mineral/titanium = 1,
+	)
+	upgrade_tier_required = 2
+
+/datum/machining_recipe/fancyring
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_FAST
+	result = /obj/item/machining_intermediates/fancyring
+	reqs = list(
+		/obj/item/stack/sheet/mineral/gold = 3,
+		/obj/item/stack/sheet/mineral/titanium = 1,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/axehead
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_LATHE
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/machining_intermediates/axehead
+	reqs = list(
+		/obj/item/stack/machining_intermediates/hardsteel = 5,
+	)
+	upgrade_tier_required = 4
+
+/datum/machining_recipe/bodyarmor
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/clothing/suit/armor/vest
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 4,
+		/obj/item/machining_intermediates/softarmor = 4,
+		/obj/item/stack/sheet/leather = 2,
+		/obj/item/machining_intermediates/sewingsupplies = 1,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/helmet
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/clothing/head/helmet
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 4,
+		/obj/item/machining_intermediates/softarmor = 2,
+		/obj/item/stack/sheet/glass = 2,
+		/obj/item/machining_intermediates/sewingsupplies = 1,
+	)
+	upgrade_tier_required = 3
+
+/datum/machining_recipe/bodyarmor_bulletproof
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/clothing/suit/armor/bulletproof
+	reqs = list(
+		/obj/item/machining_intermediates/hardarmor = 2,
+		/obj/item/machining_intermediates/softarmor = 4,
+		/obj/item/stack/sheet/cloth = 6,
+		/obj/item/machining_intermediates/sewingsupplies = 2,
+	)
+	upgrade_tier_required = 4
+
+/datum/machining_recipe/helmet_bulletproof
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_TAILOR
+	crafting_time = MACHINING_DELAY_NORMAL
+	result = /obj/item/clothing/head/helmet/alt
+	reqs = list(
+		/obj/item/machining_intermediates/hardarmor = 2,
+		/obj/item/machining_intermediates/softarmor = 2,
+		/obj/item/stack/sheet/cloth = 4,
+		/obj/item/stack/sheet/rglass = 2,
+		/obj/item/machining_intermediates/sewingsupplies = 2,
+	)
+	upgrade_tier_required = 4
+
+// /datum/machining_recipe/forged_exosuit_parts
+// 	category = TAB_SPECIFIC_PARTS
+// 	machinery_type = MACHINING_WORKSTATION
+// 	crafting_time = MACHINING_DELAY_SLOW
+// 	result = /obj/item/machining_intermediates/forgedexosuit_part
+// 	reqs = list(
+// 		/obj/item/stack/machining_intermediates/screwbolt = 8,
+// 		/obj/item/stack/machining_intermediates/smallwire = 10,
+// 		/obj/item/machining_intermediates/hardenedexosuit_part = 2,
+// 		/obj/item/machining_intermediates/suitsensors = 1,
+// 	)
+// 	upgrade_tier_required = 3
+
+// /datum/machining_recipe/forged_exosuit_plating
+// 	category = TAB_SPECIFIC_PARTS
+// 	machinery_type = MACHINING_WORKSTATION
+// 	crafting_time = MACHINING_DELAY_SLOW
+// 	result = /obj/item/machining_intermediates/forgedexosuit_plate
+// 	reqs = list(
+// 		/obj/item/stack/machining_intermediates/screwbolt = 4,
+// 		/obj/item/stack/machining_intermediates/steel = 10,
+// 		/obj/item/machining_intermediates/hardenedexosuit_plate = 2,
+// 		/obj/item/stack/sheet/mineral/gold = 2,
+// 		/obj/item/stack/sheet/mineral/silver = 2,
+// 		/obj/item/stack/sheet/mineral/titanium = 8,
+// 	)
+// 	upgrade_tier_required = 4
+
+/datum/machining_recipe/mosin
+	category = TAB_SPECIFIC_PARTS
+	machinery_type = MACHINING_WORKSTATION
+	crafting_time = MACHINING_DELAY_EXCRUCIATINGLY_SLOW
+	result = /obj/item/gun/ballistic/rifle/boltaction
+	reqs = list(
+		/obj/item/machining_intermediates/stock_wood = 1,
+		/obj/item/machining_intermediates/gunbarrel_rifle = 1,
+		/obj/item/machining_intermediates/firearm_bolt = 2,
+		/obj/item/stack/sheet/mineral/wood = 4,
+		/obj/item/stack/machining_intermediates/screwbolt = 6,
+	)
+	upgrade_tier_required = 4
+
+/datum/machining_recipe/wylom_amr
+    name = "Wylom AMR"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/gun/ballistic/automatic/wylom
+    reqs = list(
+        /obj/item/machining_intermediates/stock_polymer = 1,
+        /obj/item/machining_intermediates/gunbarrel_rifle = 1,
+        /obj/item/machining_intermediates/firearm_bolt = 2,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+        /obj/item/stack/machining_intermediates/hardsteel = 4,
+        /obj/item/stack/machining_intermediates/screwbolt = 8,
+        /obj/item/machining_intermediates/moltenplastic = 2,
+    )
+    upgrade_tier_required = 5
+
+/datum/machining_recipe/wylom_magazine
+    name = "Wylom Magazine"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_NORMAL
+    result = /obj/item/ammo_box/magazine/wylom
+    reqs = list(
+        /obj/item/machining_intermediates/moltenplastic = 4,
+        /obj/item/stack/rods = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+    )
+    upgrade_tier_required = 5
+
+/datum/machining_recipe/c20r
+    name = "C-20r"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/gun/ballistic/automatic/c20r/unrestricted
+    reqs = list(
+        /obj/item/machining_intermediates/stock_polymer = 1,
+        /obj/item/machining_intermediates/gunbarrel_rifle = 1,
+        /obj/item/machining_intermediates/firearm_bolt = 2,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+        /obj/item/stack/machining_intermediates/hardsteel = 4,
+        /obj/item/stack/machining_intermediates/screwbolt = 8,
+        /obj/item/machining_intermediates/moltenplastic = 2,
+		/obj/item/machining_intermediates/bullet_large_ap = 12,
+    )
+    upgrade_tier_required = 5
+
+/datum/machining_recipe/c20r_magazine
+    name = "C-20r Magazine"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_NORMAL
+    result = /obj/item/ammo_box/magazine/smgm45
+    reqs = list(
+        /obj/item/machining_intermediates/moltenplastic = 4,
+        /obj/item/stack/rods = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+		/obj/item/machining_intermediates/bullet_large_ap = 12,
+    )
+    upgrade_tier_required = 5
+
+/datum/machining_recipe/revolver_38
+    name = ".38 Revolver"
+    desc = "A revolver chambered in .38 special, looks identical to the detective's revolver."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/gun/ballistic/revolver/c38
+    reqs = list(
+        /obj/item/machining_intermediates/firearm_hammer = 1,
+        /obj/item/machining_intermediates/gunbarrel_pistol = 1,
+        /obj/item/machining_intermediates/handle_wood = 1,
+        /obj/item/stack/machining_intermediates/steel = 4,
+        /obj/item/machining_intermediates/trigger = 1,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+		/obj/item/machining_intermediates/bullet_small = 6,
+    )
+    upgrade_tier_required = 3
+
+/datum/machining_recipe/paco_pistol
+    name = "Paco Pistol"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/gun/ballistic/automatic/pistol/paco/no_mag
+    reqs = list(
+        /obj/item/machining_intermediates/firearm_bolt = 1,
+        /obj/item/machining_intermediates/gunbarrel_pistol = 1,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+        /obj/item/stack/machining_intermediates/steel = 4,
+        /obj/item/machining_intermediates/trigger = 1,
+        /obj/item/stack/machining_intermediates/screwbolt = 8,
+    )
+    upgrade_tier_required = 3
+
+/datum/machining_recipe/paco_magazine
+    name = "Paco Magazine"
+    desc = "A magazine for the Paco pistol. (use mags desc)"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_NORMAL
+    result = /obj/item/ammo_box/magazine/m35
+    reqs = list(
+        /obj/item/machining_intermediates/moltenplastic = 2,
+        /obj/item/stack/rods = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+		/obj/item/machining_intermediates/bullet_small = 12,
+    )
+    upgrade_tier_required = 3
+
+/datum/machining_recipe/disabler_pistol
+    name = "Disabler Pistol"
+    desc = "A compact energy weapon. (use guns desc)"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/gun/energy/disabler
+    reqs = list(
+        /obj/item/machining_intermediates/lasercavity = 1,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+        /obj/item/stack/sheet/iron = 4,
+        /obj/item/machining_intermediates/universalcircuit = 1,
+        /obj/item/stock_parts/cell = 1,
+        /obj/item/stack/machining_intermediates/smallwire = 4,
+        /obj/item/stack/machining_intermediates/screwbolt = 6,
+        /obj/item/machining_intermediates/moltenplastic = 2,
+    )
+    upgrade_tier_required = 3
+
+/datum/machining_recipe/laser_gun
+    name = "Laser Gun"
+    desc = "A standard laser gun. (use guns desc)"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/gun/energy/laser
+    reqs = list(
+        /obj/item/machining_intermediates/lasercavity = 2,
+        /obj/item/machining_intermediates/lens = 1,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+        /obj/item/machining_intermediates/stock_polymer = 1,
+        /obj/item/stack/sheet/iron = 4,
+        /obj/item/machining_intermediates/universalcircuit = 2,
+        /obj/item/stock_parts/cell = 1,
+        /obj/item/stack/machining_intermediates/smallwire = 4,
+        /obj/item/stack/machining_intermediates/screwbolt = 10,
+        /obj/item/machining_intermediates/moltenplastic = 2,
+    )
+    upgrade_tier_required = 4
+
+/datum/machining_recipe/energy_gun
+    name = "Energy Gun"
+    desc = "A multi-mode energy gun. (use guns desc)"
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/gun/energy
+    reqs = list(
+        /obj/item/machining_intermediates/lasercavity = 2,
+        /obj/item/machining_intermediates/lens = 2,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+        /obj/item/machining_intermediates/stock_polymer = 1,
+        /obj/item/stack/sheet/iron = 4,
+        /obj/item/machining_intermediates/universalcircuit = 3,
+        /obj/item/stock_parts/cell = 1,
+        /obj/item/stack/machining_intermediates/smallwire = 8,
+        /obj/item/stack/machining_intermediates/screwbolt = 10,
+        /obj/item/machining_intermediates/moltenplastic = 2,
+    )
+    upgrade_tier_required = 4
+
+/datum/machining_recipe/makeshift_pulse_gun
+    name = "Makeshift Pulse Gun"
+    desc = "The work of a master machinist without the use of blueprints, can fire pulse shots, at the cost of nearly an entire battery."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_EXCRUCIATINGLY_SLOW
+    result = /obj/item/gun/energy/pulse
+    reqs = list(
+        /obj/item/machining_intermediates/lasercavity = 8,
+        /obj/item/machining_intermediates/lens = 6,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+        /obj/item/machining_intermediates/stock_polymer = 1,
+        /obj/item/machining_intermediates/universalcircuit = 4,
+        /obj/item/stack/machining_intermediates/hardsteel = 4,
+        /obj/item/machining_intermediates/moltenplastic = 6,
+    )
+    upgrade_tier_required = 5
+
+//etc
+/datum/machining_recipe/knockoff_jewelry
+    name = "Knockoff Jewelry"
+    desc = "A shiny but ultimately low worth ring encrusted with painted glass."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_NORMAL
+    result = /obj/item/machining_intermediates/crappyring
+    reqs = list(
+        /obj/item/machining_intermediates/crappyring = 1,
+        /obj/item/stack/sheet/glass = 2,
+    )
+    upgrade_tier_required = 2
+
+/datum/machining_recipe/quality_jewelry
+    name = "Quality Jewelry"
+    desc = "A nice gold band with a large diamond in the middle."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_NORMAL
+    result = /obj/item/machining_intermediates/fancyring
+    reqs = list(
+        /obj/item/machining_intermediates/fancyring = 1,
+        /obj/item/stack/sheet/mineral/diamond = 1,
+    )
+    upgrade_tier_required = 3
+
+/datum/machining_recipe/artisan_jewelry
+    name = "Artisan Jewelry"
+    desc = "A spectacular ring intricately engraved with multiple gemstones on it. Will fetch a high price."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_NORMAL
+    result = /obj/item/machining_intermediates/fancyring
+    reqs = list(
+        /obj/item/machining_intermediates/fancyring = 1,
+        /obj/item/stack/sheet/mineral/gold = 1,
+        /obj/item/stack/sheet/mineral/diamond = 3,
+    )
+    upgrade_tier_required = 4
+
+/datum/machining_recipe/gas_pump
+    name = "Gas Pump"
+    desc = "A pump designed to force gas into tanks and rooms. Commonly found in atmospherics."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/machinery/portable_atmospherics/pump
+    reqs = list(
+        /obj/item/machining_intermediates/smallmotor = 6,
+        /obj/item/stack/sheet/iron = 10,
+        /obj/item/machining_intermediates/moltenplastic = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 8,
+    )
+    upgrade_tier_required = 2
+
+/datum/machining_recipe/portable_scrubber
+    name = "Portable Scrubber"
+    desc = "A pump designed to quickly clean the room of gasses. Commonly found in atmospherics."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/machinery/portable_atmospherics/scrubber
+    reqs = list(
+        /obj/item/machining_intermediates/smallmotor = 8,
+        /obj/item/stack/sheet/iron = 10,
+        /obj/item/machining_intermediates/moltenplastic = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 6,
+    )
+    upgrade_tier_required = 2
+
+/datum/machining_recipe/jaws_of_life
+    name = "Jaws of Life"
+    desc = "A tool designed to force open objects with extreme force."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/crowbar/power
+    reqs = list(
+        /obj/item/machining_intermediates/smallmotor = 4,
+        /obj/item/stack/machining_intermediates/steel = 2,
+        /obj/item/stack/sheet/iron = 4,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+        /obj/item/machining_intermediates/universalcircuit = 1,
+        /obj/item/stack/machining_intermediates/smallwire = 4,
+        /obj/item/machining_intermediates/handle_polymer = 2,
+    )
+    upgrade_tier_required = 3
+
+/datum/machining_recipe/hand_drill
+    name = "Hand Drill"
+    desc = "An electric drill with bolt and screw attachments."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_NORMAL
+    result = /obj/item/screwdriver/power
+    reqs = list(
+        /obj/item/machining_intermediates/smallmotor = 2,
+        /obj/item/stack/machining_intermediates/steel = 1,
+        /obj/item/stack/sheet/iron = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+        /obj/item/machining_intermediates/universalcircuit = 1,
+        /obj/item/stack/machining_intermediates/smallwire = 4,
+        /obj/item/machining_intermediates/handle_polymer = 1,
+    )
+    upgrade_tier_required = 3
+
+/datum/machining_recipe/fire_axe
+    name = "Fire Axe"
+    desc = "A large axe with a wooden handle, meant for saving people in fires, realistically, it's for killing people."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/fireaxe
+    reqs = list(
+        /obj/item/machining_intermediates/axehead = 1,
+        /obj/item/machining_intermediates/handle_wood = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+        /obj/item/machining_intermediates/dye = 1,
+    )
+    upgrade_tier_required = 4
+
+/datum/machining_recipe/sledgehammer
+    name = "Sledgehammer"
+    desc = "A large clump of steel on the end of a long stick."
+    category = TAB_ASSEMBLY_PARTS
+    machinery_type = MACHINING_WORKSTATION
+    crafting_time = MACHINING_DELAY_SLOW
+    result = /obj/item/melee/sledgehammer
+    reqs = list(
+        /obj/item/stack/machining_intermediates/steel = 4,
+        /obj/item/machining_intermediates/handle_wood = 2,
+        /obj/item/stack/machining_intermediates/screwbolt = 4,
+    )
+    upgrade_tier_required = 2

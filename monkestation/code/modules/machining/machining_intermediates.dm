@@ -117,7 +117,7 @@
 	desc = "A smoothbore gun barrel, used for directing the bullet towards the target."
 	icon_state = "gunbarrel_smoothbore"
 
-/obj/item/machining_intermediates/pistolslide
+/obj/item/machining_intermediates/slidepistol
 	name = "pistol slide"
 	desc = "A slide for a pistol, used for chambering rounds and cycling the action."
 	icon_state = "pistolslide"
@@ -164,8 +164,13 @@
 
 /obj/item/machining_intermediates/stock_wood
 	name = "stock wood"
-	desc = "A stock of wood, used for crafting various items."
+	desc = "A stock of wood, loved by the old."
 	icon_state = "stock_wood"
+
+/obj/item/machining_intermediates/stock_polymer
+	name = "stock polymer"
+	desc = "A stock of polymer, sleek and tacticool."
+	icon_state = "stock_polymer"
 
 //tiered
 /obj/item/machining_intermediates/upgrade
