@@ -10,6 +10,8 @@ import {
   Dimmer,
   Icon,
   Input,
+  NoticeBox,
+  Tooltip,
 } from '../components';
 import { Window } from '../layouts';
 
@@ -27,7 +29,6 @@ type Atoms = {
 type Recipe = {
   ref: String;
   result: Number;
-  result_amount: number;
   category: String;
   name: String;
   desc: String;
@@ -85,16 +86,26 @@ export const Machining = (props, context) => {
               </Tabs>
               <Box>
                 <Dividers title={'Upgrades'} />
+                <Tooltip
+                  position="bottom"
+                  content="Upgrade your machines as your skills increase to gain a wider selection of recipes."
+                >
+                  <NoticeBox position="relative" info>
+                    Current machine tier: {data.upgrade_tier ?? 'Unknown'}
+                  </NoticeBox>
+                </Tooltip>
                 <Button.Checkbox
                   fluid
                   content="Auto Dispense (T3)"
                   checked={auto_dispense}
+                  tooltip="Requires T3 Manipulators to be enabled"
                   onClick={() => act('toggle_dispense')}
                 />
                 <Button.Checkbox
                   fluid
                   content="Auto Build (T4)"
                   checked={auto_build}
+                  tooltip="Requires T4 Manipulators to be enabled"
                   onClick={() => act('toggle_build')}
                 />
               </Box>
@@ -208,6 +219,11 @@ const MainRecipeScreen = (props, context) => {
               color="green"
               icon={busy ? 'circle-notch' : 'hammer'}
               iconSpin={busy ? 1 : 0}
+              tooltip={
+                recipe.upgrade_tier_required
+                  ? `Requires upgrade tier ${recipe.upgrade_tier_required} to construct.`
+                  : 'No upgrade tier required.'
+              }
               onClick={() =>
                 act('make', {
                   recipe: recipe.ref,

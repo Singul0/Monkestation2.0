@@ -54,7 +54,7 @@
 		return
 	var/atom/atom_result = result
 	if(!name && result)
-		name = capitalize(initial(atom_result.name))
+		name = capitalize("[initial(atom_result.name)]")
 	if(!desc && result)
 		desc = initial(atom_result.desc)
 
