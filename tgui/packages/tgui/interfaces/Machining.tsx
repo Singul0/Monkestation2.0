@@ -1,3 +1,4 @@
+import { BooleanLike } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
 import {
   Section,
@@ -19,6 +20,30 @@ const TAB_LIST = [
   { key: 'assembly', label: 'Assembly' },
 ];
 
+type Atoms = {
+  [key: number]: number;
+};
+
+type Recipe = {
+  ref: String;
+  result: Number;
+  category: String;
+  name: String;
+  desc: String;
+  machinery_type: String;
+  reqs: Atoms;
+};
+
+type Data = {
+  auto_build: BooleanLike;
+  auto_dispense: BooleanLike;
+  busy: BooleanLike;
+  craftable: BooleanLike;
+  user_machining_skill: BooleanLike;
+  upgrade_tier: BooleanLike;
+  recipes: Recipe[];
+};
+
 export const Machining = (props, context) => {
   const [activeTab, setActiveTab] = useLocalState(
     'machiningTab',
@@ -26,7 +51,7 @@ export const Machining = (props, context) => {
   );
   const [searchText, setSearchText] = useLocalState('machiningSearch', '');
 
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<Data>(context);
   const { busy, craftable, recipes, auto_dispense, auto_build } = data;
 
   return (
@@ -135,7 +160,7 @@ const MainRecipeScreen = (props, context) => {
   const { tab, searchText } = props;
   const { recipes, atom_data, busy } = data;
   if (!recipes || !recipes.length) {
-    return <Section>No recipes available. yell at coders</Section>;
+    return <Section>No recipes available for this tab.</Section>;
   }
 
   // Filter recipes by category (tab) / searchbar

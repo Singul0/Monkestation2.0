@@ -725,7 +725,6 @@
 
 /datum/machining_recipe/revolver_38
     name = ".38 Revolver"
-    desc = "A revolver chambered in .38 special, looks identical to the detective's revolver."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -759,7 +758,6 @@
 
 /datum/machining_recipe/paco_magazine
     name = "Paco Magazine"
-    desc = "A magazine for the Paco pistol. (use mags desc)"
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_NORMAL
@@ -774,7 +772,6 @@
 
 /datum/machining_recipe/disabler_pistol
     name = "Disabler Pistol"
-    desc = "A compact energy weapon. (use guns desc)"
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -793,7 +790,6 @@
 
 /datum/machining_recipe/laser_gun
     name = "Laser Gun"
-    desc = "A standard laser gun. (use guns desc)"
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -814,7 +810,6 @@
 
 /datum/machining_recipe/energy_gun
     name = "Energy Gun"
-    desc = "A multi-mode energy gun. (use guns desc)"
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -835,7 +830,6 @@
 
 /datum/machining_recipe/makeshift_pulse_gun
     name = "Makeshift Pulse Gun"
-    desc = "The work of a master machinist without the use of blueprints, can fire pulse shots, at the cost of nearly an entire battery."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_EXCRUCIATINGLY_SLOW
@@ -854,7 +848,6 @@
 //etc
 /datum/machining_recipe/knockoff_jewelry
     name = "Knockoff Jewelry"
-    desc = "A shiny but ultimately low worth ring encrusted with painted glass."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_NORMAL
@@ -867,7 +860,6 @@
 
 /datum/machining_recipe/quality_jewelry
     name = "Quality Jewelry"
-    desc = "A nice gold band with a large diamond in the middle."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_NORMAL
@@ -880,7 +872,6 @@
 
 /datum/machining_recipe/artisan_jewelry
     name = "Artisan Jewelry"
-    desc = "A spectacular ring intricately engraved with multiple gemstones on it. Will fetch a high price."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_NORMAL
@@ -894,7 +885,6 @@
 
 /datum/machining_recipe/gas_pump
     name = "Gas Pump"
-    desc = "A pump designed to force gas into tanks and rooms. Commonly found in atmospherics."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -909,7 +899,6 @@
 
 /datum/machining_recipe/portable_scrubber
     name = "Portable Scrubber"
-    desc = "A pump designed to quickly clean the room of gasses. Commonly found in atmospherics."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -924,7 +913,6 @@
 
 /datum/machining_recipe/jaws_of_life
     name = "Jaws of Life"
-    desc = "A tool designed to force open objects with extreme force."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -942,7 +930,6 @@
 
 /datum/machining_recipe/hand_drill
     name = "Hand Drill"
-    desc = "An electric drill with bolt and screw attachments."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_NORMAL
@@ -960,7 +947,6 @@
 
 /datum/machining_recipe/fire_axe
     name = "Fire Axe"
-    desc = "A large axe with a wooden handle, meant for saving people in fires, realistically, it's for killing people."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
@@ -975,7 +961,6 @@
 
 /datum/machining_recipe/sledgehammer
     name = "Sledgehammer"
-    desc = "A large clump of steel on the end of a long stick."
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_SLOW
