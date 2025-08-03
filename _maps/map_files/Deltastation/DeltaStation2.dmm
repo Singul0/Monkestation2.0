@@ -8497,7 +8497,6 @@
 /area/station/service/library/abandoned)
 "bUy" = (
 /obj/structure/rack,
-/obj/machinery/light/small/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/book/manual/wiki/atmospherics{
 	pixel_x = -3;
