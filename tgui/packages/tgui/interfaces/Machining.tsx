@@ -27,6 +27,7 @@ type Atoms = {
 type Recipe = {
   ref: String;
   result: Number;
+  result_amount: number;
   category: String;
   name: String;
   desc: String;
@@ -232,10 +233,7 @@ const MainRecipeScreen = (props, context) => {
                         />
                       </Stack.Item>
                       <Stack.Item grow>
-                        {atomInfo
-                          .split(' ')
-                          .map((word) => word[0].toUpperCase() + word.slice(1))
-                          .join(' ')}
+                        {atomInfo}
                         {recipe.reqs[atom_id] > 1
                           ? ` x${recipe.reqs[atom_id]}`
                           : ''}
