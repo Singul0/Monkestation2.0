@@ -213,8 +213,7 @@
 	crafting_time = MACHINING_DELAY_NORMAL
 	result = /obj/item/machining_intermediates/shapedwood
 	reqs = list(
-		/obj/item/machining_intermediates/stock_wood = 1,
-		/obj/item/stack/sheet/iron = 1,
+		/obj/item/stack/sheet/mineral/wood = 5,
 	)
 
 /datum/machining_recipe/woodplanks
@@ -463,7 +462,7 @@
 
 /datum/machining_recipe/hardened_exosuit_parts
 	category = TAB_SPECIFIC_PARTS
-	machinery_type = MACHINING_WORKSTATION
+	machinery_type = MACHINING_DROPHAMMER
 	crafting_time = MACHINING_DELAY_SLOW
 	result = /obj/item/machining_intermediates/hardenedexosuit_part
 	reqs = list(
@@ -475,7 +474,7 @@
 
 /datum/machining_recipe/hardened_exosuit_plating
 	category = TAB_SPECIFIC_PARTS
-	machinery_type = MACHINING_WORKSTATION
+	machinery_type = MACHINING_DROPHAMMER
 	crafting_time = MACHINING_DELAY_SLOW
 	result = /obj/item/machining_intermediates/hardenedexosuit_plate
 	reqs = list(
@@ -626,7 +625,7 @@
 
 // /datum/machining_recipe/forged_exosuit_parts
 // 	category = TAB_SPECIFIC_PARTS
-// 	machinery_type = MACHINING_WORKSTATION
+// 	machinery_type = MACHINING_DROPHAMMER
 // 	crafting_time = MACHINING_DELAY_SLOW
 // 	result = /obj/item/machining_intermediates/forgedexosuit_part
 // 	reqs = list(
@@ -639,7 +638,7 @@
 
 // /datum/machining_recipe/forged_exosuit_plating
 // 	category = TAB_SPECIFIC_PARTS
-// 	machinery_type = MACHINING_WORKSTATION
+// 	machinery_type = MACHINING_DROPHAMMER
 // 	crafting_time = MACHINING_DELAY_SLOW
 // 	result = /obj/item/machining_intermediates/forgedexosuit_plate
 // 	reqs = list(

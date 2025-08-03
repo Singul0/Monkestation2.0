@@ -33178,7 +33178,6 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 1
 	},
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/storage)
 "kHL" = (
@@ -40969,7 +40968,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
@@ -45924,10 +45922,6 @@
 "oLg" = (
 /turf/closed/wall,
 /area/station/service/bar/backroom)
-"oLh" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/storage)
 "oLk" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -97510,7 +97504,7 @@ cHh
 cHh
 cHh
 kHh
-oLh
+oPA
 oPA
 oPA
 oPA
@@ -97767,7 +97761,7 @@ ygq
 jRI
 cHh
 krW
-oLh
+oPA
 bff
 tYy
 oPA

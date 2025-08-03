@@ -346,6 +346,9 @@
 			var/used_amt = min(round(stack_mat.get_amount()), req_materials[stock_part_path])
 			if(used_amt && stack_mat.use(used_amt))
 				req_materials[stock_part_path] -= used_amt
+				var/obj/item/stack/stack_in_machine = new stack_mat.type(src)
+				stack_in_machine.amount = used_amt
+				materials += stack_in_machine
 				to_chat(user, span_notice("You add [interacted_item] to [src]."))
 				check_done(user)
 			return

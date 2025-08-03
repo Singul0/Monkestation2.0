@@ -32593,6 +32593,7 @@
 /area/station/hallway/primary/fore)
 "lnJ" = (
 /obj/effect/mapping_helpers/broken_floor,
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/fore)
 "lnM" = (
@@ -33181,6 +33182,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
+"lwT" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/maintenance/starboard/fore)
 "lxf" = (
 /obj/structure/bed,
 /obj/item/bedsheet/dorms,
@@ -109823,7 +109830,7 @@ qXB
 eYj
 jCw
 jCw
-eax
+lwT
 qXB
 lOK
 jcy
