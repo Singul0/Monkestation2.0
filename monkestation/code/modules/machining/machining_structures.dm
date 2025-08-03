@@ -108,9 +108,7 @@
 
 	// Atoms in said Recipes
 	for(var/atom/atom as anything in GLOB.machining_recipes_atoms)
-		data["atom_data"] += list(list(
-			"name" = initial(atom.name),
-		))
+		data["atom_data"] += list(capitalize(initial(atom.name)))
 
 	return data
 
@@ -180,6 +178,10 @@
 				return
 			if(upgrade_tier < recipe_path.upgrade_tier_required)
 				to_chat(usr, span_warning("You need at least a tier [upgrade_tier] upgrade to make this recipe!"))
+				return
+
+			if(usr?.mind?.get_skill_level(/datum/skill/machinist) <= recipe_path.machining_skill_required)
+				to_chat(usr, span_warning("You do not have the skill necessarry to construct this upgrade! Try sharpening your skills more?"))
 				return
 
 			to_chat(usr, span_notice("[key_name(usr)] is making [params["recipe"]] on [src] ([src.loc])"))

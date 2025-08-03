@@ -21,7 +21,6 @@
 	var/id = 1
 	for(var/atom in GLOB.machining_recipes_atoms)
 		add_atom_icon(atom, id++)
-	add_tool_icons()
 
 // base object for all machining recipes
 /datum/machining_recipe
@@ -45,8 +44,10 @@
 	var/result_amount = 1
 	///determines if the recipe requires specific levels of parts. (ie specifically a femto menipulator vs generic manipulator)
 	var/specific_parts = FALSE
-	///what tier of skills required to craft this recipe
+	///what tier of machinery required to craft this recipe
 	var/upgrade_tier_required = 1
+	///what tier of skill required to craft this recipe
+	var/machining_skill_required = 0
 
 /datum/machining_recipe/New()
 	if(!result)
@@ -75,6 +76,7 @@
 	)
 	result = /obj/item/machining_intermediates/upgrade/machineparts_t1
 	upgrade_tier_required = 1
+	machining_skill_required = 1
 
 /datum/machining_recipe/upgrade_tier_2
 	name = "Upgrade Tier 2 parts"
@@ -88,6 +90,7 @@
 	)
 	result = /obj/item/machining_intermediates/upgrade/machineparts_t2
 	upgrade_tier_required = 2
+	machining_skill_required = 2
 
 /datum/machining_recipe/upgrade_tier_3
 	name = "Upgrade Tier 3 parts"
@@ -101,6 +104,7 @@
 	)
 	result = /obj/item/machining_intermediates/upgrade/machineparts_t3
 	upgrade_tier_required = 3
+	machining_skill_required = 3
 
 /datum/machining_recipe/upgrade_tier_4
 	name = "Upgrade Tier 4 parts"
@@ -114,6 +118,7 @@
 	)
 	result = /obj/item/machining_intermediates/upgrade/machineparts_t4
 	upgrade_tier_required = 4
+	machining_skill_required = 4
 
 //assembly parts
 /datum/machining_recipe/screwbolt

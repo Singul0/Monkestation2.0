@@ -42,6 +42,7 @@ type Data = {
   user_machining_skill: BooleanLike;
   upgrade_tier: BooleanLike;
   recipes: Recipe[];
+  atom_data: String[];
 };
 
 export const Machining = (props, context) => {
@@ -51,7 +52,7 @@ export const Machining = (props, context) => {
   );
   const [searchText, setSearchText] = useLocalState('machiningSearch', '');
 
-  const { act, data } = useBackend<Data>(context);
+  const { act, data } = useBackend<Data>();
   const { busy, craftable, recipes, auto_dispense, auto_build } = data;
 
   return (
@@ -156,7 +157,7 @@ export const Machining = (props, context) => {
 };
 
 const MainRecipeScreen = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<Data>();
   const { tab, searchText } = props;
   const { recipes, atom_data, busy } = data;
   if (!recipes || !recipes.length) {
@@ -231,7 +232,7 @@ const MainRecipeScreen = (props, context) => {
                         />
                       </Stack.Item>
                       <Stack.Item grow>
-                        {atomInfo?.name
+                        {atomInfo
                           .split(' ')
                           .map((word) => word[0].toUpperCase() + word.slice(1))
                           .join(' ')}
