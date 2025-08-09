@@ -837,7 +837,7 @@
     category = TAB_ASSEMBLY_PARTS
     machinery_type = MACHINING_WORKSTATION
     crafting_time = MACHINING_DELAY_EXCRUCIATINGLY_SLOW
-    result = /obj/item/gun/energy/pulse
+    result = /obj/item/pulsepack
     reqs = list(
         /obj/item/machining_intermediates/lasercavity = 8,
         /obj/item/machining_intermediates/lens = 6,
