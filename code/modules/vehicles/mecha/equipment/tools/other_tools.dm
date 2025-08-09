@@ -194,8 +194,7 @@
 	armor_mod = /datum/armor/mecha_equipment_ranged_boost
 
 /datum/armor/mecha_equipment_ranged_boost
-	bullet = 10
-	laser = 10
+	melee = 5
 
 ////////////////////////////////// REPAIR DROID //////////////////////////////////////////////////
 
