@@ -10,6 +10,11 @@
 /datum/preset_holoimage/virologist
 	outfit_type = /datum/outfit/job/virologist
 
+/datum/preset_holoimage/chief_engineer_moff
+	outfit_type = /datum/outfit/job/ce
+	species_type = /datum/species/apid
+
+// Medical Centre
 /obj/item/disk/holodisk/tutorial/medbay/orientation
 	name = "Medical Centre Simulation Orientation"
 	preset_image_type = /datum/preset_holoimage/cmo
@@ -106,4 +111,125 @@
 	DELAY 15
 	SAY That's all from me... Sorry if i'm not of much help. toodles!
 	DELAY 100
+	"}
+
+//Supermatter Reactor Training
+/obj/item/disk/holodisk/tutorial/engine_sm_easy/orientation
+	name = "Supermatter Reactor Simulation Orientation"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY Heya! Name's Moffias Sparks, I'm the chief engineer of the simulation and I'll be your guide for starting up the supermatter reactor!
+	DELAY 80
+	SAY Starting a reactor isn't THAT complicated, so lighten up! Messing up here doesn't mean you'll ruin the station, just a simulation!
+	DELAY 60
+	SAY First things first, think of the supermatter shard as a black box where we can draw power from the more we agitate it.
+	DELAY 65
+	SAY You can agitate the shard by applying heat to it, or by putting it under pressure. Just like my wife when I forget our anniversary! Heh!
+	DELAY 130
+	SAY The more you agitate it, the more power it produces, but be careful! Too much agitation and the shard will become unstable and explode! Much like our marriage....
+	DELAY 150
+	SAY This is why we use emitters to agitate the shard in a safe and controlled manner.
+	DELAY 80
+	SAY Of course, even with the emitters, the shard can still become unstable, which is why we have cooling systems in place to keep the shard stable.
+	DELAY 120
+	SAY I'll explain this cooling further in the various holopads scattered about the simulation.
+	DELAY 75
+	SAY This is the main hub where you can find all the necessary equipment to start the reactor, feel free to explore and find the holopads with instructions on them.
+	DELAY 100
+	SAY If these holopads are not enough of a help, please use the mentor assistance button next to me to request assistance from many of our talented mentors to assist you.
+	DELAY 100
+	SAY And with that, have fun! Don't be afraid to take a break in our breakroom if you need to, it's important to stay hydrated and rested while doing technical work like this!
+	"}
+
+/obj/item/disk/holodisk/tutorial/engine_sm_easy/air_alarm
+	name = "Supermatter Reactor Simulation Air Alarm"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY Heyo! Next up is going to be the air alarm. This is a very easily forgotten part of the checklist. But failure to do so has lead to a good portion of early delamminations.
+	DELAY 80
+	SAY It's not that hard at all! You just need to make sure to configure the atmospherics machineries to properly flow through cleanly.
+	DELAY 80
+	SAY Default settings are for maintaining basic life support of the station instead of operation of the reactor, so we need to change that right away.
+	DELAY 100
+	SAY Scrubbers should be set to siphon every gasses so that no gasses can build up in the shard's chamber, we don't want all that bad air making the shard cranky!
+	DELAY 120
+	SAY Vents internal pressure should be set to 0 and external pressure to be none, so that cooled gas can properly enter the gas chamber.
+	DELAY 100
+	SAY That's about it really, just REMEMBER. DON'T FORGET TO SET THIS UP IF YOU DON'T WANT TO GET THROUGH THE WRINGER BY THE CAPTAIN AFTER THE SM BLOWS UP BECAUSE OF THIS.
+	DELAY 150
+	SAY You know as well as I do that crewmembers of this sector, the brutes that they are. Would absolutely love to find any justification for a good lynching!
+	DELAY 100
+	SAY So don't put your ass on the line as lynch bait and PLEASE set up the air alarm properly!
+	"}
+
+/obj/item/disk/holodisk/tutorial/engine_sm_easy/input_gas
+	name = "Supermatter Reactor Simulation Input Gas"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY This here is the input for the moderating gasses that will keep the shard in check, Nitrogen is an excellent moderating gas that comes standard.
+	DELAY 80
+	SAY The cooling system is a closed loop, meaning that the gas we put in will stay there unless we say not to.
+	DELAY 75
+	SAY The gas will perpetually cycle through the cooling system, going through the motions of it's feeble existence. Getting heated by the shard and cooled by space, over and over again.
+	DELAY 100
+	SAY Not too dissimilar to our life. Going to work and sleeping. Over and over again ad infinum. At least we get to die at the end of it, not the case for these poor sods.
+	DELAY 120
+	SAY Actually, the shard produces a lot of byproduct gasses that can make the shard unstable, which is why we redirect all of those byproduct gasses into the emptiness of space while keeping coolant gasses in.
+	DELAY 160
+	SAY That's about it really, if you're experiencd enough you can move on to using other gasses as coolants, but for now just stick with the nitrogen, it's a good all around coolant that does it's job well enough..
+	"}
+
+/obj/item/disk/holodisk/tutorial/engine_sm_easy/space_radiators
+	name = "Supermatter Reactor Simulation Space Radiators"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY See outside? The vast void of space? That's where the shard's heat goes. The heat exchanghers are what allows us to expel the shard's heat into space, keeping it cool and stable.
+	DELAY 120
+	SAY It's what cools the gasses that have been heated up by the shard back to normal temperature, allowing us to reycle them back into the cooling system to be heated again.
+	DELAY 100
+	SAY Without the heat exchangers, the shard heat would just build up and up until it explodes! And we don't want that, do we?
+	DELAY 80
+	SAY God, why did you let her just leave her hanging like that... She's gone now, I can manage a state of the art reactor but I can't manage my own damn relationship!
+	DELAY 100
+	SAY Oh.. This is still running?
+	"}
+
+
+/obj/item/disk/holodisk/tutorial/engine_sm_easy/emitters
+	name = "Supermatter Reactor Simulation Emitters"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY Last but not least, we have the emitters. These bad boys are what we use to agitate the shard and draw power from it.
+	DELAY 80
+	SAY More emitters shots hitting the shard means more power, it's not rocket science!
+	DELAY 60
+	SAY Just set them up and power them. Sometimes if you're too late, the backup batteries wouldn't have enough charge to kickstart the emitters.
+	DELAY 80
+	SAY If this happens, scold yourself for taking too much time setting up the SM and hotwire a generator to it. Should provide enough power for them to start firing and producing power.
+	DELAY 100
+	SAY Besides angling the reflectors to hit the shard, that's about it really.
+	DELAY 75
+	"}
+
+/obj/item/disk/holodisk/tutorial/engine_sm_easy/reward
+	name = "Supermatter Reactor Simulation SMES"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY Alrighty, Once you have the reactor all up and running. All that there is left to do is just to rewire all that power to the rest of the station.
+	DELAY 120
+	SAY The reason we do this instead of just hooking the engine straight to the station is so that we get ample reserves of power incase of any power issues.alist
+	DELAY 130
+	SAY Another reason is to lower the voltage going through the wires, Any unfortunate electrical accidents can be made significantly safer if only the bare minimum of power is running through the cable.
+	DELAY 150
+	SAY Trust me, you don't want to be on wire patrol duty deep in maints to see a dessicated burned husk of an assistant trying to hack a stupid airlock suddenly getting mega-watts of power course through his body.
+	DELAY 200
+	SAY The image still haunts me to this day despite multiple counseling sessions...
+	DELAY 150
+	SAY Anyhow, to complete this simulation. Just power up the SMES right next to me to 100% and interact with it. Simple as'
 	"}

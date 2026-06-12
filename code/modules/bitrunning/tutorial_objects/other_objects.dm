@@ -13,3 +13,19 @@
 	playsound(src, 'sound/lavaland/cursed_slot_machine_jackpot.ogg', 50)
 	visible_message(span_notice("[user] has completed the tutorial!"))
 	players_that_completed += user.ckey
+
+/obj/machinery/power/smes/tutorial
+	name = "tutorial SMES"
+	desc = "Power and interact with this SMES machine to completely in order to finish this tutorial."
+	var/list/players_that_completed = list()
+
+//may allah, the most merciful. forgive me for this act of violation against nature.
+/obj/machinery/power/smes/tutorial/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+	if(total_capacity > total_charge() || !can_interact(user) || (user.ckey in players_that_completed))
+		return
+
+	reward_tutorial_completion(user, TUTORIAL_REWARD_LOW)
+	playsound(src, 'sound/lavaland/cursed_slot_machine_jackpot.ogg', 50)
+	visible_message(span_notice("[user] has completed the tutorial!"))
+	players_that_completed += user.ckey

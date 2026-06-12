@@ -32613,6 +32613,10 @@
 	},
 /turf/closed/indestructible/grille,
 /area/centcom/central_command_areas/prison)
+"wWR" = (
+/obj/machinery/byteforge,
+/turf/open/floor/iron/vaporwave,
+/area/centcom/central_command_areas/hall)
 "wXc" = (
 /obj/machinery/computer/accounting{
 	dir = 4
@@ -81069,7 +81073,7 @@ aaa
 aaa
 aaa
 apG
-dRd
+wWR
 dRd
 dRd
 dRd
