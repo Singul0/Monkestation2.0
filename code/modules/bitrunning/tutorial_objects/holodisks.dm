@@ -12,7 +12,7 @@
 
 /datum/preset_holoimage/chief_engineer_moff
 	outfit_type = /datum/outfit/job/ce
-	species_type = /datum/species/apid
+	species_type = /datum/species/moth
 
 // Medical Centre
 /obj/item/disk/holodisk/tutorial/medbay/orientation
@@ -232,4 +232,22 @@
 	SAY The image still haunts me to this day despite multiple counseling sessions...
 	DELAY 150
 	SAY Anyhow, to complete this simulation. Just power up the SMES right next to me to 100% and interact with it. Simple as'
+	"}
+
+/obj/item/disk/holodisk/tutorial/engine_sm_hard
+	name = "Supermatter Reactor Simulation SMES"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY Woah, You're confident enough at trying to make a supermatter reactor from scratch?
+	DELAY 50
+	SAY Well, I gotta admire that gumption of yours! I'm not gonna knock someone over for trying.
+	Delay 60
+	SAY All the materials are all present in the construction area. Careful where you open the crates. We packed those boys tight.
+	DELAY 70
+	SAY The standard SM setup you're familiar with has a lot of redundancy and unneeded part that you can toss away.
+	DELAY 60
+	SAY The bare minimum components of an SM reactor is really just the reactor chamber itself, power collection, emitters, and the cooling loop.
+	DELAY 70
+	SAY That's really it... Just don't forget to handle waste byproduct gasses!
 	"}

@@ -20,7 +20,7 @@
 	var/list/players_that_completed = list()
 
 //may allah, the most merciful. forgive me for this act of violation against nature.
-/obj/machinery/power/smes/tutorial/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/power/smes/tutorial/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(total_capacity > total_charge() || !can_interact(user) || (user.ckey in players_that_completed))
 		return

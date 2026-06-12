@@ -47,11 +47,16 @@
 	var/time_since_act = 0
 	/// What the game tells ghosts when you make one
 	var/ghost_notification_message = "IT'S LOOSE"
+	//can we move at all?
+	var/immovable = FALSE
 
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
 	flags_1 = SUPERMATTER_IGNORES_1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF | SHUTTLE_CRUSH_PROOF
 	obj_flags = CAN_BE_HIT | DANGEROUS_POSSESSION
+
+/obj/singularity/immovable
+	immovable = TRUE
 
 /obj/singularity/Initialize(mapload, starting_energy = 50)
 	. = ..()
@@ -385,6 +390,8 @@
 	return TRUE
 
 /obj/singularity/proc/can_move(turf/considered_turf)
+	if(immovable)
+		return FALSE
 	if(!considered_turf)
 		return FALSE
 	if (HAS_TRAIT(considered_turf, TRAIT_CONTAINMENT_FIELD))
@@ -475,3 +482,5 @@
 /// Special singularity that spawns for shuttle events only
 /obj/singularity/shuttle_event
 	anchored = FALSE
+
+/obj/singularity/immovable
