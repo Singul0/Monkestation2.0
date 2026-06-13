@@ -226,10 +226,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/virtual_domain/powered_lighting)
-"ju" = (
-/obj/machinery/light/floor/has_bulb,
-/turf/open/floor/plating,
-/area/virtual_domain/powered_lighting)
 "jC" = (
 /obj/structure/sign/warning/directional/north,
 /obj/machinery/portable_atmospherics/pump,
@@ -712,10 +708,7 @@
 /obj/effect/turf_decal/delivery/white{
 	color = "#52B4E9"
 	},
-/obj/structure/reagent_dispensers/plumbed{
-	dir = 1;
-	name = "engineering water reservoir"
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered_lighting)
 "zT" = (
@@ -889,6 +882,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/turf/open/floor/plating,
+/area/virtual_domain/powered_lighting)
+"Gm" = (
+/obj/machinery/light/floor/has_bulb,
 /turf/open/floor/plating,
 /area/virtual_domain/powered_lighting)
 "GO" = (
@@ -2344,11 +2341,11 @@ QY
 QY
 QY
 mQ
-ju
+Gm
 nd
 ro
 Xi
-ju
+Gm
 mQ
 QY
 QY
@@ -2458,11 +2455,11 @@ QY
 QY
 QY
 mQ
-mQ
-lm
-lm
-Sd
-mQ
+yD
+yD
+yD
+yD
+yD
 mQ
 QY
 QY
@@ -2494,14 +2491,14 @@ Hw
 mQ
 QY
 QY
-ns
-ns
-ns
-ns
-ns
-ns
-oV
-ns
+QY
+mQ
+mQ
+lm
+lm
+Sd
+mQ
+mQ
 QY
 QY
 hb
@@ -2581,7 +2578,7 @@ Vv
 HC
 QY
 hb
-QY
+mp
 ct
 ct
 QY
