@@ -477,4 +477,4 @@
 	anchored = FALSE
 
 /obj/singularity/immovable/can_move(turf/considered_turf)
-	RETURN FALSE
+	return FALSE
