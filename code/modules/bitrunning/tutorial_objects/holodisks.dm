@@ -157,8 +157,10 @@
 	DELAY 120
 	SAY Vents internal pressure should be set to 0 and external pressure to be none, so that cooled gas can properly enter the gas chamber.
 	DELAY 100
-	SAY That's about it really, just REMEMBER. DON'T FORGET TO SET THIS UP IF YOU DON'T WANT TO GET THROUGH THE WRINGER BY THE CAPTAIN AFTER THE SM BLOWS UP BECAUSE OF THIS.
+	SAY That's about it really, just REMEMBER. DON'T FORGET TO SET THIS UP, AND DO IT LAST IF YOU DON'T WANT TO GET THROUGH THE WRINGER BY THE CAPTAIN AFTER THE SM BLOWS UP BECAUSE OF THIS.
 	DELAY 150
+	SAY Setting up the air alarm is what starts the shard from reacting, so do after you made sure everything else is done.
+	DELAY 100
 	SAY You know as well as I do that crewmembers of this sector, the brutes that they are. Would absolutely love to find any justification for a good lynching!
 	DELAY 100
 	SAY So don't put your ass on the line as lynch bait and PLEASE set up the air alarm properly!
