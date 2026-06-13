@@ -37,7 +37,6 @@
 	var/energy_to_raise = 32
 	var/energy_to_lower = -20
 	var/list/shocked_things = list()
-	var/immovable = FALSE
 
 /obj/energy_ball/Initialize(mapload, starting_energy = 50, is_miniball = FALSE)
 	. = ..()
@@ -112,8 +111,6 @@
 				dust_mobs(mob_to_dust)
 
 /obj/energy_ball/proc/can_move(turf/to_move)
-	if(immovable)
-		return FALSE
 	if (!to_move)
 		return FALSE
 
@@ -364,8 +361,9 @@
 	else
 		tesla_zap(closest_atom, next_range, power, zap_flags, shocked_targets)
 
-/obj/energy_ball/immovable
-	immovable = TRUE
+/obj/energy_ball/immovable/can_move(turf/to_move)
+	return FALSE
+
 #undef BIKE
 #undef COIL
 #undef ROD
