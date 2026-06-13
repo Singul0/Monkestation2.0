@@ -251,3 +251,42 @@
 	DELAY 70
 	SAY That's really it... Just don't forget to handle waste byproduct gasses!
 	"}
+
+/obj/item/disk/holodisk/tutorial/tesla_singulo
+	name = "Space Engine Simulation SMES"
+	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
+	preset_record_text = {"
+	NAME Chief Engineer Moffias Sparks
+	SAY Heya, you're here to learn how to operate space-based engines right? Let's get right onto it!
+	DELAY 60
+	SAY There's two types of engines, singularities and teslas. They are contained and activated the same way.
+	DELAY 65
+	SAY You set up an shield generator powered by emitters fired onto it to keep it contained.
+	DELAY 50
+	SAY And you fire the particle accelerator to activate the tesla or singularity generator to turn them online
+	DELAY 70
+	SAY The only difference is the power collection. Singularities emit radiation and Teslas emits shocks. Use radiation collectors and tesla coils + grounding rods respectively
+	DELAY 100
+	SAY Also one more thing, the emitters are powered by a charged SMES that you need to control the output of for all the emitters to fire. Make sure to wire it up to the main electricity grid when the engine is up and running
+	DELAY 130
+	SAY Don't worry about messing up! This is a simulation after all, and we made the Singularities and Teslas immovable.
+	DELAY 80
+	"}
+
+/obj/item/disk/holodisk/tutorial/space_station
+	name = "Space Station Construction"
+	preset_image_type = /datum/preset_holoimage/engineer/ce
+	preset_record_text = {"
+	NAME Chief Engineer Dell Conagher
+	SAY Howdy partner, guessin' since you come 'round these parts you must be wanting to learn how to make a nice little homey space station.
+	DELAY 100
+	SAY You've come to the right place, If you just look to your right there is a mighty fine derelict for us to refurbish into a state of the art outpost station.
+	DELAY 130
+	SAY You just need to dust off some cobwebs and frozen solid corpses, seal up the breaches and introduce some basic life support and power to it and it's as good as new!
+	DELAY 150
+	SAY Really, the only thing that trips people up is that they forget to "Create a new area". It's a law of the universe see? We simulate it by the UI down in the bottom left corner.
+	DELAY 120
+	SAY Once we create an area, you can then power it up by constructing APC's and powering that. Same thing with atmospheric systems but just with an air alarm.
+	DELAY 60
+	SAY To finish this tutorial, just use the item on the table next to me on an area you make. Easy-peasy. Happy hunting!
+	"}

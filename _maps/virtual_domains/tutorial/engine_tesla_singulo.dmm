@@ -1294,7 +1294,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/box/red,
-/obj/item/disk/holodisk/tutorial/engine_sm_hard,
+/obj/item/disk/holodisk/tutorial/tesla_singulo,
 /turf/open/floor/iron,
 /area/virtual_domain/powered_lighting)
 "Xi" = (
