@@ -112,14 +112,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/closed/wall/r_wall,
 /area/virtual_domain/powered_lighting)
-"cb" = (
-/obj/machinery/camera/directional/west{
-	c_tag = "Engineering Supermatter Fore";
-	network = list("ss13","engine")
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible,
-/turf/open/floor/iron/dark,
-/area/virtual_domain/powered_lighting)
 "ci" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3059,7 +3051,7 @@ Bx
 mQ
 qS
 Hw
-cb
+QW
 QW
 id
 VX
