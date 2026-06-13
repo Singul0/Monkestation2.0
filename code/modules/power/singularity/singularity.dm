@@ -53,9 +53,6 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF | SHUTTLE_CRUSH_PROOF
 	obj_flags = CAN_BE_HIT | DANGEROUS_POSSESSION
 
-/obj/singularity/immovable/can_move(turf/considered_turf)
-	RETURN FALSE
-
 /obj/singularity/Initialize(mapload, starting_energy = 50)
 	. = ..()
 
@@ -388,8 +385,6 @@
 	return TRUE
 
 /obj/singularity/proc/can_move(turf/considered_turf)
-	if(immovable)
-		return FALSE
 	if(!considered_turf)
 		return FALSE
 	if (HAS_TRAIT(considered_turf, TRAIT_CONTAINMENT_FIELD))
@@ -481,4 +476,5 @@
 /obj/singularity/shuttle_event
 	anchored = FALSE
 
-/obj/singularity/immovable
+/obj/singularity/immovable/can_move(turf/considered_turf)
+	RETURN FALSE
