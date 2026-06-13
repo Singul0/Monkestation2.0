@@ -284,7 +284,7 @@
 	DELAY 130
 	SAY You just need to dust off some cobwebs and frozen solid corpses, seal up the breaches and introduce some basic life support and power to it and it's as good as new!
 	DELAY 150
-	SAY Really, the only thing that trips people up is that they forget to "Create a new area". It's a law of the universe see? We simulate it by the UI down in the bottom left corner.
+	SAY Really, the only thing that trips people up is that they forget to "Create a new area". It's a law of the universe see? We simulate it by the UI down in the bottom right corner.
 	DELAY 120
 	SAY Once we create an area, you can then power it up by constructing APC's and powering that. Same thing with atmospheric systems but just with an air alarm.
 	DELAY 60
