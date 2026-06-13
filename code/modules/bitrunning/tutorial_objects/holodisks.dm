@@ -140,6 +140,7 @@
 	SAY If these holopads are not enough of a help, please use the mentor assistance button next to me to request assistance from many of our talented mentors to assist you.
 	DELAY 100
 	SAY And with that, have fun! Don't be afraid to take a break in our breakroom if you need to, it's important to stay hydrated and rested while doing technical work like this!
+	DELAY 110
 	"}
 
 /obj/item/disk/holodisk/tutorial/engine_sm_easy/air_alarm
@@ -157,13 +158,14 @@
 	DELAY 120
 	SAY Vents internal pressure should be set to 0 and external pressure to be none, so that cooled gas can properly enter the gas chamber.
 	DELAY 100
-	SAY That's about it really, just REMEMBER. DON'T FORGET TO SET THIS UP, AND DO IT LAST IF YOU DON'T WANT TO GET THROUGH THE WRINGER BY THE CAPTAIN AFTER THE SM BLOWS UP BECAUSE OF THIS.
+	SAY That's about it really, just REMEMBER. DON'T FORGET TO SET THIS UP, AND DO IT LAST! IF YOU DON'T WANT TO GET THROUGH THE WRINGER BY THE CAPTAIN AFTER THE SM BLOWS UP BECAUSE OF THIS.
 	DELAY 150
-	SAY Setting up the air alarm is what starts the shard from reacting, so do after you made sure everything else is done.
+	SAY Setting up the air alarm is what starts the shard from reacting, so do it after you made sure everything else is done.
 	DELAY 100
 	SAY You know as well as I do that crewmembers of this sector, the brutes that they are. Would absolutely love to find any justification for a good lynching!
 	DELAY 100
 	SAY So don't put your ass on the line as lynch bait and PLEASE set up the air alarm properly!
+	DELAY 75
 	"}
 
 /obj/item/disk/holodisk/tutorial/engine_sm_easy/input_gas
@@ -179,9 +181,10 @@
 	DELAY 100
 	SAY Not too dissimilar to our life. Going to work and sleeping. Over and over again ad infinum. At least we get to die at the end of it, not the case for these poor sods.
 	DELAY 120
-	SAY Actually, the shard produces a lot of byproduct gasses that can make the shard unstable, which is why we redirect all of those byproduct gasses into the emptiness of space while keeping coolant gasses in.
+	SAY Actually, the shard produces a lot of byproduct gasses that can make the shard unstable, which is why we expel all of those byproduct gasses into the emptiness of space while keeping coolant gasses in.
 	DELAY 160
 	SAY That's about it really, if you're experiencd enough you can move on to using other gasses as coolants, but for now just stick with the nitrogen, it's a good all around coolant that does it's job well enough..
+	DELAY 150
 	"}
 
 /obj/item/disk/holodisk/tutorial/engine_sm_easy/space_radiators
@@ -189,7 +192,7 @@
 	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
 	preset_record_text = {"
 	NAME Chief Engineer Moffias Sparks
-	SAY See outside? The vast void of space? That's where the shard's heat goes. The heat exchanghers are what allows us to expel the shard's heat into space, keeping it cool and stable.
+	SAY See outside? The vast void of space? That's where the shard's heat goes. The heat exchangers are what allows us to expel the shard's heat into space, keeping it cool and stable.
 	DELAY 120
 	SAY It's what cools the gasses that have been heated up by the shard back to normal temperature, allowing us to reycle them back into the cooling system to be heated again.
 	DELAY 100
@@ -225,7 +228,7 @@
 	NAME Chief Engineer Moffias Sparks
 	SAY Alrighty, Once you have the reactor all up and running. All that there is left to do is just to rewire all that power to the rest of the station.
 	DELAY 120
-	SAY The reason we do this instead of just hooking the engine straight to the station is so that we get ample reserves of power incase of any power issues.alist
+	SAY The reason we do this instead of just hooking the engine straight to the station is so that we get ample reserves of power incase of any power issues.
 	DELAY 130
 	SAY Another reason is to lower the voltage going through the wires, Any unfortunate electrical accidents can be made significantly safer if only the bare minimum of power is running through the cable.
 	DELAY 150
@@ -252,6 +255,7 @@
 	SAY The bare minimum components of an SM reactor is really just the reactor chamber itself, power collection, emitters, and the cooling loop.
 	DELAY 70
 	SAY That's really it... Just don't forget to handle waste byproduct gasses!
+	DELAY 50
 	"}
 
 /obj/item/disk/holodisk/tutorial/tesla_singulo
@@ -291,4 +295,5 @@
 	SAY Once we create an area, you can then power it up by constructing APC's and powering that. Same thing with atmospheric systems but just with an air alarm.
 	DELAY 60
 	SAY To finish this tutorial, just use the item on the table next to me on an area you make. Easy-peasy. Happy hunting!
+	DELAY 50
 	"}
