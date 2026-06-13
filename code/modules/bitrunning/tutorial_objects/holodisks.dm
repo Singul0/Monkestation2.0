@@ -123,7 +123,7 @@
 	DELAY 80
 	SAY Starting a reactor isn't THAT complicated, so lighten up! Messing up here doesn't mean you'll ruin the station, just a simulation!
 	DELAY 60
-	SAY First things first, think of the supermatter shard as a black box where we can draw power from the more we agitate it.
+	SAY First things first, think of the supermatter shard as a black box where we can draw power from it the more we agitate it.
 	DELAY 65
 	SAY You can agitate the shard by applying heat to it, or by putting it under pressure. Just like my wife when I forget our anniversary! Heh!
 	DELAY 130
@@ -139,7 +139,7 @@
 	DELAY 100
 	SAY If these holopads are not enough of a help, please use the mentor assistance button next to me to request assistance from many of our talented mentors to assist you.
 	DELAY 100
-	SAY And with that, have fun! Don't be afraid to take a break in our breakroom if you need to, it's important to stay hydrated and rested while doing technical work like this!
+	SAY And with that, have fun! Don't be afraid to take a break in our breakroom if you need to; it's important to stay hydrated and rested while doing technical work like this!
 	DELAY 110
 	"}
 
@@ -148,15 +148,15 @@
 	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
 	preset_record_text = {"
 	NAME Chief Engineer Moffias Sparks
-	SAY Heyo! Next up is going to be the air alarm. This is a very easily forgotten part of the checklist. But failure to do so has lead to a good portion of early delamminations.
+	SAY Heyo! Next up is going to be the air alarm. This is a very easily forgotten part of the checklist. But failure to do so has led to a good portion of early delamminations.
 	DELAY 80
 	SAY It's not that hard at all! You just need to make sure to configure the atmospherics machineries to properly flow through cleanly.
 	DELAY 80
 	SAY Default settings are for maintaining basic life support of the station instead of operation of the reactor, so we need to change that right away.
 	DELAY 100
-	SAY Scrubbers should be set to siphon every gasses so that no gasses can build up in the shard's chamber, we don't want all that bad air making the shard cranky!
+	SAY Scrubbers should be set to siphon all the gases so that no gases can build up in the shard's chamber, we don't want all that bad air making the shard cranky!
 	DELAY 120
-	SAY Vents internal pressure should be set to 0 and external pressure to be none, so that cooled gas can properly enter the gas chamber.
+	SAY Vents internal pressure should be set to 0 and external pressure to none, so that cooled gas can properly enter the gas chamber.
 	DELAY 100
 	SAY That's about it really, just REMEMBER. DON'T FORGET TO SET THIS UP, AND DO IT LAST! IF YOU DON'T WANT TO GET THROUGH THE WRINGER BY THE CAPTAIN AFTER THE SM BLOWS UP BECAUSE OF THIS.
 	DELAY 150
@@ -173,17 +173,17 @@
 	preset_image_type = /datum/preset_holoimage/chief_engineer_moff
 	preset_record_text = {"
 	NAME Chief Engineer Moffias Sparks
-	SAY This here is the input for the moderating gasses that will keep the shard in check, Nitrogen is an excellent moderating gas that comes standard.
+	SAY This here is the input for the moderating gases that will keep the shard in check, Nitrogen is an excellent moderating gas that comes standard.
 	DELAY 80
 	SAY The cooling system is a closed loop, meaning that the gas we put in will stay there unless we say not to.
 	DELAY 75
-	SAY The gas will perpetually cycle through the cooling system, going through the motions of it's feeble existence. Getting heated by the shard and cooled by space, over and over again.
+	SAY The gas will perpetually cycle through the cooling system, going through the motions of its feeble existence. Getting heated by the shard and cooled by space, over and over again.
 	DELAY 100
-	SAY Not too dissimilar to our life. Going to work and sleeping. Over and over again ad infinum. At least we get to die at the end of it, not the case for these poor sods.
+	SAY Not too dissimilar to our life. Going to work and sleeping. Over and over again ad infinitum. At least we get to die at the end of it, not the case for these poor sods.
 	DELAY 120
-	SAY Actually, the shard produces a lot of byproduct gasses that can make the shard unstable, which is why we expel all of those byproduct gasses into the emptiness of space while keeping coolant gasses in.
+	SAY Actually, the shard produces a lot of byproduct gases that can make the shard unstable, which is why we expel all of those byproduct gases into the emptiness of space while keeping coolant gases in.
 	DELAY 160
-	SAY That's about it really, if you're experiencd enough you can move on to using other gasses as coolants, but for now just stick with the nitrogen, it's a good all around coolant that does it's job well enough..
+	SAY That's about it really, if you're experienced enough you can move on to using other gases as coolants, but for now just stick with the nitrogen, it's a good all around coolant that does its job well enough..
 	DELAY 150
 	"}
 
@@ -194,11 +194,11 @@
 	NAME Chief Engineer Moffias Sparks
 	SAY See outside? The vast void of space? That's where the shard's heat goes. The heat exchangers are what allows us to expel the shard's heat into space, keeping it cool and stable.
 	DELAY 120
-	SAY It's what cools the gasses that have been heated up by the shard back to normal temperature, allowing us to reycle them back into the cooling system to be heated again.
+	SAY It's what cools the gases that have been heated up by the shard back to normal temperature, allowing us to reycle them back into the cooling system to be heated again.
 	DELAY 100
-	SAY Without the heat exchangers, the shard heat would just build up and up until it explodes! And we don't want that, do we?
+	SAY Without the heat exchangers, the shard's heat would just build up and up until it explodes! And we don't want that, do we?
 	DELAY 80
-	SAY God, why did you let her just leave her hanging like that... She's gone now, I can manage a state of the art reactor but I can't manage my own damn relationship!
+	SAY God, why did you let her just leave her hanging like that... She's gone now, I can manage a state-of-the-art reactor but I can't manage my own damn relationship!
 	DELAY 100
 	SAY Oh.. This is still running?
 	"}
@@ -213,9 +213,9 @@
 	DELAY 80
 	SAY More emitters shots hitting the shard means more power, it's not rocket science!
 	DELAY 60
-	SAY Just set them up and power them. Sometimes if you're too late, the backup batteries wouldn't have enough charge to kickstart the emitters.
+	SAY Just set them up and power them. Sometimes if you're too late, the backup batteries won't have enough charge to kickstart the emitters.
 	DELAY 80
-	SAY If this happens, scold yourself for taking too much time setting up the SM and hotwire a generator to it. Should provide enough power for them to start firing and producing power.
+	SAY If this happens, scold yourself for taking too much time setting up the SM and hotwire a generator to it. That should provide enough power for them to start firing and producing power.
 	DELAY 100
 	SAY Besides angling the reflectors to hit the shard, that's about it really.
 	DELAY 75
@@ -230,9 +230,9 @@
 	DELAY 120
 	SAY The reason we do this instead of just hooking the engine straight to the station is so that we get ample reserves of power incase of any power issues.
 	DELAY 130
-	SAY Another reason is to lower the voltage going through the wires, Any unfortunate electrical accidents can be made significantly safer if only the bare minimum of power is running through the cable.
+	SAY Another reason is to lower the voltage going through the wires, any unfortunate electrical accidents can be made significantly safer if only the bare minimum of power is running through the cable.
 	DELAY 150
-	SAY Trust me, you don't want to be on wire patrol duty deep in maints just to see a dessicated burned husk of an assistant trying to hack some stupid airlock before suddenly getting mega-watts of power course through his body.
+	SAY Trust me, you don't want to be on wire patrol duty deep in maints just to see a desiccated burned husk of an assistant trying to hack some stupid airlock before suddenly getting mega-watts of power coursing through his body.
 	DELAY 200
 	SAY The image still haunts me to this day, despite the multiple counseling sessions...
 	DELAY 150
@@ -247,14 +247,14 @@
 	SAY Woah, You're confident enough at trying to make a supermatter reactor from scratch?
 	DELAY 50
 	SAY Well, I gotta admire that gumption of yours! I'm not gonna knock someone over for trying.
-	Delay 60
+	DELAY 60
 	SAY All the materials are all present in the construction area. Careful where you open the crates. We packed those boys tight.
 	DELAY 70
-	SAY The standard SM setup you're familiar with has a lot of redundancy and unneeded part that you can toss away.
+	SAY The standard SM setup you're familiar with has a lot of redundancy and unneeded parts that you can toss away.
 	DELAY 60
 	SAY The bare minimum components of an SM reactor is really just the reactor chamber itself, power collection, emitters, and the cooling loop.
 	DELAY 70
-	SAY That's really it... Just don't forget to handle waste byproduct gasses!
+	SAY That's really it... Just don't forget to handle waste byproduct gases!
 	DELAY 50
 	"}
 
@@ -267,7 +267,7 @@
 	DELAY 60
 	SAY There's two types of engines, singularities and teslas. They are contained and activated the same way.
 	DELAY 65
-	SAY You set up an shield generator powered by emitters fired onto it to keep it contained.
+	SAY You set up a shield generator powered by emitters fired onto it to keep it contained.
 	DELAY 50
 	SAY And you fire the particle accelerator to activate the tesla or singularity generator to turn them online
 	DELAY 70
@@ -286,13 +286,13 @@
 	NAME Chief Engineer Dell Conagher
 	SAY Howdy partner, guessin' since you come 'round these parts you must be wanting to learn how to make a nice little homey space station.
 	DELAY 100
-	SAY You've come to the right place, If you just look to your right there is a mighty fine derelict for us to refurbish into a state of the art outpost station.
+	SAY You've come to the right place, If you just look to your right there is a mighty fine derelict for us to refurbish into a state-of-the-art outpost station.
 	DELAY 130
 	SAY You just need to dust off some cobwebs and frozen solid corpses, seal up the breaches and introduce some basic life support and power to it and it's as good as new!
 	DELAY 150
 	SAY Really, the only thing that trips people up is that they forget to "Create a new area". It's a law of the universe see? We simulate it by the UI down in the bottom right corner.
 	DELAY 120
-	SAY Once we create an area, you can then power it up by constructing APC's and powering that. Same thing with atmospheric systems but just with an air alarm.
+	SAY Once we create an area, you can then power it up by constructing APCs and powering that. Same thing with atmospheric systems but just with an air alarm.
 	DELAY 60
 	SAY To finish this tutorial, just use the item on the table next to me on an area you make. Easy-peasy. Happy hunting!
 	DELAY 50
