@@ -229,9 +229,9 @@
 	DELAY 130
 	SAY Another reason is to lower the voltage going through the wires, Any unfortunate electrical accidents can be made significantly safer if only the bare minimum of power is running through the cable.
 	DELAY 150
-	SAY Trust me, you don't want to be on wire patrol duty deep in maints to see a dessicated burned husk of an assistant trying to hack a stupid airlock suddenly getting mega-watts of power course through his body.
+	SAY Trust me, you don't want to be on wire patrol duty deep in maints just to see a dessicated burned husk of an assistant trying to hack some stupid airlock before suddenly getting mega-watts of power course through his body.
 	DELAY 200
-	SAY The image still haunts me to this day despite multiple counseling sessions...
+	SAY The image still haunts me to this day, despite the multiple counseling sessions...
 	DELAY 150
 	SAY Anyhow, to complete this simulation. Just power up the SMES right next to me to 100% and interact with it. Simple as'
 	"}
