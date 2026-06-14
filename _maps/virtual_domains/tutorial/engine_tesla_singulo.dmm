@@ -154,6 +154,14 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/virtual_domain/powered_lighting)
+"eQ" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/space)
 "fA" = (
 /obj/effect/turf_decal/stripes{
 	dir = 1
@@ -2536,7 +2544,7 @@ ns
 ns
 ns
 yk
-ns
+eQ
 ns
 ct
 hb
