@@ -285,7 +285,7 @@
 /obj/structure/closet/crate/engineering{
 	name = "Supermatter Crate"
 	},
-/obj/machinery/power/supermatter_crystal/shard,
+/obj/machinery/power/supermatter_crystal/shard/oldstation,
 /turf/open/floor/plating,
 /area/virtual_domain/powered_lighting)
 "lx" = (

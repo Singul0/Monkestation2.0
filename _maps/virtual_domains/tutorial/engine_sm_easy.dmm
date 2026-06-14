@@ -633,7 +633,7 @@
 /turf/open/floor/iron,
 /area/virtual_domain/powered_lighting)
 "ns" = (
-/obj/machinery/power/supermatter_crystal/engine,
+/obj/machinery/power/supermatter_crystal/shard/oldstation,
 /turf/open/floor/engine,
 /area/virtual_domain/powered_lighting)
 "nW" = (

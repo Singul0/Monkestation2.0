@@ -1,4 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ao" = (
+/obj/item/stack/rods,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/airless,
+/area/space)
 "aw" = (
 /obj/structure/table,
 /obj/item/food/pizzaslice/mothic_firecracker,
@@ -113,6 +120,12 @@
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron/airless,
 /area/space)
+"hQ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/airless,
+/area/space)
 "ie" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -176,6 +189,9 @@
 /area/space)
 "kZ" = (
 /obj/structure/broken_flooring/pile/directional/east,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/airless,
 /area/space)
 "md" = (
@@ -186,6 +202,9 @@
 "nz" = (
 /obj/item/chair,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron/airless,
 /area/space)
 "nV" = (
@@ -249,6 +268,19 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"rf" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/airless,
+/area/space)
+"rh" = (
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/airless,
+/area/space)
 "rF" = (
 /obj/structure/reagent_dispensers/fueltank/large,
 /obj/effect/turf_decal/stripes/line,
@@ -296,6 +328,12 @@
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/virtual_domain/powered_lighting)
+"uS" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/airless,
+/area/space)
 "uY" = (
 /obj/structure/table,
 /obj/machinery/microwave,
@@ -348,6 +386,13 @@
 	name = "broken plating"
 	},
 /turf/open/space/basic,
+/area/space)
+"yG" = (
+/obj/item/stack/sheet/iron,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/airless,
 /area/space)
 "zb" = (
 /obj/item/stack/tile/iron/base,
@@ -404,6 +449,12 @@
 /obj/machinery/mentor_machine,
 /turf/open/floor/iron,
 /area/virtual_domain/powered_lighting)
+"Fi" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/airless,
+/area/space)
 "FE" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /turf/open/floor/plating/airless,
@@ -459,6 +510,9 @@
 /area/space)
 "Jp" = (
 /obj/effect/decal/remains/human,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/airless,
 /area/space)
 "Ju" = (
@@ -585,6 +639,13 @@
 /obj/machinery/rnd/production/circuit_imprinter/offstation,
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered_lighting)
+"Tz" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/space)
 "TU" = (
 /obj/structure/broken_flooring/pile/directional/north,
 /turf/open/space/basic,
@@ -598,6 +659,12 @@
 /obj/structure/lattice,
 /obj/structure/broken_flooring/corner/directional/north,
 /turf/open/space/basic,
+/area/space)
+"UU" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/airless,
 /area/space)
 "Va" = (
 /obj/effect/decal/cleanable/dirt,
@@ -638,6 +705,9 @@
 	name = "broken airlock"
 	},
 /obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron/airless,
 /area/space)
 "XW" = (
@@ -645,6 +715,12 @@
 	name = "broken airlock"
 	},
 /turf/open/floor/plating/airless,
+/area/space)
+"Ys" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/airless,
 /area/space)
 
 (1,1,1) = {"
@@ -1253,7 +1329,7 @@ kd
 kd
 ie
 OW
-JH
+yG
 pY
 ie
 kd
@@ -1286,7 +1362,7 @@ kd
 kd
 ie
 EN
-pY
+Fi
 pY
 Ma
 kd
@@ -1319,7 +1395,7 @@ kd
 ie
 yn
 OW
-cQ
+ao
 ws
 OW
 sW
@@ -1352,7 +1428,7 @@ kd
 kd
 OW
 PD
-JH
+yG
 pY
 OW
 OW
@@ -1385,7 +1461,7 @@ ie
 ie
 if
 PD
-pY
+Fi
 pY
 PD
 PD
@@ -1451,7 +1527,7 @@ ie
 ie
 OW
 EN
-pY
+Fi
 JH
 PD
 PD
@@ -1484,8 +1560,8 @@ yn
 Xh
 PD
 PD
-pY
-pY
+Fi
+Ys
 PD
 uY
 er
@@ -1513,11 +1589,11 @@ kd
 kd
 DS
 ie
-pY
-pY
+UU
+uS
 Ta
 pY
-pY
+Fi
 pY
 PD
 eG
@@ -1546,11 +1622,11 @@ kd
 kd
 ie
 GG
-pY
+Fi
 kZ
-pY
-pY
-pY
+Fi
+Fi
+Fi
 pY
 PD
 PD
@@ -1583,11 +1659,11 @@ EN
 PD
 PD
 PD
-pY
+Fi
 pY
 PD
 jC
-jC
+rh
 iT
 pL
 jC
@@ -1616,8 +1692,8 @@ OW
 OW
 Wj
 PD
-pY
-pY
+Fi
+hQ
 hh
 Ua
 eX
@@ -1649,8 +1725,8 @@ Vq
 iw
 OW
 PD
-pY
-pY
+Fi
+rf
 XH
 nz
 dS
@@ -1682,7 +1758,7 @@ kd
 AN
 OW
 EN
-pY
+Fi
 pY
 PD
 jC
@@ -1715,11 +1791,11 @@ kd
 kd
 qG
 PD
-pY
+Fi
 pY
 PD
 jC
-OW
+Tz
 ie
 OW
 OW
@@ -1748,7 +1824,7 @@ kd
 kd
 ie
 PD
-pY
+Fi
 pY
 PD
 oT
@@ -1781,8 +1857,8 @@ fO
 kd
 kd
 wj
-pY
-pY
+Fi
+Ys
 PD
 OW
 OW
@@ -1814,8 +1890,8 @@ kd
 kd
 kd
 OW
-pY
-pY
+Fi
+hQ
 PD
 PD
 PD
@@ -1847,7 +1923,7 @@ kd
 kd
 kd
 kd
-JH
+yG
 cQ
 PD
 kd
