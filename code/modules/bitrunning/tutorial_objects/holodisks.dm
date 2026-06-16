@@ -295,7 +295,9 @@
 	SAY Really, the only thing that trips people up is that they forget to "Create a new area". It's a law of the universe see? We simulate it by the UI down in the bottom right corner.
 	DELAY 120
 	SAY Once we create an area, you can then power it up by constructing APCs and powering that. Same thing with atmospheric systems but just with an air alarm.
-	DELAY 60
+	DELAY 80
+	SAY Try if you can restore the derelict into a nice comfy little home, powered and breathable. Maybe make some rooms for habitation, departments, and such? World's your oyster.
+	DELAY 100
 	SAY To finish this tutorial, just use the item on the table next to me on an area you make. Easy-peasy. Happy hunting!
 	DELAY 50
 	"}
