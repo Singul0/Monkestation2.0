@@ -267,14 +267,16 @@
 	DELAY 60
 	SAY There's two types of engines, singularities and teslas. They are contained and activated the same way.
 	DELAY 65
-	SAY You set up a shield generator powered by emitters fired onto it to keep it contained.
+	SAY You set up a shield field powered by emitters fired onto it to keep it contained.
 	DELAY 50
-	SAY And you fire the particle accelerator to activate the tesla or singularity generator to turn them online
+	SAY And you fire the particle accelerator at the generator to activate the tesla or singularity generator to turn them online
 	DELAY 70
 	SAY The only difference is the power collection. Singularities emit radiation and Teslas emits shocks. Use radiation collectors and tesla coils + grounding rods respectively
 	DELAY 100
 	SAY Also one more thing, the emitters are powered by a charged SMES that you need to control the output of for all the emitters to fire. Make sure to wire it up to the main electricity grid when the engine is up and running
 	DELAY 130
+	SAY Oh, and this goes without saying but please do wear a space suit when.... you know, going to space?
+	DELAY 120
 	SAY Don't worry about messing up! This is a simulation after all, and we made the Singularities and Teslas immovable.
 	DELAY 80
 	"}

@@ -49,10 +49,8 @@
 /obj/item/clothing/suit/hazardvest{
 	pixel_x = -3
 	},
-/obj/item/storage/belt/utility,
-/obj/item/storage/belt/utility{
-	pixel_x = -7
-	},
+/obj/item/storage/belt/utility/full/engi,
+/obj/item/storage/belt/utility/full/engi,
 /obj/item/clothing/head/utility/hardhat{
 	pixel_y = 7;
 	pixel_x = 8
@@ -357,13 +355,15 @@
 /obj/structure/closet/crate/engineering{
 	name = "Thermomachine Crates"
 	},
-/obj/item/flatpacked_machine/thermomachine,
-/obj/item/flatpacked_machine/thermomachine,
-/obj/item/flatpacked_machine/thermomachine,
-/obj/item/flatpacked_machine/thermomachine,
-/obj/item/flatpacked_machine/thermomachine,
-/obj/item/flatpacked_machine/thermomachine,
-/obj/item/flatpacked_machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
+/obj/item/circuitboard/machine/thermomachine,
 /turf/open/floor/plating,
 /area/virtual_domain/powered_lighting)
 "mQ" = (
@@ -400,14 +400,14 @@
 /area/virtual_domain/powered_lighting)
 "nG" = (
 /obj/structure/closet/crate/engineering/electrical{
-	name = "Lights"
+	name = "Tesla Coils"
 	},
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
+/obj/machinery/power/energy_accumulator/tesla_coil,
+/obj/machinery/power/energy_accumulator/tesla_coil,
+/obj/machinery/power/energy_accumulator/tesla_coil,
+/obj/machinery/power/energy_accumulator/tesla_coil,
+/obj/machinery/power/energy_accumulator/tesla_coil,
+/obj/machinery/power/energy_accumulator/tesla_coil,
 /turf/open/floor/plating,
 /area/virtual_domain/powered_lighting)
 "ou" = (
@@ -486,6 +486,8 @@
 /area/virtual_domain/powered_lighting)
 "pY" = (
 /obj/machinery/holopad/tutorial,
+/obj/item/disk/holodisk/tutorial/engine_sm_easy/reward,
+/obj/effect/turf_decal/box/blue,
 /turf/open/floor/circuit,
 /area/virtual_domain/powered_lighting)
 "pZ" = (
@@ -932,6 +934,7 @@
 /obj/item/pipe_dispenser{
 	pixel_y = 5
 	},
+/obj/item/holosign_creator/atmos,
 /turf/open/floor/iron,
 /area/virtual_domain/powered_lighting)
 "IT" = (
@@ -1160,6 +1163,9 @@
 	pixel_x = -6
 	},
 /obj/item/stack/sheet/mineral/diamond/five,
+/obj/item/stack/sheet/glass/fifty{
+	pixel_x = -6
+	},
 /turf/open/floor/plating,
 /area/virtual_domain/powered_lighting)
 "ST" = (
@@ -1167,18 +1173,6 @@
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/box,
 /turf/open/floor/iron/dark,
-/area/virtual_domain/powered_lighting)
-"Tn" = (
-/obj/structure/closet/crate/engineering/electrical{
-	name = "Tesla Coils"
-	},
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/turf/open/floor/plating,
 /area/virtual_domain/powered_lighting)
 "Ty" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
@@ -2508,7 +2502,7 @@ yD
 yh
 yD
 AU
-Tn
+nG
 nG
 yD
 yD

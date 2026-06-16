@@ -238,11 +238,8 @@
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered_lighting)
 "pH" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/machinery/light/floor/has_bulb,
-/turf/open/floor/iron,
+/obj/item/flatpacked_machine/ore_silo,
+/turf/open/floor/iron/smooth,
 /area/virtual_domain/powered_lighting)
 "pL" = (
 /obj/structure/chair/stool/bar/directional/west,
@@ -291,7 +288,6 @@
 /turf/template_noop,
 /area/space)
 "sC" = (
-/obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/tank/air{
 	piping_layer = 4
 	},
@@ -502,7 +498,7 @@
 	},
 /obj/item/electronics/tracker,
 /obj/item/stack/cable_coil,
-/turf/open/floor/plating,
+/turf/open/floor/iron/smooth,
 /area/virtual_domain/powered_lighting)
 "Il" = (
 /obj/structure/broken_flooring/pile/directional/west,
@@ -597,6 +593,16 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating/airless,
 /area/space)
+"Pn" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/floor/has_bulb,
+/turf/open/floor/iron,
+/area/virtual_domain/powered_lighting)
 "PD" = (
 /turf/closed/wall,
 /area/space)
@@ -837,7 +843,7 @@ kd
 kd
 FE
 Ew
-bx
+Pn
 xa
 Mm
 BE

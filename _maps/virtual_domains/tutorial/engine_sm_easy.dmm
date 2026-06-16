@@ -69,10 +69,8 @@
 /obj/item/clothing/suit/hazardvest{
 	pixel_x = -3
 	},
-/obj/item/storage/belt/utility,
-/obj/item/storage/belt/utility{
-	pixel_x = -7
-	},
+/obj/item/storage/belt/utility/full/engi,
+/obj/item/storage/belt/utility/full/engi,
 /obj/item/clothing/head/utility/hardhat{
 	pixel_y = 7;
 	pixel_x = 8
