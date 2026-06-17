@@ -19981,7 +19981,7 @@
 "bKI" = (
 /obj/machinery/quantum_server/tutorial_coop,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "bKY" = (
 /obj/effect/turf_decal/box/corners{
 	dir = 1
@@ -20043,6 +20043,9 @@
 	},
 /turf/open/floor/wood/large,
 /area/centcom/central_command_areas/adminroom)
+"bSN" = (
+/turf/closed/indestructible/riveted,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "bTx" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 4
@@ -20291,7 +20294,7 @@
 "cmj" = (
 /obj/machinery/netpod/tutorial_solo,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "cmN" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/parquet,
@@ -20595,6 +20598,9 @@
 	},
 /turf/open/floor/glass/plasma,
 /area/centcom/central_command_areas/adminroom)
+"cMe" = (
+/turf/open/floor/iron/dark/herringbone,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "cMi" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -21247,7 +21253,7 @@
 /area/centcom/central_command_areas/admin)
 "dRd" = (
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "dRe" = (
 /obj/structure/chair/sofa/middle/maroon,
 /turf/open/floor/carpet/neon/simple/green/nodots,
@@ -24076,7 +24082,7 @@
 "isK" = (
 /obj/machinery/netpod/tutorial_coop,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "itR" = (
 /obj/machinery/plumbing/ooze_compressor,
 /turf/open/floor/engine,
@@ -25253,7 +25259,7 @@
 	pixel_x = -8
 	},
 /turf/open/floor/iron/dark/herringbone,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "kmv" = (
 /obj/structure/wrestling_corner{
 	dir = 1;
@@ -25549,6 +25555,10 @@
 	},
 /turf/open/floor/glass/plasma,
 /area/centcom/central_command_areas/evacuation)
+"kII" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/vaporwave,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "kJM" = (
 /obj/machinery/door/airlock/centcom{
 	dir = 8;
@@ -27367,6 +27377,10 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
+"oga" = (
+/obj/effect/landmark/tutorial_start,
+/turf/open/floor/iron/vaporwave,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "ogy" = (
 /obj/effect/turf_decal/syndicateemblem/bottom/left,
 /turf/open/floor/mineral/plastitanium/red,
@@ -28152,7 +28166,7 @@
 /area/cruiser_dock)
 "pxi" = (
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "pyP" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
@@ -29326,7 +29340,7 @@
 /obj/machinery/light/floor/has_bulb,
 /obj/effect/turf_decal/trimline/white,
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "ruO" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
@@ -31028,7 +31042,7 @@
 "upc" = (
 /obj/machinery/quantum_server/tutorial_solo,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "upN" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 9
@@ -31254,7 +31268,7 @@
 "uPq" = (
 /obj/machinery/computer/quantum_console/tutorial_coop,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "uPx" = (
 /obj/effect/decal/cleanable/crayon{
 	icon_state = "p";
@@ -31277,7 +31291,7 @@
 	pixel_x = 5
 	},
 /turf/open/floor/iron/dark/herringbone,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "uPO" = (
 /obj/effect/spawner/random/trash/garbage,
 /obj/effect/spawner/random/trash/cigbutt,
@@ -31705,7 +31719,7 @@
 "vzB" = (
 /obj/machinery/computer/quantum_console/tutorial_solo,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "vAz" = (
 /obj/effect/turf_decal/box/corners{
 	dir = 4
@@ -80040,9 +80054,9 @@ aaa
 aaa
 aaa
 aaa
-apG
-apG
-apG
+bSN
+bSN
+bSN
 dRd
 dRd
 dRd
@@ -80297,10 +80311,10 @@ aaa
 aaa
 aaa
 aaa
-apG
+bSN
 bKI
 uPq
-aqK
+cMe
 dRd
 dRd
 acg
@@ -80554,7 +80568,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+bSN
 isK
 pxi
 uPx
@@ -80811,10 +80825,10 @@ aaa
 aaa
 aaa
 aaa
-apG
+bSN
 isK
 pxi
-aqK
+cMe
 dRd
 dRd
 acg
@@ -81068,10 +81082,10 @@ aaa
 aaa
 aaa
 aaa
-apG
+bSN
+kII
 dRd
-dRd
-dRd
+oga
 dRd
 dRd
 acg
@@ -81325,7 +81339,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+bSN
 dRd
 dRd
 dRd
@@ -81582,7 +81596,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+bSN
 cmj
 pxi
 kmr
@@ -81839,10 +81853,10 @@ aaa
 aaa
 aaa
 aaa
-apG
+bSN
 upc
 vzB
-aqK
+cMe
 dRd
 dRd
 acg
@@ -82096,12 +82110,12 @@ aaa
 aaa
 aaa
 aaa
-apG
-apG
-apG
-apG
-apG
-apG
+bSN
+bSN
+bSN
+bSN
+bSN
+bSN
 acg
 ydt
 gyJ

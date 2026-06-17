@@ -79,6 +79,44 @@
 
 	make_me_an_observer()
 
+/mob/dead/new_player/proc/enter_tutorial()
+	if(isnull(client))
+		return
+	if(QDELETED(src) || !src.client)
+		ready = PLAYER_NOT_READY
+		return FALSE
+
+	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to enter tutorial? You may return to lobby if you try to leave the tutorial chamber", "Tutorial", "Yes", "No")
+	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+		ready = PLAYER_NOT_READY
+		return FALSE
+
+	return create_tutorial_body()
+
+/mob/dead/new_player/proc/create_tutorial_body()
+	var/mob/living/carbon/human/tutorial/tutorial_body = new()
+	spawning = TRUE
+	var/obj/effect/landmark/tutorial_start/obs_start = locate(/obj/effect/landmark/tutorial_start/) in GLOB.landmarks_list
+	to_chat(src, span_notice("Now teleporting."))
+
+	if(obs_start)
+		tutorial_body.forceMove(obs_start.loc)
+	else
+		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
+		stack_trace("There's no freaking tutorial landmark available on yet! you're accessing the tutorial before the CC is initialised")
+
+	tutorial_body.PossessByPlayer(key)
+	tutorial_body.client = client
+
+	//to-do check plasmamen?
+	if(tutorial_body?.client?.prefs)
+		tutorial_body.client.prefs.apply_prefs_to(tutorial_body)
+	tutorial_body.equipOutfit(/datum/outfit/ghost_player)
+
+	QDEL_NULL(mind)
+	qdel(src)
+	return TRUE
+
 /mob/dead/new_player/proc/join_game(from_lobby_menu = FALSE, params = null)
 	if(isnull(client))
 		return
