@@ -20043,9 +20043,6 @@
 	},
 /turf/open/floor/wood/large,
 /area/centcom/central_command_areas/adminroom)
-"bSN" = (
-/turf/closed/indestructible/riveted,
-/area/centcom/central_command_areas/hall/tutorial_chamber)
 "bTx" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 4
@@ -20293,6 +20290,9 @@
 /area/centcom/central_command_areas/evacuation)
 "cmj" = (
 /obj/machinery/netpod/tutorial_solo,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "cmN" = (
@@ -20598,9 +20598,6 @@
 	},
 /turf/open/floor/glass/plasma,
 /area/centcom/central_command_areas/adminroom)
-"cMe" = (
-/turf/open/floor/iron/dark/herringbone,
-/area/centcom/central_command_areas/hall/tutorial_chamber)
 "cMi" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -22343,6 +22340,10 @@
 	},
 /turf/open/misc/asteroid,
 /area/centcom/syndicate_mothership/firebase_trident)
+"fWg" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/vaporwave,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "fWt" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/rock/pile/jungle/style_random,
@@ -24081,6 +24082,9 @@
 /area/centcom/central_command_areas/admin)
 "isK" = (
 /obj/machinery/netpod/tutorial_coop,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "itR" = (
@@ -25555,10 +25559,6 @@
 	},
 /turf/open/floor/glass/plasma,
 /area/centcom/central_command_areas/evacuation)
-"kII" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall/tutorial_chamber)
 "kJM" = (
 /obj/machinery/door/airlock/centcom{
 	dir = 8;
@@ -26840,6 +26840,9 @@
 	},
 /turf/open/floor/iron/dark/small,
 /area/centcom)
+"nfN" = (
+/turf/open/floor/iron/dark/herringbone,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "nfO" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
@@ -27065,6 +27068,10 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/carpet/neon/simple/blue/nodots,
 /area/centcom/central_command_areas/prison)
+"nDz" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "nDJ" = (
 /obj/machinery/power/energy_accumulator/tesla_coil/anchored,
 /turf/open/floor/plating/reinforced,
@@ -28165,6 +28172,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "pxi" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
+	},
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "pyP" = (
@@ -28338,6 +28348,10 @@
 /obj/item/extrapolator,
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/syndicate_mothership/expansion_bioterrorism)
+"pIF" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/dark/herringbone,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "pKk" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/sign/poster/contraband/ambrosia_vulgaris/directional/north,
@@ -30826,6 +30840,9 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/circuit,
 /area/centcom/central_command_areas/adminroom)
+"tTY" = (
+/turf/closed/indestructible/riveted,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "tUh" = (
 /obj/effect/turf_decal/tile/hot_pink/full,
 /obj/effect/turf_decal/siding/purple/corner{
@@ -31127,6 +31144,12 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plastic,
 /area/centcom/central_command_areas/admin)
+"uzo" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "uAy" = (
 /obj/effect/landmark/start/commando_nukeop_leader,
 /turf/open/floor/iron/dark/textured,
@@ -31267,6 +31290,7 @@
 /area/centcom/central_command_areas/admin)
 "uPq" = (
 /obj/machinery/computer/quantum_console/tutorial_coop,
+/obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "uPx" = (
@@ -31718,6 +31742,7 @@
 /area/centcom/central_command_areas/prison)
 "vzB" = (
 /obj/machinery/computer/quantum_console/tutorial_solo,
+/obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "vAz" = (
@@ -32221,6 +32246,12 @@
 	dir = 8
 	},
 /area/centcom/central_command_areas/evacuation)
+"wmy" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/vaporwave,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "wmA" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L4"
@@ -32690,6 +32721,10 @@
 /obj/machinery/light/floor/has_bulb,
 /turf/open/misc/beach/sand,
 /area/centcom/central_command_areas/adminroom)
+"xcU" = (
+/obj/machinery/netpod/tutorial_coop,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "xdB" = (
 /obj/item/clothing/under/dress/sparkle,
 /turf/open/floor/fakespace,
@@ -80054,12 +80089,12 @@ aaa
 aaa
 aaa
 aaa
-bSN
-bSN
-bSN
-dRd
-dRd
-dRd
+tTY
+tTY
+tTY
+wmy
+wmy
+wmy
 acg
 abM
 abM
@@ -80311,10 +80346,10 @@ aaa
 aaa
 aaa
 aaa
-bSN
+tTY
 bKI
 uPq
-cMe
+pIF
 dRd
 dRd
 acg
@@ -80568,9 +80603,9 @@ aaa
 aaa
 aaa
 aaa
-bSN
-isK
-pxi
+tTY
+xcU
+nDz
 uPx
 ruD
 dRd
@@ -80825,10 +80860,10 @@ aaa
 aaa
 aaa
 aaa
-bSN
+tTY
 isK
-pxi
-cMe
+uzo
+nfN
 dRd
 dRd
 acg
@@ -81082,8 +81117,8 @@ aaa
 aaa
 aaa
 aaa
-bSN
-kII
+tTY
+fWg
 dRd
 oga
 dRd
@@ -81339,7 +81374,7 @@ aaa
 aaa
 aaa
 aaa
-bSN
+tTY
 dRd
 dRd
 dRd
@@ -81596,7 +81631,7 @@ aaa
 aaa
 aaa
 aaa
-bSN
+tTY
 cmj
 pxi
 kmr
@@ -81853,10 +81888,10 @@ aaa
 aaa
 aaa
 aaa
-bSN
+tTY
 upc
 vzB
-cMe
+nfN
 dRd
 dRd
 acg
@@ -82110,12 +82145,12 @@ aaa
 aaa
 aaa
 aaa
-bSN
-bSN
-bSN
-bSN
-bSN
-bSN
+tTY
+tTY
+tTY
+tTY
+tTY
+tTY
 acg
 ydt
 gyJ
