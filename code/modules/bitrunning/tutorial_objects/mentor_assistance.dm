@@ -52,6 +52,7 @@
 
 	if(isobserver(candidate) && mentor?.client?.prefs)
 		mentor.client.prefs.apply_prefs_to(mentor)
+		mentor.dna.species.give_important_for_life(mentor)
 	mentor.equipOutfit(/datum/outfit/allmightyjanitor)
 
 	var/datum/action/cooldown/spell/self_destruct/new_spell = new /datum/action/cooldown/spell/self_destruct(mentor.mind || mentor)

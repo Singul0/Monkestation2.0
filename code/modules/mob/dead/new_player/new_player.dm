@@ -108,9 +108,9 @@
 	tutorial_body.PossessByPlayer(key)
 	tutorial_body.client = client
 
-	//to-do check plasmamen?
 	if(tutorial_body?.client?.prefs)
 		tutorial_body.client.prefs.apply_prefs_to(tutorial_body)
+		tutorial_body.dna.species.give_important_for_life(tutorial_body)
 	tutorial_body.equipOutfit(/datum/outfit/ghost_player)
 
 	QDEL_NULL(mind)
