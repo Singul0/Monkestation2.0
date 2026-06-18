@@ -512,13 +512,6 @@
 	},
 /turf/open/floor/iron,
 /area/virtual_domain/powered_lighting)
-"ly" = (
-/obj/machinery/camera/directional/west{
-	c_tag = "Engineering Supermatter Chamber";
-	network = list("engine")
-	},
-/turf/open/floor/engine,
-/area/virtual_domain/powered_lighting)
 "lA" = (
 /obj/item/trash/raisins,
 /obj/machinery/light/small/warm/directional/west,
@@ -1447,10 +1440,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/camera/directional/east{
-	c_tag = "Engineering Supermatter Port";
-	network = list("ss13","engine")
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/machinery/airalarm/directional/east,
 /obj/structure/cable,
@@ -1812,10 +1801,6 @@
 "UW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
-	},
-/obj/machinery/camera/directional/west{
-	c_tag = "Engineering Supermatter Starboard";
-	network = list("ss13","engine")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
@@ -3099,7 +3084,7 @@ za
 lm
 Sd
 yP
-ly
+lm
 yw
 mm
 Al
