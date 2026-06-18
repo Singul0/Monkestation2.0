@@ -80,14 +80,15 @@
 	make_me_an_observer()
 
 /mob/dead/new_player/proc/enter_tutorial()
-	if(isnull(client))
-		return
-	if(QDELETED(src) || !src.client)
+	if(QDELETED(src) || QDELETED(client))
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to enter tutorial? You may return to lobby if you try to leave the tutorial chamber", "Tutorial", "Yes", "No")
-	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+	var/this_is_like_playing_right = tgui_alert(user, "Are you sure you wish to enter tutorial? You may return to lobby if you try to leave the tutorial chamber", "Tutorial", list("Yes", "No"))
+	if(QDELETED(src) || QDELETED(client))
+		return FALSE
+		
+	if(this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
 		return FALSE
 

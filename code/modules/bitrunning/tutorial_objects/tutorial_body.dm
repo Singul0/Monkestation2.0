@@ -7,6 +7,7 @@
 	return ..()
 
 /mob/living/carbon/human/tutorial/proc/checks_area(atom/movable/source, area/new_area)
+	SIGNAL_HANDLER
 	if(istype(new_area, /area/centcom/central_command_areas/hall/tutorial_chamber))
 		return
 
