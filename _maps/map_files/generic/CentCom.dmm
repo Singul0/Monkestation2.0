@@ -25468,6 +25468,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/syndicate_mothership/expansion_bioterrorism)
+"kDl" = (
+/obj/machinery/holopad/tutorial,
+/obj/effect/turf_decal/box/red,
+/obj/item/disk/holodisk/tutorial,
+/turf/open/floor/iron/vaporwave,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "kDH" = (
 /obj/item/language_manual{
 	language = /datum/language/machine;
@@ -81119,7 +81125,7 @@ aaa
 aaa
 tTY
 fWg
-dRd
+kDl
 oga
 dRd
 dRd
