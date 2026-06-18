@@ -3,8 +3,8 @@
 	RegisterSignal(src, COMSIG_ENTER_AREA, PROC_REF(checks_area))
 
 /mob/living/carbon/human/tutorial/Destroy()
-	. = ..()
 	UnregisterSignal(src, COMSIG_ENTER_AREA)
+	return ..()
 
 /mob/living/carbon/human/tutorial/proc/checks_area(atom/movable/source, area/new_area)
 	if(istype(new_area, /area/centcom/central_command_areas/hall/tutorial_chamber))
