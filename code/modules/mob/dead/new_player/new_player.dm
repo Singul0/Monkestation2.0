@@ -84,27 +84,25 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = tgui_alert(user, "Are you sure you wish to enter tutorial? You may return to lobby if you try to leave the tutorial chamber", "Tutorial", list("Yes", "No"))
+	var/this_is_like_playing_right = tgui_alert(src, "Are you sure you wish to enter tutorial? You may return to lobby if you try to leave the tutorial chamber", "Tutorial", list("Yes", "No"))
 	if(QDELETED(src) || QDELETED(client))
 		return FALSE
-		
+
 	if(this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	return create_tutorial_body()
-
-/mob/dead/new_player/proc/create_tutorial_body()
-	var/mob/living/carbon/human/tutorial/tutorial_body = new()
-	spawning = TRUE
-	var/obj/effect/landmark/tutorial_start/obs_start = locate(/obj/effect/landmark/tutorial_start/) in GLOB.landmarks_list
+	//creates the tutorial body and spawns them in CC
+	var/obj/effect/landmark/tutorial_start/obs_start = locate(/obj/effect/landmark/tutorial_start) in GLOB.landmarks_list
 	to_chat(src, span_notice("Now teleporting."))
 
-	if(obs_start)
-		tutorial_body.forceMove(obs_start.loc)
-	else
+	if(!obs_start)
 		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
 		stack_trace("There's no freaking tutorial landmark available on yet! you're accessing the tutorial before the CC is initialised")
+
+	var/mob/living/carbon/human/tutorial/tutorial_body = new()
+	tutorial_body.forceMove(obs_start.loc)
+	spawning = TRUE
 
 	tutorial_body.PossessByPlayer(key)
 	tutorial_body.client = client
@@ -116,7 +114,6 @@
 
 	QDEL_NULL(mind)
 	qdel(src)
-	return TRUE
 
 /mob/dead/new_player/proc/join_game(from_lobby_menu = FALSE, params = null)
 	if(isnull(client))
