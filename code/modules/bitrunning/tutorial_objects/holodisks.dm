@@ -10,6 +10,18 @@
 /datum/preset_holoimage/virologist
 	outfit_type = /datum/outfit/job/virologist
 
+/datum/preset_holoimage/cc_official
+	outfit_type = /datum/outfit/centcom/centcom_intern
+
+/obj/item/disk/holodisk/tutorial
+	name = "Tutorial Simulations"
+	preset_image_type = /datum/preset_holoimage/cc_official
+	preset_record_text = {"
+	NAME John Intern
+	SAY Heya! Welcome to our state-of-the-art simulation chamber, just load what tutorial you'd like to know more about and hop in the netpod! It's that simple!
+	DELAY 200
+	"}
+
 /obj/item/disk/holodisk/tutorial/medbay/orientation
 	name = "Medical Centre Simulation Orientation"
 	preset_image_type = /datum/preset_holoimage/cmo
