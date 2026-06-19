@@ -32690,7 +32690,6 @@
 "wBA" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/byteforge,
-/obj/machinery/light/directional/north,
 /turf/open/floor/iron/vaporwave,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "wBU" = (
