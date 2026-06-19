@@ -99,9 +99,9 @@
 	if(!obs_start)
 		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
 		stack_trace("There's no freaking tutorial landmark available on yet! you're accessing the tutorial before the CC is initialised")
+		return
 
-	var/mob/living/carbon/human/tutorial/tutorial_body = new()
-	tutorial_body.forceMove(obs_start.loc)
+	var/mob/living/carbon/human/tutorial/tutorial_body = new(get_turf(obs_start))
 	spawning = TRUE
 
 	tutorial_body.PossessByPlayer(key)
