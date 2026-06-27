@@ -193,7 +193,7 @@ const AntagSelection = (props: { antagonists: Antagonist[]; name: string }) => {
 
 export const AntagsPage = () => {
   return (
-    <Stack vertical overflowY="scroll" maxHeight="100%">
+    <Stack vertical>
       <Stack.Item>
         <AntagSelection
           name="Roundstart"

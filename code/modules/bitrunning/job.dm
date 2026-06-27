@@ -1,10 +1,11 @@
+/* MONKESTATION REMOVAL: MERGED WITH PRISONERS
 /datum/job/bitrunner
 	title = JOB_BITRUNNER
 	description = "Surf the virtual domain for gear and loot. Decrypt your rewards on station."
 	department_head = list(JOB_QUARTERMASTER)
 	faction = FACTION_STATION
-	total_positions = 0//3 -- MONKESTATION REMOVAL: MERGED WITH PRISONER
-	spawn_positions = 0//3 -- MONKESTATION REMOVAL: MERGED WITH PRISONER
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = SUPERVISOR_QM_HOP
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "BITRUNNER"
@@ -29,7 +30,7 @@
 		/obj/item/food/cornchips/blue = 1,
 	)
 	rpg_title = "Recluse"
-	job_flags = NONE//STATION_JOB_FLAGS -- MONKESTATION REMOVAL: MERGED WITH PRISONER
+	job_flags = STATION_JOB_FLAGS
 
 /datum/outfit/job/bitrunner
 	name = "Bitrunner"
@@ -40,3 +41,4 @@
 	belt = /obj/item/modular_computer/pda/bitrunner
 	ears = /obj/item/radio/headset/headset_cargo
 	accessory = /obj/item/clothing/accessory/badge/cargo
+*/

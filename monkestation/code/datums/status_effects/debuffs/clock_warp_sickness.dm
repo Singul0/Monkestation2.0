@@ -23,7 +23,7 @@
 /atom/movable/screen/alert/status_effect/clock_warp_sickness
 	name = "Warp Sickness"
 	desc = "You are disoriented from recently teleporting."
-	icon = 'icons/mob/clock_cult/actions_clock.dmi'
+	icon = 'monkestation/icons/mob/clock_cult/actions_clock.dmi'
 	icon_state = "warp_down"
 	alerttooltipstyle = "clockwork"
 

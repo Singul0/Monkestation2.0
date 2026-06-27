@@ -15,7 +15,6 @@
 
 /mob/eye/camera/ai/Initialize(mapload)
 	. = ..()
-	update_appearance()
 	update_ai_detect_hud()
 
 /mob/eye/camera/ai/Destroy()
@@ -84,18 +83,14 @@
 	active_hud_list[AI_DETECT_HUD] = new_images
 	hud.add_atom_to_hud(src)
 
-/mob/eye/camera/ai/setLoc(destination, force_update = FALSE, reset_tracking = TRUE)
+/mob/eye/camera/ai/setLoc(destination, force_update = FALSE)
 	if(!ai)
 		return
-	if(!(isvalidAIloc(ai.loc)))
-		return
-	if(ai.technically_unpowered && !(ai.loc in destination)) //can't move while unpowered
+	if(!isturf(ai.loc))
 		return
 
 	. = ..()
 
-	if(reset_tracking && ai.ai_tracking_tool)
-		ai.ai_tracking_tool.reset_tracking()
 	if(ai.client && !ai.multicam_on)
 		ai.client.set_eye(src)
 	update_ai_detect_hud()
@@ -140,8 +135,6 @@
 /mob/eye/camera/ai/proc/examinate_check(mob/user, atom/source)
 	SIGNAL_HANDLER
 	if(user.client.eye == src)
-		if(ishuman(source) && !ai.canExamineHumans)
-			return
 		return COMPONENT_ALLOW_EXAMINATE
 
 /atom/proc/move_camera_by_click()
@@ -149,14 +142,15 @@
 		return
 	var/mob/living/silicon/ai/AI = usr
 	if(AI.eyeobj && (AI.multicam_on || (AI.client.eye == AI.eyeobj)) && (AI.eyeobj.z == z))
-		if (isvalidAIloc(loc))
+		AI.ai_tracking_tool.reset_tracking()
+		if (isturf(loc) || isturf(src))
 			AI.eyeobj.setLoc(src)
 
 // This will move the AIEye. It will also cause lights near the eye to light up, if toggled.
 // This is handled in the proc below this one.
 #define SPRINT_PER_TICK 0.5
+#define MAX_SPRINT 50
 #define SPRINT_PER_STEP 20
-
 /mob/living/silicon/ai/proc/AIMove(direction)
 	if(last_moved && last_moved + 1 < world.timeofday)
 		// Decay sprint based off how long it took us to input this next move
@@ -173,15 +167,17 @@
 
 	// I'd like to make this scale with the steps we take, but it like, just can't
 	// So we're doin this instead
-	eyeobj.glide_size = ICON_SIZE_ALL
+	eyeobj.glide_size = world.icon_size
 
 	last_moved = world.timeofday
 	if(acceleration)
-		sprint = min(sprint + SPRINT_PER_TICK, max_camera_sprint)
+		sprint = min(sprint + SPRINT_PER_TICK, MAX_SPRINT)
 	else
 		sprint = initial(sprint)
 
+	ai_tracking_tool.reset_tracking()
 #undef SPRINT_PER_STEP
+#undef MAX_SPRINT
 #undef SPRINT_PER_TICK
 
 // Return to the Core.
@@ -191,9 +187,11 @@
 		H.clear_holo(src)
 	else
 		current = null
+	if(ai_tracking_tool)
+		ai_tracking_tool.reset_tracking()
 	unset_machine()
 
-	if(isvalidAIloc(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
+	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
 		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
 		stack_trace("AI eye object wasn't found! Location: [loc] / Eyeobj: [eyeobj] / QDELETED: [QDELETED(eyeobj)] / Eye loc: [eyeobj?.loc]")
 		QDEL_NULL(eyeobj)

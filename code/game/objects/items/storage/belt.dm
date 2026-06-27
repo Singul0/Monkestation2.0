@@ -76,11 +76,9 @@
 		/obj/item/wrench,
 		/obj/item/spess_knife,
 		/obj/item/melee/sickly_blade/lock,
-		/obj/item/clockwork/replica_fabricator,
-		/obj/item/clockwork/clockwork_slab,
-		/obj/item/holotool,
-		/obj/item/gun/energy/plasmacutter,
-		/obj/item/rwd,
+		/obj/item/clockwork/replica_fabricator, //monkestation edit
+		/obj/item/clockwork/clockwork_slab, //monkestation edit
+		/obj/item/holotool, //monkestation edit
 	))
 
 /obj/item/storage/belt/utility/chief

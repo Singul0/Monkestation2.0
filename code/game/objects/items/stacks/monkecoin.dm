@@ -2,7 +2,7 @@
 /obj/item/stack/monkecoin
 	name = "monkecoin"
 	singular_name = "monkecoin"
-	icon = 'icons/obj/monkecoin.dmi'
+	icon = 'monkestation/icons/obj/monkecoin.dmi'
 	icon_state = "monkecoin"
 	amount = 1
 	max_amount = INFINITY

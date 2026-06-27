@@ -1,5 +1,5 @@
 /obj/item/sticker/monkestation
-	icon = 'icons/obj/stickers.dmi'
+	icon = 'monkestation/icons/obj/stickers.dmi'
 	icon_state = "NULL"
 
 /obj/item/sticker/monkestation/menacing

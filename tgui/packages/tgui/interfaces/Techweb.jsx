@@ -147,7 +147,6 @@ export const TechwebContent = (props) => {
     locked,
     queue_nodes = [],
     node_cache,
-    point_types_abbreviations = [],
   } = data;
   const [techwebRoute, setTechwebRoute] = useLocalState('techwebRoute', null);
   const [lastPoints, setLastPoints] = useLocalState('lastPoints', {});
@@ -168,8 +167,8 @@ export const TechwebContent = (props) => {
                 </span>
               </LabeledList.Item>
               {Object.keys(points).map((k) => (
-                <LabeledList.Item key={k} label={point_types_abbreviations[k]}>
-                  <b>{points[k]}</b>
+                <LabeledList.Item key={k}>
+                  <b>{k}</b>: {points[k]}
                   {!!points_last_tick[k] && ` (+${points_last_tick[k]}/sec)`}
                 </LabeledList.Item>
               ))}

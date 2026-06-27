@@ -44,7 +44,8 @@
 			var/obj/item/disk/nuclear/N = locate() in SSpoints_of_interest.real_nuclear_disks
 			target = N
 		if(TRACK_MALF_AI)
-			for(var/mob/living/silicon/ai/A as anything in GLOB.ai_list)
+			for(var/V in GLOB.ai_list)
+				var/mob/living/silicon/ai/A = V
 				if(A.nuking)
 					target = A
 			for(var/obj/machinery/power/apc/apc as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))

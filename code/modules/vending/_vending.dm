@@ -13,7 +13,7 @@
 	contraband = list()
 	premium = list()
 */
-#define ITEM_HASH(item)(sanitize_css_class_name("[item.name][item.custom_price][item.type]"))
+
 #define MAX_VENDING_INPUT_AMOUNT 30
 /**
  * # vending record datum
@@ -1037,12 +1037,10 @@
 			LAZYADD(product_datum.returned_products, inserted_item)
 			return
 
-	var/itemhash = ITEM_HASH(inserted_item)
-	if(vending_machine_input[itemhash])
-		vending_machine_input[itemhash]++
+	if(vending_machine_input[inserted_item.type])
+		vending_machine_input[inserted_item.type]++
 	else
-		vending_machine_input[itemhash] = 1
-		update_static_data_for_all_viewers()
+		vending_machine_input[inserted_item.type] = 1
 	loaded_items++
 
 /obj/machinery/vending/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
@@ -1577,14 +1575,12 @@
 	. = ..()
 	.["access"] = compartmentLoadAccessCheck(user)
 	.["vending_machine_input"] = list()
-	for (var/stocked_item in vending_machine_input)
+	for (var/obj/item/stocked_item as anything in vending_machine_input)
 		if(vending_machine_input[stocked_item] > 0)
 			var/base64
 			var/price = 0
-			var/itemname
-			for(var/obj/item/stored_item in contents - component_parts)
-				if(ITEM_HASH(stored_item) == stocked_item)
-					itemname = stored_item.name
+			for(var/obj/item/stored_item in contents)
+				if(stored_item.type == stocked_item)
 					price = stored_item.custom_price
 					if(!base64) //generate an icon of the item to use in UI
 						if(base64_cache[stored_item.type])
@@ -1594,8 +1590,8 @@
 							base64_cache[stored_item.type] = base64
 					break
 			var/list/data = list(
-				path = stocked_item, //list key is named "path", but actual value is of type "text" from calling ITEM_HASH(). I'm afraid to rename for fear of causing issues
-				name = itemname,
+				path = stocked_item,
+				name = initial(stocked_item.name),
 				price = price,
 				img = base64,
 				amount = vending_machine_input[stocked_item],
@@ -1653,7 +1649,7 @@
 /obj/machinery/vending/custom/proc/vend_act(mob/living/user, list/params)
 	if(!vend_ready)
 		return
-	var/choice = params["item"]
+	var/obj/item/choice = text2path(params["item"]) // typepath is a string coming from javascript, we need to convert it back
 	var/obj/item/dispensed_item
 	var/obj/item/card/id/id_card = user.get_idcard(TRUE)
 	vend_ready = FALSE
@@ -1662,8 +1658,8 @@
 		flick(icon_deny, src)
 		return TRUE
 	var/datum/bank_account/payee = id_card.registered_account
-	for(var/obj/item/stock in contents - component_parts)
-		if(choice == ITEM_HASH(stock))
+	for(var/obj/item/stock in contents)
+		if(istype(stock, choice))
 			dispensed_item = stock
 			break
 	if(!dispensed_item)
@@ -1691,8 +1687,6 @@
 	loaded_items--
 	use_energy(active_power_usage)
 	vending_machine_input[choice] = max(vending_machine_input[choice] - 1, 0)
-	if (vending_machine_input[choice] == 0)
-		vending_machine_input -= list(choice)
 	if(user.CanReach(src) && user.put_in_hands(dispensed_item))
 		to_chat(user, span_notice("You take [dispensed_item.name] out of the slot."))
 	else

@@ -21,8 +21,7 @@
 		/obj/item/stack/sheet,
 		/obj/item/stack/tile,
 		/obj/item/stock_parts,
-		/obj/item/wallframe,
-		/obj/item/clothing/head/cone,
+		/obj/item/wallframe/camera,
 	))
 
 ///Rebar quiver bag

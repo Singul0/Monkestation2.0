@@ -2,6 +2,7 @@
 	name = "pack of tree seeds"
 	desc = "These seeds grow into a tree."
 	plant_icon_offset = 0
+	icon = 'monkestation/icons/obj/hydroponics/fruit.dmi'
 	icon_state = "coconut_seed" //CHANGE THIS
 
 	species = "tree"

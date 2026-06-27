@@ -10,11 +10,12 @@
 	for(var/i in 1 to 7)
 		new /obj/item/grenade/flashbang(src)
 
+//MONKESTATION EDIT START
 /obj/item/storage/box/sec_smokebomb
 	name = "box of smoke grenades (WARNING)"
 	desc = "The rest of the warning label is torn off..."
 	icon_state = "secbox"
-	illustration = "secsmoke"
+	illustration = "grenade"
 
 /obj/item/storage/box/sec_smokebomb/PopulateContents()
 	for(var/i in 1 to 7)
@@ -24,11 +25,12 @@
 	name = "box of smoke grenades (WARNING)"
 	desc = "The rest of the warning label is torn off..."
 	icon_state = "secbox"
-	illustration = "smoke"
+	illustration = "grenade"
 
 /obj/item/storage/box/smokebomb/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/grenade/smokebomb(src)
+//MONKESTATION EDIT STOP
 
 /obj/item/storage/box/stingbangs
 	name = "box of stingbangs (WARNING)"

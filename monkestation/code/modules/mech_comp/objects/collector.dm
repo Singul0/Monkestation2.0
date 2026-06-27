@@ -1,7 +1,7 @@
 /obj/item/mcobject/collector
 	name = "collector component"
 
-	icon = 'icons/obj/mechcomp.dmi'
+	icon = 'monkestation/icons/obj/mechcomp.dmi'
 	icon_state = "comp_collector"
 	base_icon_state = "comp_collector"
 

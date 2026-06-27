@@ -248,6 +248,7 @@
 	desc = "A tank full of firefighting foam."
 	icon_state = "foam"
 	reagent_id = /datum/reagent/firefighting_foam
+	tank_volume = 500
 	openable = TRUE
 	can_buckle = TRUE //Monkestation edit start
 	buckle_lying = 0
@@ -332,7 +333,7 @@
 	name = "high capacity fuel tank"
 	desc = "A tank full of a high quantity of welding fuel. Keep away from open flames."
 	icon_state = "fuel_high"
-	tank_volume = 2500
+	tank_volume =SHEET_MATERIAL_AMOUNT * 2.5
 
 /// Wall mounted dispeners, like pepper spray or virus food. Not a normal tank, and shouldn't be able to be turned into a plumbed stationary one.
 /obj/structure/reagent_dispensers/wall

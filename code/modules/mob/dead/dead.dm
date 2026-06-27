@@ -32,7 +32,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 /mob/dead/get_status_tab_items()
 	. = ..()
 	if(client?.prefs)
-		. += "Selected Character: [client.prefs.get_enabled_character_names()]"
+		. += "Selected Character: [client.prefs.read_preference(/datum/preference/name/real_name)]"
 		. += ""
 
 	if(SSticker.HasRoundStarted())

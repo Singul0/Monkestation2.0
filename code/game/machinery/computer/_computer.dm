@@ -26,7 +26,7 @@
 	var/authenticated = FALSE
 	/// Will projectiles be able to pass over this computer?
 	var/projectiles_pass_chance = 50
-	pass_flags_self = LETPASSTHROW | PASSMACHINE | LETPASSCLICKS
+	pass_flags_self = LETPASSTHROW //monkestation addition
 
 /datum/armor/machinery_computer
 	fire = 40
@@ -37,7 +37,7 @@
 
 	power_change()
 
-/obj/machinery/computer/process(seconds_per_tick)
+/obj/machinery/computer/process()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return FALSE
 	return TRUE

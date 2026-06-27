@@ -2,7 +2,7 @@
 	name = "satyr tail"
 	desc = "A goat's tail"
 	icon_state = "satyr_tail"
-	icon = 'icons/obj/medical/organs/organs.dmi'
+	icon = 'monkestation/icons/obj/medical/organs/organs.dmi'
 
 	preference = "feature_satyr_tail"
 

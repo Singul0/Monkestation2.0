@@ -2,7 +2,7 @@
 	name = "big ears"
 	desc = "They don't actually let you hear better."
 	icon_state = "goblin_ears"
-	icon = 'icons/obj/medical/organs/organs.dmi'
+	icon = 'monkestation/icons/obj/medical/organs/organs.dmi'
 
 	preference = "feature_goblin_ears"
 	zone = BODY_ZONE_HEAD
@@ -28,7 +28,7 @@
 	name = "goblin nose"
 	desc = "It doesn't actually let you smell better."
 	icon_state = "goblin_nose"
-	icon = 'icons/obj/medical/organs/organs.dmi'
+	icon = 'monkestation/icons/obj/medical/organs/organs.dmi'
 
 	preference = "feature_goblin_nose"
 	zone = BODY_ZONE_HEAD

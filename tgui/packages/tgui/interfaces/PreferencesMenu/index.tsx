@@ -2,7 +2,6 @@ import { exhaustiveCheck } from 'common/exhaustive';
 import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, Section, Stack } from '../../components';
 import { Window } from '../../layouts';
-import { AntagsPage } from './AntagsPage';
 import { CharacterPreferenceWindow } from './CharacterPreferenceWindow';
 import {
   PreferencesCurrentWindow,
@@ -10,7 +9,6 @@ import {
   PreferencesSelectedPage,
 } from './data';
 import { GamePreferencesPage } from './GamePreferencesPage';
-import { JobsPage, JobsPageType } from './JobsPage';
 import { KeybindingsPage } from './KeybindingsPage';
 import { PageButton } from './PageButton';
 import { VolumeMixerPage } from './VolumeMixerPage';
@@ -51,12 +49,6 @@ export const PreferencesMenu = () => {
         case PreferencesSelectedPage.Volume:
           pageContents = <VolumeMixerPage />;
           break;
-        case PreferencesSelectedPage.Antag:
-          pageContents = <AntagsPage />;
-          break;
-        case PreferencesSelectedPage.Jobs:
-          pageContents = <JobsPage type={JobsPageType.Overall} />;
-          break;
         case PreferencesSelectedPage.Character:
           pageContents = <Box>Error</Box>;
           break;
@@ -70,7 +62,6 @@ export const PreferencesMenu = () => {
 
   const settingsCategories = (
     <Stack vertical width="115px">
-      Characters
       <Stack.Item>
         <PageButton
           currentPage={currentPage}
@@ -95,27 +86,6 @@ export const PreferencesMenu = () => {
         </Button>
       </Stack.Item>
       <Stack.Divider />
-      Role Selection
-      <Stack.Item>
-        <PageButton
-          currentPage={currentPage}
-          page={PreferencesSelectedPage.Jobs}
-          setPage={setGamePage}
-        >
-          Occupations
-        </PageButton>
-      </Stack.Item>
-      <Stack.Item>
-        <PageButton
-          currentPage={currentPage}
-          page={PreferencesSelectedPage.Antag}
-          setPage={setGamePage}
-        >
-          Antagonists
-        </PageButton>
-      </Stack.Item>
-      <Stack.Divider />
-      Game Settings
       <Stack.Item>
         <PageButton
           currentPage={currentPage}

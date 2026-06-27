@@ -1,5 +1,5 @@
 /obj/effect/turf_decal/floorsign
-	icon = 'icons/turf/floorsign.dmi'
+	icon = 'monkestation/icons/turf/floorsign.dmi'
 
 // Public
 /obj/effect/turf_decal/floorsign/escape

@@ -9,4 +9,4 @@
 	return list(BEOVERFLOW, BERANDOMJOB, RETURNTOLOBBY)
 
 /datum/preference/choiced/jobless_role/should_show_on_page(preference_tab)
-	return TRUE
+	return preference_tab == PREFERENCE_WINDOW_CHARACTERS

@@ -3,7 +3,7 @@
 /obj/item/toy/plush/cirno_plush
 	name = "Cirno Plush"
 	desc = "You can feel it staring into your soul."
-	icon = 'icons/obj/plushes.dmi'
+	icon = 'monkestation/icons/obj/plushes.dmi'
 	icon_state = "cirno-happy"
 	var/has_bow = TRUE
 	var/bowless_state = "cirno-angry"

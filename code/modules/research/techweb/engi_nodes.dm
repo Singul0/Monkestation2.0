@@ -25,7 +25,6 @@
 		"firealarm_electronics",
 		"firelock_board",
 		"generic_tank",
-		"fuel_canister",
 		"grounding_rod",
 		"high_battery",
 		"high_cell",

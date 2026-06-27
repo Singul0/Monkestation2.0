@@ -2336,11 +2336,11 @@
 /area/shuttle/escape)
 "Rm" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/chem_grenade/smart_metalfoam{
+/obj/item/grenade/chem_grenade/smart_metal_foam{
 	pixel_x = 6;
 	pixel_y = 3
 	},
-/obj/item/grenade/chem_grenade/smart_metalfoam{
+/obj/item/grenade/chem_grenade/smart_metal_foam{
 	pixel_x = -4
 	},
 /obj/machinery/light/small/directional/east,

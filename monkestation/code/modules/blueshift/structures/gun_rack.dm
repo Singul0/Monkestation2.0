@@ -1,3 +1,6 @@
+/obj/structure/rack
+	icon = 'monkestation/code/modules/blueshift/icons/rack.dmi'
+
 /obj/structure/rack/shelf
 	name = "shelf"
 	desc = "A shelf, for storing things on. Conveinent!"
@@ -26,7 +29,6 @@
 /obj/structure/rack/gunrack
 	name = "gun rack"
 	desc = "A gun rack for storing guns."
-	icon = 'monkestation/code/modules/blueshift/icons/rack.dmi'
 	icon_state = "gunrack"
 
 /obj/structure/rack/gunrack/Initialize(mapload)

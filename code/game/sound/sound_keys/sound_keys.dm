@@ -466,19 +466,19 @@
 /datum/sound_effect/button_click
 	key = SFX_BUTTON_CLICK
 	file_paths = list(
-		'sound/effects/hl2/button-click.ogg',
+		'monkestation/sound/effects/hl2/button-click.ogg',
 	)
 
 /datum/sound_effect/button_fail
 	key = SFX_BUTTON_FAIL
 	file_paths = list(
-		'sound/effects/hl2/button-fail.ogg',
+		'monkestation/sound/effects/hl2/button-fail.ogg',
 	)
 
 /datum/sound_effect/lightswitch
 	key = SFX_LIGHTSWITCH
 	file_paths = list(
-		'sound/effects/hl2/lightswitch.ogg',
+		'monkestation/sound/effects/hl2/lightswitch.ogg',
 	)
 
 /datum/sound_effect/portal_close

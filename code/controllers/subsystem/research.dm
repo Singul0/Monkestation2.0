@@ -45,8 +45,7 @@ SUBSYSTEM_DEF(research)
 	///Associated list of all point types that techwebs will have and their respective 'abbreviated' name.
 	var/list/point_types = list(
 		TECHWEB_POINT_TYPE_GENERIC = "Gen. Res.",
-		TECHWEB_POINT_TYPE_NANITES = "Nanite Res.",
-		TECHWEB_POINT_TYPE_AI = "AI Res.",
+		TECHWEB_POINT_TYPE_NANITES = "Nanite Res."
 	)
 	//----------------------------------------------
 	var/list/single_server_income = list(

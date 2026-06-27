@@ -251,7 +251,7 @@
 	if(isnull(cast_loc))
 		return null // No magic in nullspace
 
-	if(isvalidAIloc(cast_loc)) //take into account AIs casting from within their core
+	if(isturf(cast_loc))
 		return target // They're just standing around, proceed as normal
 
 	if(HAS_TRAIT(cast_loc, TRAIT_CASTABLE_LOC))
