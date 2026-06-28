@@ -21037,7 +21037,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "duq" = (
 /obj/structure/railing/wood{
 	dir = 1
@@ -21057,7 +21057,7 @@
 /obj/machinery/computer/quantum_console/tutorial_solo,
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "dwm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -21456,7 +21456,7 @@
 "ejR" = (
 /obj/effect/landmark/tutorial_start,
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "eka" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/pod/dark,
@@ -21534,7 +21534,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "exa" = (
 /turf/open/floor/sandy_dirt,
 /area/centcom/central_command_areas/admin)
@@ -22352,6 +22352,9 @@
 	},
 /turf/open/floor/emissive_test/white,
 /area/centcom/central_command_areas/adminroom)
+"fPN" = (
+/turf/closed/indestructible/riveted,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "fQS" = (
 /obj/effect/turf_decal/trimline/yellow/filled/corner{
 	dir = 4
@@ -24908,7 +24911,7 @@
 "jEo" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/dark/herringbone,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "jEZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -25314,7 +25317,7 @@
 "kkx" = (
 /obj/machinery/quantum_server/tutorial_solo,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "klo" = (
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
@@ -25499,7 +25502,7 @@
 /area/centcom/central_command_areas/admin)
 "kBG" = (
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "kBS" = (
 /obj/effect/turf_decal/siding/dark_green{
 	dir = 10
@@ -26843,7 +26846,7 @@
 	pixel_x = -8
 	},
 /turf/open/floor/iron/dark/herringbone,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "mSk" = (
 /obj/effect/turf_decal/siding/red{
 	dir = 4
@@ -27299,7 +27302,7 @@
 	dir = 6
 	},
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "nNv" = (
 /obj/structure/window/spawner/directional/west,
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -27380,7 +27383,7 @@
 	pixel_x = 5
 	},
 /turf/open/floor/iron/dark/herringbone,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "nUK" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -27657,7 +27660,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "ooz" = (
 /obj/machinery/light/neon_lining{
 	icon_state = "pink2_1"
@@ -28886,6 +28889,9 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark/textured_corner,
 /area/centcom/central_command_areas/evacuation)
+"qsp" = (
+/turf/open/floor/iron/dark/herringbone,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "qsU" = (
 /obj/machinery/photobooth/security,
 /turf/open/floor/iron/dark/small,
@@ -29277,7 +29283,7 @@
 /obj/machinery/light/floor/has_bulb,
 /obj/effect/turf_decal/trimline/white,
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "qTv" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/west,
 /obj/effect/turf_decal/raven/one,
@@ -30187,7 +30193,7 @@
 	icon_state = "l"
 	},
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "sxc" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -30374,7 +30380,7 @@
 	pixel_x = 23
 	},
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "sKy" = (
 /obj/machinery/computer/arcade{
 	dir = 1
@@ -30529,7 +30535,7 @@
 /obj/machinery/computer/quantum_console/tutorial_coop,
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "tbq" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 10
@@ -30946,7 +30952,7 @@
 /obj/effect/turf_decal/box/red,
 /obj/item/disk/holodisk/tutorial,
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "tFw" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4;
@@ -31285,7 +31291,7 @@
 	dir = 10
 	},
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "ulw" = (
 /obj/structure/flora/bush/sparsegrass,
 /turf/open/floor/sandy_dirt,
@@ -32460,7 +32466,7 @@
 "wjS" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "wkZ" = (
 /obj/machinery/light/neon_lining{
 	dir = 1;
@@ -32518,7 +32524,7 @@
 "wog" = (
 /obj/machinery/quantum_server/tutorial_coop,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "woD" = (
 /obj/machinery/light/floor/has_bulb/warm,
 /turf/open/ballpit,
@@ -32686,7 +32692,7 @@
 /obj/machinery/light/directional/north,
 /obj/machinery/byteforge,
 /turf/open/floor/iron/vaporwave,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "wBU" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 4
@@ -33410,7 +33416,7 @@
 "xNI" = (
 /obj/machinery/netpod/tutorial_coop,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "xOQ" = (
 /obj/structure/window/spawner/directional/east,
 /obj/structure/window/spawner/directional/east,
@@ -33438,7 +33444,7 @@
 "xQz" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/dark/textured,
-/area/centcom/central_command_areas/hall)
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "xQP" = (
 /obj/effect/spawner/random/trash/bacteria,
 /obj/effect/spawner/random/trash/garbage,
@@ -80330,9 +80336,9 @@ aaa
 aaa
 aaa
 aaa
-apG
-apG
-apG
+fPN
+fPN
+fPN
 ewH
 ewH
 ewH
@@ -80587,7 +80593,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+fPN
 wog
 sZW
 jEo
@@ -80844,7 +80850,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+fPN
 xNI
 xQz
 nUG
@@ -81101,10 +81107,10 @@ aaa
 aaa
 aaa
 aaa
-apG
+fPN
 dtK
 nMy
-aqK
+qsp
 kBG
 sKr
 acg
@@ -81358,7 +81364,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+fPN
 wBA
 tFq
 ejR
@@ -81615,7 +81621,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+fPN
 kBG
 kBG
 kBG
@@ -81872,7 +81878,7 @@ aaa
 aaa
 aaa
 aaa
-apG
+fPN
 onC
 uiX
 mRm
@@ -82129,10 +82135,10 @@ aaa
 aaa
 aaa
 aaa
-apG
+fPN
 kkx
 dvZ
-aqK
+qsp
 kBG
 kBG
 acg
@@ -82386,12 +82392,12 @@ aaa
 aaa
 aaa
 aaa
-apG
-apG
-apG
-apG
-apG
-apG
+fPN
+fPN
+fPN
+fPN
+fPN
+fPN
 acg
 ydt
 gyJ
