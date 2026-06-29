@@ -1,14 +1,16 @@
 /mob/living/carbon/human/tutorial/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_ENTER_AREA, PROC_REF(checks_area))
+	RegisterSignal(src, COMSIG_LIVING_DEATH, PROC_REF(return_to_lobby))
 
 /mob/living/carbon/human/tutorial/Destroy()
 	UnregisterSignal(src, COMSIG_ENTER_AREA)
+	UnregisterSignal(src, COMSIG_LIVING_DEATH)
 	return ..()
 
 /mob/living/carbon/human/tutorial/proc/checks_area(atom/movable/source, area/new_area)
 	SIGNAL_HANDLER
-	if(istype(new_area, /area/centcom/central_command_areas/hall/tutorial_chamber))
+	if(istype(new_area, /area/centcom/central_command_areas/hall/tutorial_chamber) || stat == DEAD)
 		return
 
 	//gives the player a heart attack lol
@@ -17,7 +19,7 @@
 	addtimer(CALLBACK(src, PROC_REF(return_to_lobby)), 5 SECONDS)
 
 /mob/living/carbon/human/tutorial/proc/return_to_lobby()
-	if(istype(get_area(src), /area/centcom/central_command_areas/hall/tutorial_chamber))
+	if(istype(get_area(src), /area/centcom/central_command_areas/hall/tutorial_chamber) || stat == DEAD)
 		return
 
 	//returns to lobby and qdel.

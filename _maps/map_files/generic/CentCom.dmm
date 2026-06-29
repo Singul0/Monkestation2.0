@@ -20723,6 +20723,11 @@
 /obj/machinery/photocopier/gratis,
 /turf/open/floor/wood,
 /area/centcom/central_command_areas/adminroom)
+"cTq" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/machinery/computer/quantum_console/tutorial_solo_2,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "cTr" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
@@ -21054,8 +21059,8 @@
 /turf/open/floor/sandy_dirt,
 /area/centcom/central_command_areas/admin)
 "dvZ" = (
-/obj/machinery/computer/quantum_console/tutorial_solo,
 /obj/effect/turf_decal/siding/thinplating/dark,
+/obj/machinery/computer/quantum_console/tutorial_solo_1,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "dwm" = (
@@ -25315,7 +25320,7 @@
 /turf/open/floor/mineral/bananium,
 /area/centcom/central_command_areas/admin)
 "kkx" = (
-/obj/machinery/quantum_server/tutorial_solo,
+/obj/machinery/quantum_server/tutorial_solo_1,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "klo" = (
@@ -27058,6 +27063,10 @@
 /obj/structure/flora/grass/brown/style_random,
 /turf/open/floor/sandy_dirt,
 /area/centcom/central_command_areas/adminroom)
+"npU" = (
+/obj/machinery/quantum_server/tutorial_solo_2,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "nqR" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/cigars/cohiba{
@@ -27655,10 +27664,10 @@
 /turf/open/indestructible/event/plating,
 /area/centcom/tdome/arena/actual)
 "onC" = (
-/obj/machinery/netpod/tutorial_solo,
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
 	},
+/obj/machinery/netpod/tutorial_solo_1,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "ooz" = (
@@ -28787,6 +28796,10 @@
 /obj/effect/landmark/prisonwarp,
 /turf/open/floor/pod/dark,
 /area/centcom/central_command_areas/prison/cells)
+"qgX" = (
+/obj/machinery/netpod/tutorial_solo_2,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/central_command_areas/hall/tutorial_chamber)
 "qia" = (
 /obj/structure/meateor_fluff/eyeball,
 /turf/open/floor/material/meat,
@@ -30948,9 +30961,9 @@
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/prison)
 "tFq" = (
-/obj/machinery/holopad/tutorial,
 /obj/effect/turf_decal/box/red,
 /obj/item/disk/holodisk/tutorial,
+/obj/machinery/holopad/tutorial/everplaying,
 /turf/open/floor/iron/vaporwave,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "tFw" = (
@@ -81881,7 +81894,7 @@ aaa
 fPN
 onC
 uiX
-mRm
+qsp
 qTq
 kBG
 acg
@@ -82138,7 +82151,7 @@ aaa
 fPN
 kkx
 dvZ
-qsp
+mRm
 kBG
 kBG
 acg
@@ -82393,11 +82406,11 @@ aaa
 aaa
 aaa
 fPN
-fPN
-fPN
-fPN
-fPN
-fPN
+qgX
+xQz
+qsp
+kBG
+kBG
 acg
 ydt
 gyJ
@@ -82649,12 +82662,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+fPN
+npU
+cTq
+qsp
+kBG
+kBG
 acg
 mCs
 gCO
@@ -82906,12 +82919,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+fPN
+fPN
+fPN
+fPN
+fPN
+fPN
 acg
 oEQ
 uDr

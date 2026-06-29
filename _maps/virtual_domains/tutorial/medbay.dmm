@@ -4627,6 +4627,11 @@
 	pixel_y = 3
 	},
 /obj/item/device/antibody_scanner,
+/obj/item/clothing/glasses/pathology,
+/obj/item/clothing/glasses/pathology{
+	pixel_x = -5;
+	pixel_y = -4
+	},
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered_lighting)
 "So" = (
