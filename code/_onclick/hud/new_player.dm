@@ -713,6 +713,9 @@
 	. = ..()
 	if(!.)
 		return
+	if(!usr.client || usr.client.interviewee)
+		return
+
 	var/mob/dead/new_player/new_player = hud.mymob
 	new_player.enter_tutorial()
 

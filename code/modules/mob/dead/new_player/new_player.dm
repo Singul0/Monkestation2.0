@@ -84,6 +84,10 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
+	if(interview_safety(src, "attempting to enter tutorial"))
+		qdel(client)
+		return FALSE
+
 	var/this_is_like_playing_right = tgui_alert(src, "Are you sure you wish to enter tutorial? You may return to lobby if you try to leave the tutorial chamber", "Tutorial", list("Yes", "No"))
 	if(QDELETED(src) || QDELETED(client))
 		return FALSE
