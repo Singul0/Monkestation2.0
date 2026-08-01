@@ -21504,7 +21504,7 @@
 /turf/open/floor/wood/large,
 /area/centcom/central_command_areas/adminroom)
 "enj" = (
-/obj/machinery/quantum_server/tutorial_solo_1,
+/obj/machinery/quantum_server/tutorial/solo_1,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "eqk" = (
@@ -26293,7 +26293,7 @@
 /turf/open/floor/wood/large,
 /area/centcom/central_command_areas/hall)
 "lLn" = (
-/obj/machinery/quantum_server/tutorial_solo_2,
+/obj/machinery/quantum_server/tutorial/solo_2,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "lLZ" = (
@@ -29231,7 +29231,7 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/centcom/central_command_areas/adminroom)
 "qMv" = (
-/obj/machinery/quantum_server/tutorial_coop,
+/obj/machinery/quantum_server/tutorial/coop,
 /turf/open/floor/iron/dark/textured,
 /area/centcom/central_command_areas/hall/tutorial_chamber)
 "qMF" = (
