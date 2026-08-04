@@ -287,7 +287,7 @@
 
 /atom/movable/screen/lobby/button/tutorial
 	name = "Spawn in Tutorial Chamber."
-	screen_loc = "BOTTOM, RIGHT"
+	screen_loc = "TOP, CENTER:-164"
 	icon = 'icons/hud/lobby/tutorial.dmi'
 	icon_state = "tutorial_disabled"
 	base_icon_state = "tutorial"
