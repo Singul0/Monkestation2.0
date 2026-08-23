@@ -54,8 +54,8 @@
 
 /datum/ai_project/tray_sensors
 	name = "T-Ray Sensors"
-	description = "With improved processing of pre-existing optical data and some jury-rigging of components, you'd be able to transmit and process terahertz rays. This allows your pre-existing cameras to have the same functionaly as handheld T-ray scanners used in the hands of crewmembers."
-	research_cost = 1000
+	description = "With improved processing of pre-existing optical data and some jury-rigging of components, you'd be able to transmit and process terahertz rays. This allows your pre-existing cameras to have the same functionally as handheld T-ray scanners used in the hands of crewmembers."
+	research_cost = 500 //minimal practical usage
 	ram_required = 1
 	category = AI_PROJECT_HUDS
 
@@ -75,9 +75,9 @@
 /datum/ai_project/advanced_tracking
 	name = "Advanced Tracking"
 	description = "Sets aside processing power to asychronously track multiple targets at once off the central view. Requires Camera Memory Tracker to research."
-	research_cost = 2500
+	research_cost = 1000 //very strong, but the research requirements is already a mountainload. 9k of total research to get, total zenith of upgrade.
 	ram_required = 4
-	category = AI_PROJECT_HUDS
+	category = AI_PROJECT_SURVEILLANCE
 	research_requirements = list(/datum/ai_project/camera_tracker)
 	var/list/mobs_to_track = list()
 
@@ -168,3 +168,79 @@
 	STOP_PROCESSING(SSprocessing, src)
 
 #undef MAXIMUM_TARGET_TRACKING
+
+/datum/ai_project/lights_control
+	name = "Lights Control"
+	description = "Subvert an obselete IoT endpoint to control light modes in a room."
+	research_cost = 1
+	ram_required = 0
+	category = AI_PROJECT_MISC
+
+/datum/ai_project/lights_control/run_project(force_run)
+	. = ..()
+	add_ability(/datum/action/innate/ai/lights_control)
+
+/datum/ai_project/lights_control/stop()
+	. = ..()
+	remove_ability(/datum/action/innate/ai/lights_control)
+
+/datum/action/innate/ai/lights_control
+	name = "Lights Controls"
+	desc = "Controls light systems in a set area."
+	button_icon_state = "emergency_lights"
+	var/datum/ai_project/advanced_tracking/tracker
+	max_uses = 999
+	auto_use_uses = FALSE
+
+/datum/action/innate/ai/lights_control/Activate()
+	var/area/area_to_control = get_area(owner_AI.eyeobj)
+	if(!is_station_area_or_adjacent(area_to_control))
+		return
+
+	var/mode = tgui_input_list(owner_AI, "What Operating Mode Should It Be Set?", "Light Controls", list("Default", "Blacklight", "Dim", "Red", "Warm"))
+	for(var/list/zlevel_turfs as anything in area_to_control.get_zlevel_turf_lists())
+		for(var/turf/area_turf as anything in zlevel_turfs)
+			for(var/obj/machinery/light/controlled_light in area_turf)
+				switch(mode)
+					if("Default")
+						controlled_light.bulb_colour = initial(controlled_light.bulb_colour)
+					if("Blacklight")
+						controlled_light.bulb_colour = "#A700FF"
+					if("Red")
+						controlled_light.bulb_colour = "#FF3232"
+					if("Warm")
+						controlled_light.bulb_colour = "#fae5c1"
+
+				if(mode == "Dim")
+					controlled_light.bulb_power = 0.6
+				else
+					controlled_light.bulb_power = initial(controlled_light.bulb_power)
+
+				controlled_light.update()
+
+/datum/ai_project/engineeringscan
+	name = "Advanced Engineering Scan"
+	description = "Devote processing time into analyzing powernet harmonics and accurate atmospherics scans derived from tertiary sensors in order to allow scanning of power surging through cables and atmospherics data of a tile."
+	research_cost = 1
+	ram_required = 0
+	category = AI_PROJECT_HUDS
+
+/datum/ai_project/engineeringscan/run_project(force_run)
+	. = ..()
+	ai.canEngineeringScan = TRUE
+
+/datum/ai_project/engineeringscan/stop()
+	. = ..()
+	ai.canEngineeringScan = FALSE
+
+/turf/open/attack_ai(mob/user)
+	. = ..()
+	if(isAI(user))
+		var/mob/living/silicon/ai/ai_scanning = user
+
+		if(ai_scanning.canEngineeringScan)
+			atmos_scan(user=user, target=src, silent=TRUE)
+
+			for(var/obj/structure/cable/power_cable in contents)
+				to_chat(user, power_cable.get_power_info())
+
