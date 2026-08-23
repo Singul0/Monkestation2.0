@@ -114,7 +114,7 @@
 
 //actual thing that procs to add and remove tracking
 /datum/ai_project/advanced_tracking/proc/add_target()
-	if(mobs_to_track.len >= 2)
+	if(mobs_to_track.len >= MAXIMUM_TARGET_TRACKING)
 		to_chat(ai, span_warning("Maximum target to track reached! Removing stored targets!"))
 		mobs_to_track = list()
 		return
