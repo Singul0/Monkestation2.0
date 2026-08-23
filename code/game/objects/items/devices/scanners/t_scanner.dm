@@ -41,19 +41,11 @@
 /obj/item/t_scanner/proc/scan()
 	t_ray_scan(loc)
 
-/proc/t_ray_scan(mob/viewer, flick_time = 8, distance = 3, mob/mobeye = null)
-	var/in_range_of_mob
+/proc/t_ray_scan(mob/viewer, flick_time = 8, distance = 3)
 	if(!ismob(viewer) || !viewer.client)
 		return
-
-	//for incorporeal beings, ones with a disjointed mob and camera location. (e.g: ai's)
-	if(mobeye)
-		in_range_of_mob = mobeye
-	else
-		in_range_of_mob = viewer
-
 	var/list/t_ray_images = list()
-	for(var/obj/O in orange(distance, in_range_of_mob) )
+	for(var/obj/O in orange(distance, viewer) )
 		if(HAS_TRAIT(O, TRAIT_T_RAY_VISIBLE))
 			var/image/I = new(loc = get_turf(O))
 			var/mutable_appearance/MA = new(O)
