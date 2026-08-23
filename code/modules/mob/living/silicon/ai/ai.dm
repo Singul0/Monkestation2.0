@@ -549,6 +549,7 @@
 		var/mob/living/carbon/human/connected_ipc = locate(href_list["track_ipc"]) in connected_ipcs
 		if(!connected_ipc)
 			return
+		ai_tracking_tool.set_tracked_target(connected_ipc)
 	if(href_list["track_target"])
 		var/mob/living/carbon/human/target_lock = locate(href_list["track_target"]) in target_list
 		if(!target_lock)
