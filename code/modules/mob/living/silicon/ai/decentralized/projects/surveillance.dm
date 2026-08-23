@@ -57,7 +57,7 @@
 	var/list/hit_mobs = list()
 
 	for(var/weakref_mob in trackable_mobs)
-		var/datum/weakref/ref = trackable_mobs[weakref_mob].resolve()
+		var/datum/weakref/ref = trackable_mobs[weakref_mob]
 		var/mob/living/trackable_mob = ref.resolve()
 		if(trackable_mob.can_track())
 			if(trackable_mob in mobs_to_track)
