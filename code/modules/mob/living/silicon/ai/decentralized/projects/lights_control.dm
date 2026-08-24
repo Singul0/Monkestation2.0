@@ -22,11 +22,16 @@
 	auto_use_uses = FALSE
 
 /datum/action/innate/ai/lights_control/Activate()
+	var/chosen_color = "#0000"
+	var/mode = tgui_input_list(owner_AI, "What Operating Mode Should It Be Set?", "Light Controls", list("Default", "Blacklight", "Dim", "Red", "Warm", "CUSTOM"))
+	if(mode == "CUSTOM")
+		chosen_color = tgui_color_picker(owner_AI, "Pick new color", "[src]", chosen_color)
+
 	var/area/area_to_control = get_area(owner_AI.eyeobj)
 	if(!is_station_area_or_adjacent(area_to_control))
+		to_chat(owner_AI, span_warning("We don't have access to the area's power lighting system!"))
 		return
 
-	var/mode = tgui_input_list(owner_AI, "What Operating Mode Should It Be Set?", "Light Controls", list("Default", "Blacklight", "Dim", "Red", "Warm"))
 	for(var/list/zlevel_turfs as anything in area_to_control.get_zlevel_turf_lists())
 		for(var/turf/area_turf as anything in zlevel_turfs)
 			for(var/obj/machinery/light/controlled_light in area_turf)
@@ -39,6 +44,8 @@
 						controlled_light.bulb_colour = "#FF3232"
 					if("Warm")
 						controlled_light.bulb_colour = "#fae5c1"
+					if("CUSTOM")
+						controlled_light.bulb_colour = chosen_color
 
 				if(mode == "Dim")
 					controlled_light.bulb_power = 0.6
