@@ -144,11 +144,11 @@
 	VAR_FINAL/setting_waypoint = FALSE
 
 	var/datum/ai_dashboard/dashboard
-	///override for the can_download, checked first in case we have other code in can_download
+	/// Override for the can_download, checked first in case we have other code in can_download
 	var/can_download = TRUE
-	///Can we (simple) examine humans?
+	/// Can we (simple) examine humans?
 	var/canExamineHumans = FALSE
-	///Can we see engineering-based scan? (atmos, and power)
+	/// Can we see engineering-based scan? (atmos, and power)
 	var/canEngineeringScan = FALSE
 
 	//Do we have access to camera tracking?

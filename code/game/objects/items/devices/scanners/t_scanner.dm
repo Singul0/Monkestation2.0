@@ -53,7 +53,7 @@
 		in_range_of_mob = viewer
 
 	var/list/t_ray_images = list()
-	for(var/obj/O in orange(distance, in_range_of_mob) )
+	for(var/obj/O in orange(distance, in_range_of_mob))
 		if(HAS_TRAIT(O, TRAIT_T_RAY_VISIBLE))
 			var/image/I = new(loc = get_turf(O))
 			var/mutable_appearance/MA = new(O)
