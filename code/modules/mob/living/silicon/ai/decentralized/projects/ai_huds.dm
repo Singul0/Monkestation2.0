@@ -86,13 +86,14 @@
 	ai.canEngineeringScan = FALSE
 
 /turf/open/attack_ai(mob/user)
-	. = ..()
-	if(isAI(user))
-		var/mob/living/silicon/ai/ai_scanning = user
+	if(!isAI(user))
+		return
 
-		if(ai_scanning.canEngineeringScan)
-			atmos_scan(user=user, target=src, silent=TRUE)
+	var/mob/living/silicon/ai/ai_scanning = user
+	if(!ai_scanning.canEngineeringScan)
+		return
 
-			for(var/obj/structure/cable/power_cable in contents)
-				to_chat(user, power_cable.get_power_info())
+	atmos_scan(user, src, TRUE)
 
+	for(var/obj/structure/cable/power_cable in contents)
+		to_chat(user, power_cable.get_power_info())

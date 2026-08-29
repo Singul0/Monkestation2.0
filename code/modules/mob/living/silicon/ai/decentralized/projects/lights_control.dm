@@ -17,7 +17,6 @@
 	name = "Lights Controls"
 	desc = "Controls light systems in a set area."
 	button_icon_state = "emergency_lights"
-	var/datum/ai_project/advanced_tracking/tracker
 	max_uses = 999
 	auto_use_uses = FALSE
 

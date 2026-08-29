@@ -49,6 +49,7 @@
 	ram_required = 5
 	category = AI_PROJECT_SURVEILLANCE
 	research_requirements = list(/datum/ai_project/camera_tracker)
+	///List of mobs that we check on each tick if it's on camnet or not and whether or not to spawn an arrow to it.
 	var/list/mobs_to_track = list()
 
 /datum/ai_project/advanced_tracking/process()
@@ -88,6 +89,13 @@
 		if(ai.hud_used)
 			new /atom/movable/screen/navigate_arrow(null, ai.hud_used, their_turf, arrow_color, ai.eyeobj)
 
+/datum/ai_project/advanced_tracking/stop()
+	. = ..()
+	remove_ability(/datum/action/innate/ai/advanced_tracking)
+	ai.target_list = null
+	mobs_to_track = list()
+	STOP_PROCESSING(SSprocessing, src)
+
 /datum/ai_project/advanced_tracking/run_project(force_run)
 	. = ..()
 	mobs_to_track = list()
@@ -95,22 +103,6 @@
 	tracking.tracker = src
 
 	START_PROCESSING(SSprocessing, src)
-
-//button to activate these
-/datum/action/innate/ai/advanced_tracking
-	name = "Advanced Tracking Button"
-	desc = "Controls the tracking subsystem."
-	button_icon_state = "reactivate_cameras"
-	var/datum/ai_project/advanced_tracking/tracker
-	max_uses = 999
-	auto_use_uses = FALSE
-
-/datum/action/innate/ai/advanced_tracking/Activate()
-	if(!tracker)
-		to_chat(owner, span_warning("No datum connected! Something's fucked up! Call the coders!"))
-		return
-
-	tracker.add_target()
 
 //actual thing that procs to add and remove tracking
 /datum/ai_project/advanced_tracking/proc/add_target()
@@ -131,11 +123,21 @@
 
 	mobs_to_track += mob_ref.resolve()
 
-/datum/ai_project/advanced_tracking/stop()
-	. = ..()
-	remove_ability(/datum/action/innate/ai/advanced_tracking)
-	ai.target_list = null
-	mobs_to_track = list()
-	STOP_PROCESSING(SSprocessing, src)
+//button to activate these
+/datum/action/innate/ai/advanced_tracking
+	name = "Advanced Tracking Button"
+	desc = "Controls the tracking subsystem."
+	button_icon_state = "reactivate_cameras"
+	max_uses = 999
+	auto_use_uses = FALSE
+	/// the ai project we are referencing, everything but the button itself is put there.
+	var/datum/ai_project/advanced_tracking/tracker
+
+/datum/action/innate/ai/advanced_tracking/Activate()
+	if(!tracker)
+		to_chat(owner, span_warning("No datum connected! Something's fucked up! Call the coders!"))
+		return
+
+	tracker.add_target()
 
 #undef MAXIMUM_TARGET_TRACKING
