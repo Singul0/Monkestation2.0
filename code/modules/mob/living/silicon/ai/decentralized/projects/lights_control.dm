@@ -21,7 +21,7 @@
 	auto_use_uses = FALSE
 
 /datum/action/innate/ai/lights_control/Activate()
-	var/chosen_color = "#0000"
+	var/chosen_color = COLOR_WHITE
 	var/mode = tgui_input_list(owner_AI, "What Operating Mode Should It Be Set?", "Light Controls", list("Default", "Blacklight", "Dim", "Red", "Warm", "CUSTOM"))
 	if(mode == "CUSTOM")
 		chosen_color = tgui_color_picker(owner_AI, "Pick new color", "[src]", chosen_color)
