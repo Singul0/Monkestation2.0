@@ -122,6 +122,9 @@
 	///whether AI is anchored or not, used for checks
 	var/is_anchored = TRUE
 
+	///List of mobs targeted in the improved targeting project, used for stat-panel updates.
+	var/target_list
+
 	///Command report cooldown
 	COOLDOWN_DECLARE(command_report_cd) // monkestation edit
 

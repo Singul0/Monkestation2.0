@@ -2,7 +2,7 @@
 /datum/ai_project/advanced_tracking
 	name = "Advanced Tracking"
 	description = "Sets aside processing power to asychronously track multiple targets at once off the central view. Requires Human Examination to research."
-	research_cost = 3000
+	research_cost = 2500
 	ram_required = 4
 	research_requirements = list(/datum/ai_project/examine_humans)
 	category = AI_PROJECT_SURVEILLANCE
