@@ -122,9 +122,6 @@
 	///whether AI is anchored or not, used for checks
 	var/is_anchored = TRUE
 
-	///List of mobs targeted in the improved targeting project, used for stat-panel updates, processed every X seconds <-- TODO: figure out tick rate
-	var/target_list
-
 	///Command report cooldown
 	COOLDOWN_DECLARE(command_report_cd) // monkestation edit
 
@@ -153,6 +150,9 @@
 
 	///Did we get the death prompt?
 	var/is_dying = FALSE
+
+	///How much ai's client view_range should be adjusted by with view_size.setTo(). 0 Is default view size.
+	var/view_range_boost = 0
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai, shunted)
 	. = ..()
@@ -422,6 +422,7 @@
 			Status: [robot_status]",
 			"src=[REF(src)];track_cyborg=[text_ref(connected_robot)]",
 		))
+		// monkestation edit start PR #5133
 	var/connected_ipc_amt = length(connected_ipcs)
 	if(connected_ipc_amt)
 		. += "Connected IPCs: [connected_ipc_amt]"
@@ -436,14 +437,7 @@
 				Status: [robot_status]",
 				"src=[REF(src)];track_ipc=[text_ref(connected_ipc)]",
 			))
-	if(target_list)
-		for(var/mob/tracked_mob in target_list)
-			. += list(list("[tracked_mob.name]: ",
-				"Loc: [get_area_name(tracked_mob, TRUE)] | \
-				Coordinates: [tracked_mob.x], [tracked_mob.y], [tracked_mob.z]",
-				"src=[REF(src)];track_target=[text_ref(tracked_mob)]",
-			))
-
+		// monkestation edit end PR #5133
 	. += list(list("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
 
 	var/obj/machinery/ai/data_core/ai_location = loc
