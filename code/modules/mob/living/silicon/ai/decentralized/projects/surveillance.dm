@@ -52,6 +52,7 @@
 	ai.target_list = null
 	mobs_to_track = list()
 	STOP_PROCESSING(SSprocessing, src)
+GAME_VERB_DESC(/mob/living/silicon/ai, choose_camera_target, "Choose Camera Memory Target", "Select a target for the camera memory tracker. Case sensitive.", "AI Commands")
 
 /datum/ai_project/advanced_tracking/run_project(force_run)
 	. = ..()
