@@ -21,11 +21,11 @@
 			if(trackable_mob in mobs_to_track)
 				hit_mobs += trackable_mob
 
-	if(!hit_mobs)
-		return
-
 	//send bingo hit mobs to AI, and spawns arrows to them
 	ai.target_list = hit_mobs
+
+	if(!hit_mobs)
+		return
 
 	for(var/mob/tracked_mob in hit_mobs)
 		var/area/their_turf = get_turf(tracked_mob)
