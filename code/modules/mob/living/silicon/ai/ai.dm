@@ -441,7 +441,7 @@ GAME_VERB_DESC(/mob/living/silicon/ai, pick_icon, "Set AI Core Display", "Choose
 		// monkestation edit end PR #5133
 	if(target_list)
 		for(var/mob/tracked_mob in target_list)
-			if(QDELETED(tracked_mob)
+			if(QDELETED(tracked_mob))
 				continue
 			. += list(list("[tracked_mob.name]: ",
 				"Loc: [get_area_name(tracked_mob, TRUE)] | \
