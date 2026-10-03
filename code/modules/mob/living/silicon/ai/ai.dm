@@ -439,6 +439,13 @@ GAME_VERB_DESC(/mob/living/silicon/ai, pick_icon, "Set AI Core Display", "Choose
 				"src=[REF(src)];track_ipc=[text_ref(connected_ipc)]",
 			))
 		// monkestation edit end PR #5133
+	if(target_list)
+		for(var/mob/tracked_mob in target_list)
+			. += list(list("[tracked_mob.name]: ",
+				"Loc: [get_area_name(tracked_mob, TRUE)] | \
+				Coordinates: [tracked_mob.x], [tracked_mob.y], [tracked_mob.z]",
+				"src=[REF(src)];track_target=[text_ref(tracked_mob)]",
+			))
 	. += list(list("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
 
 	var/obj/machinery/ai/data_core/ai_location = loc
